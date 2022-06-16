@@ -1,0 +1,13 @@
+.aboutEvants{
+    padding: 120px 188px;
+    background: #FFFFFB;
+}
+
+.aboutEvants_carts{
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutEvants_carts li:not(:last-child){
+    margin-right: 28px;
+}

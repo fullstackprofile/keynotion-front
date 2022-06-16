@@ -1,0 +1,81 @@
+.dialog_head{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_close{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
+
+.dialog_title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 73px;
+    color: #121212;
+    margin-bottom: 56px;
+}
+
+
+.dialog_content_pass{
+    margin-top: 22px;
+}
+
+.dialog_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #B8B8B8;
+    padding-left: 32px;
+    margin-bottom: 12px;
+}
+
+.remember{
+    display: flex;
+    align-items: center;
+}
+
+.remember_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #B8B8B8;
+}
+
+
+
+.dialog_content_btn{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn{
+    margin-bottom: 32px;
+    margin-top: 48px;
+}
+
+.forget_title{
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 99.98%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dialog_filds div:not(:first-child){
+    margin-top: 22px;
+}
+
+.error{
+    color: red;
+    margin-top: 12px;
+}

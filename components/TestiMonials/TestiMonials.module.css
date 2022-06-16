@@ -1,0 +1,17 @@
+.testiMonials{
+    padding: 120px 188px;
+    background: #FAFAFA;
+}
+.testiMonials_carusel{
+    margin-top: 48px;
+    position: relative;
+}
+
+.my_swiper{
+    position: unset;
+}
+
+.why_carusel{
+   padding-right: -60px;
+   position: relative;
+}

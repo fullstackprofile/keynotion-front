@@ -1,0 +1,37 @@
+.unknow{
+    padding: 120px 188px;
+    background: #FAFAFA
+}
+
+.unknow_content{
+    background: #FFFFFF;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+    padding: 48px;
+    
+}
+
+.content_items{
+    display: flex;
+    align-items: center;
+}
+
+.content_items li:not(:last-child){
+    margin-right: 46px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    margin-right: 14px;
+}
+
+.item_title{
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 130%;
+    color: #121212;
+}

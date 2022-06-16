@@ -1,0 +1,114 @@
+.footer{
+    padding-top: 122px;
+    padding-bottom: 72px;
+    padding-left: 188px;
+    padding-right: 316px;
+    background-color: #FFFFF6;
+}
+
+.footer_content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyNation{
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    margin-right: 152px;
+}
+
+
+.keyNation_title{
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 130%;
+}
+
+.gradient{
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.keyNation_subTitle{
+    margin-top: 48px;
+    margin-bottom: 56px;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 152%;
+    color: #121212;
+}
+
+
+.left_block{
+    display: flex;
+}
+
+.officess{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-right: 72px;
+}
+
+
+
+
+
+.prague_title{
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 130%;
+    color: #000000;
+    margin-bottom: 56px;
+}
+
+.prague_titles p:not(:last-child){
+    margin-bottom: 26px;
+}
+
+.subTitle{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.prague_phone{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.strong{
+    font-weight: 700;
+}
+
+.us_office{
+    margin-top: 72px;
+}
+
+.row{
+    text-align: center;
+    padding-top: 31px;
+    padding-bottom: 31px;
+    border-top: solid 2px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    
+}
+
+.row_title{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 165%;
+    color: #121212;
+}

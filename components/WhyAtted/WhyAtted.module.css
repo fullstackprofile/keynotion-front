@@ -1,0 +1,46 @@
+.whyAtted{
+    padding: 120px 264px;
+    background: #FAFAFA;
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    margin-top: 48px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+}
+
+.subTitle{
+    margin-top: 32px;
+    padding-left: 230px;
+    padding-right: 230px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    text-align: center;
+    color: #121212;
+    margin-bottom: 72px;
+}
+
+.my_swiper{
+    position: unset;
+}
+
+.why_carusel{
+   padding-right: -60px;
+   position: relative;
+}
+
+
+

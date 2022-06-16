@@ -1,0 +1,31 @@
+.WhyAttedCart{
+    padding: 48px;
+    background: #FFFFFF;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.subTitle{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 120%;
+    color: #121212;
+    margin-top: 24px;
+    margin-bottom: 28px;
+}
+
+
+
+.icon{
+    
+    float: right;
+}
+

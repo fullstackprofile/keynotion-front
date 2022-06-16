@@ -1,0 +1,31 @@
+{
+  "name": "keynation",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.9.1",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/material": "^5.8.2",
+    "classnames": "^2.3.1",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-hook-form": "^7.32.1",
+    "swiper": "^8.2.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "eslint": "8.17.0",
+    "eslint-config-next": "12.1.6"
+  }
+}

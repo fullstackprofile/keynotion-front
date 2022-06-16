@@ -1,0 +1,30 @@
+.HeaderNavbar{
+    display: flex;
+    margin-right: 96px;
+}
+.nav_items{
+    display: flex;
+}
+.nav_item:hover{
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.nav_items .nav_item:not(:last-child){
+    margin-right: 56px;
+}
+
+.menu_item{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #121212;
+}
+
+
+
+
+
+/* identical to box height, or 152% */
+
+

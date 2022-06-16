@@ -1,0 +1,66 @@
+.testiMonialsCart_block{
+    padding: 48px;
+    height: 696px;
+    background: #FFFFFF;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+}
+
+.testiMonialsCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 22px;
+    margin-top: 32px;
+}
+
+.subTitle{
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 40px;
+}
+
+.company{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.company div:not(:last-child){
+    margin-right: 20px;
+}
+
+.company_logo{
+    border: 1px solid #121212;
+    border-radius: 6px;
+}
+
+.company_logo_title{
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 17px 19px;
+}
+
+.company_name{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}

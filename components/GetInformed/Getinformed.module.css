@@ -1,0 +1,32 @@
+.getinformed{
+    padding: 120px 188px;
+    background:linear-gradient(180deg, #FFFFFB 56.57%, #e1e1e1 109.92%) ;
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    margin-top: 48px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.GetInformedCarts{
+    margin-top: 72px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.GetInformedCarts div:not(:last-child){
+    margin-right: 28px;
+}

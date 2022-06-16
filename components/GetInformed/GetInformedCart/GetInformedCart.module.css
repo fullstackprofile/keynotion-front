@@ -1,0 +1,53 @@
+.getInformedCart{
+    display: flex;
+    flex-direction: column;
+    max-width: 32%;
+    
+}
+
+.GetInformedCart_img{
+    width: 412px;
+    height: 278px;
+    background-color: grey;
+}
+
+.GetInformedCart_title_block{
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+
+
+.GetInformedCart_title{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.btn_date{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date{
+    padding: 14px 16px !important;
+    border-radius: 3px !important;    
+    font-size: 18px !important; 
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+}
+
+
+.date_title{
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 18px;
+    font-weight: 700;
+}

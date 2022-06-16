@@ -1,0 +1,42 @@
+.main_title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titles{
+    display: flex;
+    margin-bottom: 32px;
+}
+.titlescon{
+    display: flex;
+    margin-bottom: 32px;
+}
+.titles p:not(:last-child){
+    margin-right: 12px;
+}
+
+.title_{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%;
+    color: #121212;
+}
+
+
+.title{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.row{
+    height: 4px;
+    width: 48%;
+    background: linear-gradient(#9F0A00, #623D90);
+}
