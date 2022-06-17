@@ -4,11 +4,9 @@
 }
 .nav_items{
     display: flex;
-}
-.nav_item:hover{
     cursor: pointer;
-    opacity: 0.3;
 }
+
 
 .nav_items .nav_item:not(:last-child){
     margin-right: 56px;
@@ -22,9 +20,11 @@
 }
 
 
+.dropdown_icon_block{
+    margin-left: 16px;
+}
 
 
 
-/* identical to box height, or 152% */
 
 

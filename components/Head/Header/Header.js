@@ -7,10 +7,12 @@ import { Login } from '../../Login/Login'
 import { SignUp } from '../../SignUp/SignUp'
 
 import styles from "./Header.module.css"
+import { ForgotPass } from '../../Login/ForgotPass/ForgotPass'
 
 export const Header = () => {
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openSingup, setOpenSingup] = React.useState(false);
+  const [openForgot, setOpenForgot] = React.useState(false);
 
   const handleClickOpenSignup = () => {
     setOpenSingup(true);
@@ -29,6 +31,15 @@ export const Header = () => {
   };
 
 
+  const handleClickOpenForgot = () => {
+    setOpenLogin(false);
+    setOpenForgot(true);
+  };
+
+  const handleCloseForgot = () => {
+    setOpenForgot(false);
+    setOpenLogin(true);
+  };
 
 
 
@@ -57,9 +68,9 @@ export const Header = () => {
 
         </div>
         </div>
-        <Login open={openLogin} handleClose={handleClose} />
-        <SignUp open={openSingup} handleClose={handleClickCloseSignup}/>
-        
+        <Login open={openLogin} handleClose={handleClose} handleClickOpenForgot={handleClickOpenForgot}/>
+        <SignUp open={openSingup} handleClose={handleClickCloseSignup} />
+        <ForgotPass open={openForgot} handleClose={handleCloseForgot}/>
       
     </div>
   )

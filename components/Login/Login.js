@@ -11,12 +11,16 @@ import { Controller, useForm } from 'react-hook-form'
 
 import styles from "./Login.module.css"
 
+
 const LoginSchema = yup.object().shape({
     Email: yup.string().email().required("please Enter your Email"),
     Password: yup.string().required("please Enter your Password"),
   });
 
-export const Login = ({open,handleClose}) => {
+
+
+export const Login = ({open,handleClose,handleClickOpenForgot}) => {
+
 
     const { control, handleSubmit } = useForm({
         defaultValues:{
@@ -78,7 +82,7 @@ export const Login = ({open,handleClose}) => {
             </div>
             
             <div className={styles.forget}>
-              <p className={styles.forget_title}>Forgot Password?</p>
+              <p className={styles.forget_title} onClick={handleClickOpenForgot} >Forgot Password?</p>
             </div>
            
           </div>

@@ -1,0 +1,42 @@
+.event{
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 120px;
+    padding-bottom: 88px ;
+    background: #FAFAFA;
+}
+.event_category{
+    padding-left: 128px;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.events{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 56px;
+    justify-content: space-between;
+}
+
+.events::after{
+    content: "";
+    width: calc(50% - 21px);
+    
+}
+
+
+
+
+.event_body{
+    background-color: grey;
+    width: calc(25% - 32px);
+    height: 267px;
+}
+
+
+.events .event_body{
+    margin-bottom: 32px;
+}
+

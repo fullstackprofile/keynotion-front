@@ -1,0 +1,28 @@
+.eventsHeading{
+    
+}
+
+.eventsHeading_title_block{
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eventsHeading_title{
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 130%;
+    color: #FFFFF6;
+}
+
+.eventsHeading_subTitle{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 130%;
+    color: #FFFFF6;
+    margin-top: 32px;
+}

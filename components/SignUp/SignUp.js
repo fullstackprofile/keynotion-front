@@ -1,7 +1,7 @@
-import { Dialog } from '@mui/material'
-import Image from 'next/image';
 import React from 'react'
+import Image from 'next/image';
 import { Controller, useForm } from 'react-hook-form';
+import { Dialog } from '@mui/material'
 import { ButtonComp } from '../Button/Button';
 import { Input } from '../Input/Input';
 

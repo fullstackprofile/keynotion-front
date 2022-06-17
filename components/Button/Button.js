@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 import styles from "./Button.module.css"
 
 
-export const ButtonComp = ({title,transparent,big}) => {
+export const ButtonComp = ({title,transparent,big,onClick}) => {
 
   
   return (
@@ -12,6 +12,7 @@ export const ButtonComp = ({title,transparent,big}) => {
     {
       big ? 
       <Button 
+       onClick={onClick}
        type="submit"
       className={transparent ? styles.btn_see_more_2 : (big ? styles.btn_see_more_big : styles.btn_see_more)} 
       variant="contained">
@@ -19,6 +20,7 @@ export const ButtonComp = ({title,transparent,big}) => {
      </Button>
       :
         <Button 
+        onClick={onClick}
         type="submit"
          className={transparent ? styles.btn_see_more_2 : styles.btn_see_more} 
          variant="contained">
