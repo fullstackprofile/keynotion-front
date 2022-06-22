@@ -1,0 +1,29 @@
+.content_item{
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 42px 33px;
+    background: #FFFFFF;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+}
+
+.text_title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    color: #121212;
+    margin-top: 48px;
+    margin-bottom: 32px;
+    
+}
+
+.text_subTitle{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 130%;
+    text-align: center;
+    color: #121212;
+}

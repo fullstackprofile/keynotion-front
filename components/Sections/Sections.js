@@ -19,7 +19,7 @@ export const Sections = () => {
         <div className={styles.unknow_content}>
             <ul className={styles.content_items}>
                 {
-                    SectionsItems.map(({img,title})=> <li className={styles.content_item}>
+                    SectionsItems.map(({img,title})=> <li className={styles.content_item} key={title}>
                         <div className={styles.item}>
                             <div className={styles.icon}>
                                 <Image src={img} alt="img" width={38} height={38} />

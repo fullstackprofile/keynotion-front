@@ -1,0 +1,51 @@
+.accordion{
+    margin-bottom: 12px;
+}
+
+.accordion_title{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 29px;
+    /* identical to box height, or 130% */
+    
+    
+    background: linear-gradient(90.44deg, #623D90 2.35%, #9F0B00 99.63%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.accordion_head{
+    display: flex;
+    align-items: center;
+}
+
+.accordion_head_icon{
+    margin-right: 18px;
+}
+
+.accordion_content{
+    margin-left: 55px !important;
+    
+}
+
+.accordion_content ul li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px
+} 
+
+.accordion_content ul li:last-child{
+    margin-bottom: 22px;
+}
+
+
+
+.accordion_content_text{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+    margin-left: 18px;
+}

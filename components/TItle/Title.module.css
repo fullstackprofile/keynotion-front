@@ -40,3 +40,9 @@
     width: 48%;
     background: linear-gradient(#9F0A00, #623D90);
 }
+
+.row_full{
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(#9F0A00, #623D90);
+}

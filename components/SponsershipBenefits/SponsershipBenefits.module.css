@@ -1,0 +1,11 @@
+.sponsershipBenefits{
+    background: #FFFFFB;
+    padding: 120px 188px;
+}
+
+
+.sponsershipBenefits_content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+}

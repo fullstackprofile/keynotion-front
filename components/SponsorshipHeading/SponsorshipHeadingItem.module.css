@@ -1,0 +1,38 @@
+
+
+
+
+
+
+.about_sponsoship_content_item{
+    margin-bottom: 48px;
+    
+}
+
+
+.about_sponsoship_content_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.content_item_text_block{
+    width: 100%;
+    margin-left: 41px;
+    margin-top:  -6px;
+}
+
+.text_block_title{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.text_block_subTitle{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+}

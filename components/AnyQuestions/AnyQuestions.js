@@ -71,7 +71,7 @@ export const AnyQuestions = () => {
                         control={control}
                         render={({ field,fieldState: {error} }) =>  
                         <div className={styles.dialog_content}>
-                        <TextArea placeholder="Message" />
+                        <TextArea placeholder="Message" {...field} />
                         <p className={styles.error}>{error?.message}</p>
                         </div>}
          

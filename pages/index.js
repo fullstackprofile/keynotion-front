@@ -1,7 +1,8 @@
+import Head from 'next/head'
 
 import { AboutEvants } from '../components/AboutEvants/AboutEvants'
 import { AboutKeyNation } from '../components/AboutKeyNation/AboutKeyNation'
-import { Head } from '../components/Head/Head'
+import { Heade } from '../components/Head/Head'
 import { SeamlessService } from '../components/SeamlessService/SeamlessService'
 import { TestiMonials } from '../components/TestiMonials/TestiMonials'
 import { Sections } from '../components/Sections/Sections'
@@ -12,10 +13,17 @@ import { Footer } from '../components/Footer/Footer'
 
 
 
+
 export default function Home() {
   return (
     <div>
-        <Head/>
+     <Head>
+        <title>Key-Nation</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
+        <Heade/>
         <AboutEvants/>
         <Sections/>
         <AboutKeyNation />

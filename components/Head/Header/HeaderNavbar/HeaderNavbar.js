@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 const HeaderNavbarItems=[
   {title :"Home"},
-  {title :"Events", modal : [{modalTitle:"Upcoming Events",href: "Events"},{modalTitle:"Past Events"},{modalTitle:"Sponsorship",}] },
+  {title :"Events", modal : [{modalTitle:"Upcoming Events",href: "Events"},{modalTitle:"Past Events",href : "PastEvents"},{modalTitle:"Sponsorship",href:"Sponsorship"}] },
   {title :"Company",modal : [{modalTitle:"About Us"},{modalTitle:"Careers"},{modalTitle:"Contact Us"},{modalTitle:"Data Privacy"}]},
   {title :"Gallery"},
   {title :"Blog",modal : [{modalTitle:"Home"},{modalTitle:"Latest News"},{modalTitle:"Technology"},{modalTitle:"Buisness"},{modalTitle:"Finance"},{modalTitle:"Healthcare"},{modalTitle:"Retail"},{modalTitle:"Consumer Goods"}]}]

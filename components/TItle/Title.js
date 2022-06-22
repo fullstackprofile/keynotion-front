@@ -4,7 +4,7 @@ import React from 'react'
 
 import styles from "./Title.module.css"
 
-export const Title = ({title,title_2,nogradiental,conected}) => {
+export const Title = ({title,title_2,nogradiental,conected,full}) => {
   return (
     <div className={styles.main_title}>
         <div className={conected ? styles.titlescon : styles.titles}>
@@ -16,7 +16,7 @@ export const Title = ({title,title_2,nogradiental,conected}) => {
         </p>
         </div>
         
-        <div className={styles.row}>
+        <div className={full ? styles.row_full : styles.row}>
 
         </div>
     </div>

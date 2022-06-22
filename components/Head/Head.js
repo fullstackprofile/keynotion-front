@@ -9,7 +9,7 @@ import { EventsHeading } from '../EventsHead/EventsHeading/EventsHeading.js'
 
 
 
-export const Head = () => {
+export const Heade = () => {
   return (
     <div className={styles.Head}>
         <Header />
