@@ -1,0 +1,63 @@
+.vacance_title{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    /* identical to box height, or 130% */
+
+
+    color: #121212;
+
+}
+
+.vacance_body .vacance_body_content:not(:last-child){
+    margin-bottom: 120px;
+}
+
+.subtitles{
+    
+    margin-top: 16px;
+}
+
+
+.subtitle{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 22px;
+    margin-top: 32px;
+}
+
+.subtitle_body{
+    padding: 32px;
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+}
+
+.subtitle_body_text{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.block_subtitle_body_text_:not(:last-child){
+    margin-bottom: 12px;
+}
+
+
+.block_subtitle_body_text{
+    display: flex;
+    align-items: center;
+}
+
+.subtitle_body_text_{
+    margin-left: 12px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}

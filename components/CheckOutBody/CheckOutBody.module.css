@@ -1,0 +1,124 @@
+.checkOutBody{
+    width: 80%;
+    margin: 0 auto;
+    padding: 120px 30px;
+}
+
+.dialog_content{
+    margin-bottom: 24px;
+}
+
+.dialog_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.form_title{
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 48px;
+}
+
+.delegate_title{
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 48px;
+    margin-top: 48px;
+}
+
+.forms{
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.inp{
+    display: flex;
+    align-items: center;
+}
+
+.labell{
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.labell_name{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 152%;
+    color: #121212;
+}
+
+.cards_logo{
+    display: flex;
+}
+
+.cards_logo div:not(:last-child){
+    margin-right: 22px;
+}
+
+.order_type_block{
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+}
+
+.order_type_block_bottom{
+    padding-top: 32px;
+    border-top: 1px solid #D1D1D1 ;
+    padding-bottom: 32px;
+}
+
+.privacy{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    color: #D1D1D1;
+}
+
+
+.liner{
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    cursor: pointer;
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.subtitle_{
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 130%;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}

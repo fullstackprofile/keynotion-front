@@ -1,12 +1,16 @@
 import React from 'react'
 
+import { useRouter } from 'next/router';
 
 
-
-import styles from "./Footer.module.css"
 import { ButtonComp } from '../Button/Button'
 
+import styles from "./Footer.module.css"
+
 export const Footer = () => {
+    const router =useRouter()
+
+    const goContact = () => router.push('/ConectUs')
   return (
       <div className={styles.footer_wrapper}>
     <div className={styles.footer}>
@@ -19,13 +23,13 @@ export const Footer = () => {
                     <p className={styles.keyNation_subTitle}>A Professional Conference Organizing Company.</p>
                 </div>
                 <div>
-                    <ButtonComp  title="Contact Us"/>
+                    <ButtonComp  title="Contact Us" onClick={goContact}/>
                 </div>
             </div>
 
-            <div className={styles.left_block}>
-            <div className={styles.officess}>
-                <div className={styles.prague_office}>
+            {/* <div className={styles.left_block}> */}
+            {/* <div className={styles.officess}> */}
+                <div className={styles.keyNation}>
                     <p className={styles.prague_title}>Prague Office</p>
                     <div className={styles.prague_titles}>
                     <p className={styles.subTitle}>Zverinova 3428/5, 130 00 Praha 3 Strasnice</p>
@@ -35,16 +39,15 @@ export const Footer = () => {
                     </div>
                     
                 </div>
-                <div className={styles.us_office}> 
+                <div className={styles.keyNation}> 
                      <p className={styles.prague_title}>US Office</p>
                          <div className={styles.prague_titles}>
                              <p className={styles.subTitle}>Finance@key-notion.com</p>
                              <p className={styles.prague_phone}>Phone : <span className={styles.strong}>+1 470 845 1675</span></p>
                         </div>
                 </div>
-            </div>
-            <div className={styles.London_office}>
-            <p className={styles.prague_title}>London Office</p>
+                <div className={styles.keyNation}>
+                     <p className={styles.prague_title}>London Office</p>
                     <div className={styles.prague_titles}>
                     <p className={styles.subTitle}>3rd Floor, 120 Baker Street, Westminster, London, W1U 6TU​</p>
                     <p className={styles.subTitle}>UK</p>
@@ -52,7 +55,9 @@ export const Footer = () => {
                     <p className={styles.prague_phone}>Phone : <span className={styles.strong}>+44 203 773 8656</span></p>
                     </div>
             </div>
-            </div>
+            {/* </div> */}
+           
+            {/* </div> */}
         </div>
     </div>
     <div className={styles.row}>

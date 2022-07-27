@@ -1,0 +1,138 @@
+.keyTakeaway{
+    background: #FAFAFA;
+    padding: 120px 15px;
+    
+}
+
+.keyTakeaway_body{
+    background: #FFFFFF;
+    padding: 48px;
+    width: 80%;
+    margin: 0 auto;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.who_should{
+    width: 48%;
+}
+
+.inner_keyTakeaway{
+    width: 49%;
+}
+
+.liner{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    background: linear-gradient(270deg, #9F0A00 69.08%, #623D90 100%), #121212;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.who_should_title{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+}
+
+.who_should_item_block{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.who_should_item{
+    display: flex;
+    margin-top: 12px;
+    margin-right: 15px;
+}
+
+.who_should_item_title{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+    margin-left: 10px;
+}
+
+.inner_keyTakeaway{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    padding: 32px;
+    border-radius: 6px;
+    margin-top: 18px;
+}
+
+.inner_keyTakeaway_title{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #121212 !important;
+    margin-bottom: 32px;
+}
+
+
+.inner_keyTakeaway_item{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.inner_keyTakeaway_item_text{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-left: 10px;
+}
+
+.aaa{
+    height: fit-content;
+    width: 25px;
+    padding-top: 4px;
+}
+
+.bottom{
+    margin-top: 48px;
+}
+
+.sponsorshipOpportunities{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    padding: 32px;
+    border-radius: 6px;
+}
+
+.sponsorshipOpportunities_title{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #121212 !important;
+    padding-bottom: 10px
+}
+
+.sponsorshipOpportunities_subTitle{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-top: 22px;
+}
+
+.btn{
+    margin-top: 32px;
+}

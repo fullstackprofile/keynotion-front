@@ -1,0 +1,26 @@
+.dashboard_body{
+    padding-top: 208px;
+}
+
+.dashboard_body_text{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}
+.dashboard_body_text_{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-top: 32px;
+}
+
+.liner{
+    background: linear-gradient(90.33deg, #623D90 2.4%, #9F0B00 99.72%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    cursor: pointer;
+}

@@ -1,0 +1,147 @@
+.speaker_img_block{
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    cursor: pointer;
+}
+
+.speaker{
+    width: 24%;
+    margin-bottom: 24px;
+}
+
+.speaker_img{
+    /* width: 290px; */
+    height: 454px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover ;
+    border-top: 1px solid #B8B8B8;
+    border-left: 1px solid #B8B8B8; 
+    border-right: 1px solid #B8B8B8; 
+    border-radius: 6px; 
+    position: relative;
+}
+
+.speaker_img_litle{
+    height: 308px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover ;
+    border-top: 1px solid #B8B8B8;
+    border-left: 1px solid #B8B8B8; 
+    border-right: 1px solid #B8B8B8; 
+    border-radius: 6px; 
+    position: relative;
+}
+
+.speaker_img_litle:hover > .name{
+    transition: 0.5s;
+    height: 308px;
+    border-top: 1px solid #B8B8B8; 
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 32px;
+    border-radius: 6px 6px 6px 6px;
+    opacity: 0.9;
+}
+
+
+.speaker_img:hover > .name{
+    transition: 0.5s;
+    height: 454px;
+    border-top: 1px solid #B8B8B8; 
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 32px;
+    border-radius: 6px 6px 6px 6px;
+    opacity: 0.9;
+}
+
+
+
+.name{
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background: #FFFFFF;
+    
+    border-bottom: 1px solid #B8B8B8; 
+    border-radius: 0px 0px 6px 6px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+.name_{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 110%;
+    color: #121212;
+    margin: 0 auto;
+}
+
+.description{
+    display: flex;
+    margin-top: 22px;
+    align-items: center;
+    padding: 14px;
+    flex-direction: column;
+}
+
+.profession{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 159%;
+    text-align: center;
+    color: #121212;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.company{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.company_logo{
+    position: relative;
+    width: 80%;
+    height: 31px;
+
+}
+
+.linkedin{
+    display: flex;
+    
+}
+
+.linkedin_text{
+    margin-left: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+    background: linear-gradient(90.05deg, #623D90 2.34%, #9F0B00 103.6%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+}
+
+.description_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 80%;
+}

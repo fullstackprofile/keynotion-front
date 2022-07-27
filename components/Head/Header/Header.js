@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Image from "next/image"
 import Link from 'next/link'
 import { SmallButton } from '../../Button/SmallButton'
 import { HeaderNavbar } from './HeaderNavbar/HeaderNavbar'
 import { Login } from '../../Login/Login'
 import { SignUp } from '../../SignUp/SignUp'
-
-import styles from "./Header.module.css"
 import { ForgotPass } from '../../Login/ForgotPass/ForgotPass'
 
-export const Header = () => {
+import { useRouter } from 'next/router'
+
+
+import { setCookie,parseCookies, destroyCookie } from 'nookies'
+import styles from "./Header.module.css"
+import { DropdownMenu } from './HeaderNavbar/dropdownMenu/DropdownMenu'
+import { ClickAwayListener } from '@mui/material'
+import AppContext from '../../AppContext/AppContext'
+import { StyledBadge } from '../../StyledBadge/StyledBadge'
+
+
+export const Header = ({blog}) => {
+
+  function Logout() {
+      
+    destroyCookie({}, 'token',{path: '/'})
+    router.push("/")
+    
+  }
+  
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openSingup, setOpenSingup] = React.useState(false);
   const [openForgot, setOpenForgot] = React.useState(false);
+  
+
 
   const handleClickOpenSignup = () => {
     setOpenSingup(true);
@@ -41,9 +60,34 @@ export const Header = () => {
     setOpenLogin(true);
   };
 
+  const router =useRouter()
+
+  const goCard = () => router.push('/Card')
+  const goUserPage = () => router.push('/UserPage')
+
+
+  const cookie=parseCookies("token")
 
 
 
+  const [login,setLogin] = useState()
+
+  useEffect(() => {
+
+    cookie.token ? setLogin(true) : setLogin(false)
+    
+    
+  }, [cookie])
+  
+
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+ 
+  const context = useContext(AppContext)
 
 
   return (
@@ -54,19 +98,74 @@ export const Header = () => {
         </div>
         </Link>
         <div className={styles.header_nav_login}>
-        <HeaderNavbar />
-        <div className={styles.shopingCart}>
+        <HeaderNavbar blog={blog && true}/>
+        <div className={styles.shopingCart} onClick={goCard}>
+          <StyledBadge badgeContent={context.session.count}>
             <Image src="/shopingCart.svg" alt="shopCart" width={31} height={38} />
+          </StyledBadge>
         </div>
-        <div className={styles.header_login_reg}>
-            <div>
-            <SmallButton title="Log In" onClick={handleClickOpen}  transparent/>
-            </div>
-            <div>
-            <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
-            </div>
+        {
+          !login ?   
+          <div className={styles.header_login_reg}>
+          <div>
+          <SmallButton title="Sign In" onClick={handleClickOpen}  transparent/>
+          </div>
+          <div>
+          <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
+          </div>
+          </div>
 
-        </div>
+          : <ClickAwayListener onClickAway={()=> setOpen(false)}>
+          <div className={styles.userPageIcon} onClick={handleOpen}>
+              <Image src="/UserPageIcon.svg" width={38} height={38} />
+              {
+                        open && 
+                        
+                        <div className={styles.dropedMenu}>
+                            <Link href={`/UserPage/Dashboard`} >
+                            <div className={styles.dropedMenu_item}>
+                                
+                                <p className={styles.dropedMenu_item_title}>
+                                  Dashboard
+                                </p>
+                            </div>
+                            </Link>
+                            <Link href={`/UserPage/Orders`} >
+                            <div className={styles.dropedMenu_item}>
+                                
+                                <p className={styles.dropedMenu_item_title}>
+                                Orders
+                                </p>
+                            </div>
+                            </Link>
+                            <Link href={`/UserPage/Address`} >
+                            <div className={styles.dropedMenu_item}>
+                                
+                                <p className={styles.dropedMenu_item_title}>
+                                Address
+                                </p>
+                            </div>
+                            </Link>
+                            <Link href={`/UserPage/AccountDetails `} >
+                            <div className={styles.dropedMenu_item}>
+                                
+                                <p className={styles.dropedMenu_item_title}>
+                                Account Details 
+                                </p>
+                            </div>
+                            </Link>
+                           
+                            <div className={styles.dropedMenu_item} onClick={Logout}>
+                                <p className={styles.dropedMenu_item_title}>
+                                Log Out
+                                </p>
+                            </div> 
+                        </div>
+                        }
+            </div>
+            </ClickAwayListener> 
+        }
+       
         </div>
         <Login open={openLogin} handleClose={handleClose} handleClickOpenForgot={handleClickOpenForgot}/>
         <SignUp open={openSingup} handleClose={handleClickCloseSignup} />

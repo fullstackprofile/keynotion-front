@@ -1,0 +1,103 @@
+.address_body{
+    padding-top: 16px;
+}
+
+.address_title{
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    color: #000000;
+    margin-bottom: 22px;
+}
+
+.address_subTitle{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.row{
+    margin-top: 22px;
+    border: 1px solid #B8B8B8;
+}
+
+.address_body_form{
+    margin-top: 48px;
+}
+
+.dialog_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.dialog_content{
+    margin-bottom: 22px;
+}
+
+.dialog_content_btn{
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ssssssssssssssssssssssss */
+
+
+.input{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 44px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    outline: none;
+}
+
+.input_block{
+    margin-top: 32px;
+    margin-bottom: 48px;
+    border: solid 2px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+}
+
+.input_block_2{
+    margin-top: unset;
+    margin-bottom: unset;
+    border: solid 2px transparent !important;
+    border-radius: 6px !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+}
+
+.input_block_2 .input{
+    padding-top: 5px;
+    padding-bottom: 7px;
+    padding-left: 32px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+    outline: none;
+}
+
+.input_pass{
+    display: flex;
+    align-items: center;
+}
+
+.showPass_icon{
+    margin-right: 18px;
+    cursor: pointer;
+}

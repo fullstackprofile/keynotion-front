@@ -1,0 +1,48 @@
+.dontMiss{
+    padding: 120px 15px;
+}
+
+.dontMiss_body{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img{
+    width: 46%;
+}
+
+.content {
+    width: 51%;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 120%;
+    background: linear-gradient(270deg, #9F0A00 0%, #623D90 100%), #121212;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.subTitle{
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 120%;
+    color: #121212;
+    margin-top: 32px;
+}
+
+.liner{
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 120%;
+    background: linear-gradient(270deg, #9F0A00 0%, #623D90 100%), #121212;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}

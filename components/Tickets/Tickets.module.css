@@ -1,0 +1,20 @@
+.tickets{
+    padding-top: 120px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.tickets_block{
+    margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.ticket_{
+    width: 48%;
+    margin-bottom: 48px;
+    margin-left: auto;
+    margin-right: auto;
+}

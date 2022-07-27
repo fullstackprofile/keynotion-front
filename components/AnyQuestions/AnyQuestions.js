@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import { Controller, useForm } from 'react-hook-form'
-import { Title } from '../TItle/Title'
+import { Title } from '../Title/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { TextArea } from '../TextArea/TextArea';
@@ -10,17 +10,51 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import styles from "./AnyQuestions.module.css"
+import axios from 'axios';
+import { parseCookies } from 'nookies';
 
 const AnyQuestionsSchema = yup.object().shape({
-    Name: yup.string().required("please Enter your Name"),
-    Email: yup.string().email().required("please Enter your Email"),
-    Number: yup.number().required("please Enter your Phone Number"),
-    Message: yup.string().required("please Enter your Message"),
+    name: yup.string().required("please Enter your Name"),
+    email: yup.string().email().required("please Enter your Email"),
+    number: yup.number().required("please Enter your Phone Number"),
+    message: yup.string().required("please Enter your Message"),
 });
 
 export const AnyQuestions = () => {
 
-    const { control, handleSubmit } = useForm({
+    const cookie=parseCookies("token")
+  const config = {
+        headers: { Authorization: `Bearer ${cookie.token}` }
+        };
+
+  const onSubmita = async () => {
+
+      const users = await axios.get('http://laratest.key-notion.com/api/profile', config);
+      setUser (users.data)
+    }
+
+    
+    
+    
+    const[user,setUser]= useState()
+
+
+    
+    useEffect( () => {
+      onSubmita()
+    }, [])
+
+    useEffect(() => {
+        
+        reset(user);
+    }, [user]);
+    
+
+    
+
+
+    const { control, handleSubmit,reset } = useForm({
+        
         resolver: yupResolver(AnyQuestionsSchema)
       });
     
@@ -36,7 +70,7 @@ export const AnyQuestions = () => {
             <div className={styles.anyQuestions_form}>
                 <form onSubmit={onSubmit}>
             <Controller
-                name="Name"
+                name="first_name"
                 control={control}
                 render={({ field,fieldState: {error} }) =>  
                 <div className={styles.dialog_content}>
@@ -47,7 +81,7 @@ export const AnyQuestions = () => {
       />
 
             <Controller
-                        name="Email"
+                        name="email"
                         control={control}
                         render={({ field,fieldState: {error} }) =>  
                         <div className={styles.dialog_content}>
@@ -57,7 +91,7 @@ export const AnyQuestions = () => {
                 
             />
             <Controller
-                        name="Number"
+                        name="phone"
                         control={control}
                         render={({ field,fieldState: {error} }) =>  
                         <div className={styles.dialog_content}>
@@ -67,7 +101,7 @@ export const AnyQuestions = () => {
                 
             />
             <Controller
-                        name="Message"
+                        name="message"
                         control={control}
                         render={({ field,fieldState: {error} }) =>  
                         <div className={styles.dialog_content}>

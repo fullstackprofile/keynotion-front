@@ -1,0 +1,61 @@
+.ourPastAttendees{
+    background: #fafafa;
+    padding: 120px 15px;
+}
+
+.ourPastAttendees_body{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%;
+    color: #121212;
+    text-align: center;
+}
+
+.liner{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%;
+    background: linear-gradient(270deg, #9F0A00 69.08%, #623D90 100%), #121212;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.OurPastAttendees_content{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fafafa inset !important;
+    padding: 48px;
+    border-radius: 6px;
+    margin-top: 56px;
+}
+
+.OurPastAttendees_content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+
+.OurPastAttendees_content_item{
+    width: 16.5%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin: 0 auto;
+}
+
+.OurPastAttendees_content_item:not(:nth-last-child(-n+6)){
+    margin-bottom: 72px;
+
+}

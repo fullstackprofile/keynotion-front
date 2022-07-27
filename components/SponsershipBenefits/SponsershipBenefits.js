@@ -21,7 +21,7 @@ export const SponsershipBenefits = () => {
         <Title title_2="Sponsorship Benefits" />
         <div className={styles.sponsershipBenefits_content}>
            {
-              SponsershipBenefitsItems.map(({title,subTitle,src})=><SponsershipBenefitsItem title={title} subTitle={subTitle} src={src}/>) 
+              SponsershipBenefitsItems.map(({title,subTitle,src},index)=><SponsershipBenefitsItem key={index} title={title} subTitle={subTitle} src={src}/>) 
            }
         </div>
     </div>

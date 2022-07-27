@@ -1,0 +1,17 @@
+.whoWeAre{
+    padding: 120px 340px;
+    background: #FAFAFA;
+    
+}
+
+.whoWeAre_content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+}
+
+.whoWeAre_content_icons{
+    margin-top: 72px;
+    display: flex;
+    justify-content: space-between;
+}

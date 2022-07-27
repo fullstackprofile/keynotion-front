@@ -1,0 +1,11 @@
+.aboutUs{
+    padding: 120px 15px;
+    background: #FFFFFB;
+}
+
+.aboutUs_content{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}

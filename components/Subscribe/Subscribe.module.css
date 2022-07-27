@@ -1,7 +1,8 @@
 .subscribe{
-    padding: 120px 188px;
+    padding: 120px 15px;
     display: flex;
-
+    width: 80%;
+    margin: 0 auto;
 }
 
 .subscribe_right{

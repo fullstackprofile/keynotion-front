@@ -1,0 +1,39 @@
+.coupon_form_block{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 5000px 1px #fff inset !important;
+    border-radius: 6px;
+    padding: 32px 48px;
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+
+.coupon_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.coupon_body_title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 152%;
+    color: #121212;
+}
+
+.coupon_form{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+    align-items: center;
+}
+
+.coupon_form_input{
+    width: 82%;
+}
+
+.btn{
+    
+}

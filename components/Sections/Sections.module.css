@@ -1,5 +1,5 @@
 .unknow{
-    padding: 120px 188px;
+    padding: 120px 0px;
     background: #FAFAFA
 }
 
@@ -8,7 +8,8 @@
     border: 0.5px solid #B8B8B8;
     border-radius: 6px;
     padding: 48px;
-    
+    width: 80%;
+    margin: 0 auto;
 }
 
 .content_items{

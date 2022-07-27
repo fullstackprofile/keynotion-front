@@ -12,8 +12,10 @@ import { EventsHeading } from '../EventsHead/EventsHeading/EventsHeading.js'
 export const Heade = () => {
   return (
     <div className={styles.Head}>
+      <div className={styles.Head_}>
         <Header />
         <Heading />
+      </div>
         
     </div>
   )

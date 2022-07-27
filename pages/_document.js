@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Main,Head, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -11,7 +11,7 @@ class MyDocument extends Document {
         enhanceApp: (App) => App,
         // Useful for wrapping in a per-page basis
         enhanceComponent: (Component) => Component,
-      })
+      })  
 
     // Run the parent `getInitialProps`, it now includes the custom `renderPage`
     const initialProps = await Document.getInitialProps(ctx)
@@ -22,7 +22,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <body>
           <Main />
           <NextScript />

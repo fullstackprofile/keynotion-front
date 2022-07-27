@@ -1,21 +1,21 @@
 .footer{
-    padding-top: 122px;
+    padding-top: 120px;
     padding-bottom: 72px;
-    padding-left: 188px;
-    padding-right: 316px;
     background-color: #FFFFF6;
 }
 
 .footer_content{
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+
 }
 
 .keyNation{
     display: flex;
     flex-direction: column;
-    width: 24%;
-    margin-right: 152px;
+    width: 23%;
 }
 
 
@@ -23,6 +23,7 @@
     font-weight: 700;
     font-size: 26px;
     line-height: 130%;
+    margin-bottom: 32px;
 }
 
 .gradient{
@@ -36,11 +37,10 @@
 }
 
 .keyNation_subTitle{
-    margin-top: 48px;
-    margin-bottom: 56px;
-    font-weight: 600;
-    font-size: 21px;
-    line-height: 152%;
+    margin-bottom: 32px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
     color: #121212;
 }
 
@@ -65,7 +65,7 @@
     font-size: 26px;
     line-height: 130%;
     color: #000000;
-    margin-bottom: 56px;
+    margin-bottom: 32px;
 }
 
 .prague_titles p:not(:last-child){

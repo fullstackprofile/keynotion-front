@@ -2,6 +2,10 @@ import React from 'react'
 import { ButtonComp } from '../Button/Button'
 
 
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 
 
 import Image from 'next/image'
@@ -9,7 +13,23 @@ import { Input } from '../Input/Input'
 
 import styles from "./Subscribe.module.css"
 
+
+const SubscribeSchema = yup.object().shape({
+    email: yup.string().required("please Enter your Email"),
+  });
+
 export const Subscribe = () => {
+
+    const { control, handleSubmit } = useForm({
+        resolver: yupResolver(SubscribeSchema)
+        
+      });
+    
+    
+      const onSubmit = data => {
+        console.log(data);
+      };
+
   return (
     <div className={styles.subscribe}>
         <div className={styles.subscribe_right}>
@@ -32,10 +52,22 @@ export const Subscribe = () => {
                 {/* <div className={styles.input_block}>
                     <input type="email" placeholder='Email' className={styles.input}></input>
                 </div> */}
-                <Input type="email" placeholder="Email" single/>
+                 <form onSubmit={handleSubmit(onSubmit)}>
+                 <Controller
+                name="email"
+                control={control}
+                render={({ field,fieldState: {error} }) =>  
+                 <>
+                <Input type="email" placeholder="Email" single {...field}/>
+                <p className={styles.error}>{error?.message}</p>
+                </>
+                }
+                />
+               
                 <div className={styles.btn}>
                     <ButtonComp title="Subscribe"/>
                 </div>
+                 </form>
             </div>
 
         </div>

@@ -76,7 +76,7 @@ export const TestiMonials = () => {
         className={styles.my_swiper}
       >
         {
-          TestiMonialsItems.map(({title,subTitle,rating,companyName})=><SwiperSlide><TestiMonialsCart key={title} title={title} subTitle={subTitle} rating={rating} companyName={companyName}></TestiMonialsCart></SwiperSlide> )
+          TestiMonialsItems.map(({title,subTitle,rating,companyName},index)=><SwiperSlide key={index}><TestiMonialsCart key={title} title={title} subTitle={subTitle} rating={rating} companyName={companyName}></TestiMonialsCart></SwiperSlide> )
         }
         
        

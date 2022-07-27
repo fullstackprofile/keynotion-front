@@ -71,7 +71,7 @@
     -webkit-text-fill-color: transparent;
 }
 
-.dialog_filds div:not(:first-child){
+.dialog_filds {
     margin-top: 22px;
 }
 

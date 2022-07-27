@@ -1,0 +1,129 @@
+.ticket{
+
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.title_block{
+    background: #FAFAFA;
+    border-radius: 6px 6px 0px 0px; 
+   
+    padding: 10px 15px;
+    
+}
+
+.title_block_liner{
+    border-radius: 6px 6px 0px 0px; 
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    text-transform: none;
+    padding: 10px 15px;
+}
+.title_block_{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.title_{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #ffffff;
+    
+}
+
+.subTitle{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-top: 16px;
+}
+
+.subTitle_{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #ffffff;
+    margin-top: 16px;
+}
+
+.content{
+    margin-top: 32px;
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    padding: 48px;
+    border-radius: 6px;
+    height: 800px;
+}
+
+.content_body_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 87%;
+}
+
+.content_price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.content_price_{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price_sale{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    text-decoration-line: line-through;
+    color: #9F0B00;
+}
+
+.price{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.content_body{
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_item{
+    padding: 18px 0;
+    border-bottom: 1px solid #B8B8B8;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}

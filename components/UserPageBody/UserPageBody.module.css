@@ -1,0 +1,96 @@
+.body{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 72px 0px 120px 0px;
+}
+
+.usersMenu{
+    width: 30%;
+}
+
+.avatar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.users_name{
+    display: flex;
+    margin-top: 22px;
+}
+
+.first_name{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.last_name{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #000000;
+}
+
+.usersMenu_block{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    padding: 32px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 6px;
+    margin-top: 32px;
+}
+
+.usersMenu_item_block{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.usersMenu_item_block:not(:last-child){
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.usersMenu_item_{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+
+.usersMenu_item{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+
+}
+
+
+.usersdetails{
+    width: 55%;
+}
+
+
+
+.liner{
+    background: linear-gradient(90.33deg, #623D90 2.4%, #9F0B00 99.72%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    cursor: pointer;
+}
+
+/* ==================================== */
+

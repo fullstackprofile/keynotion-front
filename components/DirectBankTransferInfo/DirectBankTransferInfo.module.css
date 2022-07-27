@@ -1,0 +1,87 @@
+.directBankTransferInfo{
+    padding-bottom: 72px;   
+}
+
+.body{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.top{
+    padding: 10px 48px;
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 5000px 1px #fff inset !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_item{
+    padding-bottom: 22px;
+    padding-top: 22px;
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.top_item_{
+    padding-bottom: 22px;
+    padding-top: 22px;
+}
+
+.item_name{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.item_name_{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.bottom{
+    margin-top: 48px;
+    padding: 10px 48px;
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 5000px 1px #fff inset !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom_item{
+    padding-bottom: 22px;
+    padding-top: 22px;
+}
+
+.bottom_item_name{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.bottom_item_name_{
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.liner{
+    background: linear-gradient(82.96deg, #623D90 5.31%, #9F0B00 94.31%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}

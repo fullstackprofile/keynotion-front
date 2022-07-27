@@ -1,17 +1,19 @@
 .heading{
     margin-top: 142px;
     display: flex;
-    padding-right: 128px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
 }
 .heading_content{
-    width: 53%;
+    width: 38%;
     display: flex;
     flex-direction: column;
 }
 
 .content_title{
     font-weight: 700;
-    font-size: 72px;
+    font-size: 68px;
     line-height: 120%;
     background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
     -webkit-background-clip: text;
@@ -24,8 +26,12 @@
 
 .content_subTitle{
     font-weight: 600;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 120%;
     color: #121212;
     margin-bottom: 70px;
+}
+
+.heading_img{
+    width: 60%;
 }

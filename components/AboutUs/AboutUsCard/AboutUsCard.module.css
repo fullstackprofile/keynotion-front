@@ -1,0 +1,26 @@
+.aboutUsCard{
+    padding: 48px;
+    background: #FFFFFF;
+    border: 0.5px solid #B8B8B8;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+}
+
+
+.aboutEvantsCart_title{
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 120%;
+    text-align: center;
+    color: #000000;
+}
+
+.aboutEvantsCart_subTitle{
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 120%;
+    text-align: center;
+    color: #000000;
+}

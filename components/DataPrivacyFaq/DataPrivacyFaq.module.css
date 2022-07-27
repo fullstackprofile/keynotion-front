@@ -1,0 +1,29 @@
+.dataPrivacyFaq{
+    padding: 120px 15px;
+}
+
+.dataPrivacyFaq_heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataPrivacyFaq_subTitle{
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 120%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-top: 48px;
+}   
+
+.dataPrivacyFaq_content{
+    margin-top: 72px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}

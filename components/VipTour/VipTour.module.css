@@ -1,0 +1,52 @@
+.vipTour{
+    padding: 120px 0px;
+}
+
+.subTitle{
+    margin: 0 auto;
+    margin-top: 48px;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 130%;
+    width: 16%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.img{
+    margin-top: 72px;
+}
+
+.tour_descriptions{
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+
+.tour_description{
+    border: solid 1px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    padding-left: 48px;
+    border-radius: 6px;
+    margin-top: 18px;
+}
+
+.description{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    background: linear-gradient(97.36deg, #623D90 0%, #9F0B00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}

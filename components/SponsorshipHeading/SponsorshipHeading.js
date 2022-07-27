@@ -20,7 +20,8 @@ const content=[
 
 export const SponsorshipHeading = () => {
   return (
-    <div className={styles.sponsorshipHeading}>
+      <div className={styles.SponsorshipHeading_wraper}>
+          <div className={styles.sponsorshipHeading}>
         <div className={styles.sponsorshipHeading_content}>
             <Title title="Become a Sponsor" full/>
             <div className={styles.about_sponsoship}>
@@ -30,7 +31,7 @@ export const SponsorshipHeading = () => {
                     </p>
                 </div>
                 <div className={styles.about_sponsoship_content}>
-                  { content.map(({src,title,subTitle,width,height})=><SponsorshipHeadingItem src={src} title={title} subTitle={subTitle} width={width} height={height}/>)}
+                  { content.map(({src,title,subTitle,width,height},index)=><SponsorshipHeadingItem key={index} src={src} title={title} subTitle={subTitle} width={width} height={height}/>)}
                 </div>
             </div>
         </div>
@@ -40,5 +41,7 @@ export const SponsorshipHeading = () => {
             <Image src="/sponsorImg.png" alt="img" width={866} height={557} />
         </div>
     </div>
+      </div>
+    
   )
 }

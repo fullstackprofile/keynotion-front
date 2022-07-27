@@ -25,10 +25,13 @@
 .sponsorshipHeading{
     padding-top: 108px;
     padding-bottom: 72px;
-    padding-left: 188px;
-    padding-right: 188px;
-    background:linear-gradient(180deg, #FFFFFB 56.57%, #e1e1e1 109.92%) ;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
+}
+.SponsorshipHeading_wraper{
+    background:linear-gradient(180deg, #FFFFFB 56.57%, #e1e1e1 109.92%) ;
+
 }
 
 .sponsorshipHeading_content{

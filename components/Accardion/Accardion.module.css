@@ -1,5 +1,6 @@
 .accordion{
     margin-bottom: 12px;
+    
 }
 
 .accordion_title{
@@ -23,11 +24,13 @@
 
 .accordion_head_icon{
     margin-right: 18px;
+    
 }
 
 .accordion_content{
-    margin-left: 55px !important;
-    
+    padding-left: 55px !important;
+    padding-right: 16px;
+    padding-bottom: 22px;
 }
 
 .accordion_content ul li{
@@ -36,9 +39,15 @@
     margin-bottom: 12px
 } 
 
-.accordion_content ul li:last-child{
+/* .accordion_content ul li:not(:last-child){
+    display: flex;
+    align-items: center;
+    margin-bottom: unset;
+}  */
+
+/* .accordion_content ul li:last-child{
     margin-bottom: 22px;
-}
+} */
 
 
 
@@ -48,4 +57,16 @@
     line-height: 130%;
     color: #121212;
     margin-left: 18px;
+}
+
+.accordion_content_text__{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.accordion_head_icon_rotate{
+    margin-right: 18px;
+    transform: rotate(90deg);
 }

@@ -1,11 +1,16 @@
 
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+
 import { ButtonComp } from '../../Button/Button'
 
 import styles from "./AboutEvantsCart.module.css"
 
 
-export const AboutEvantsCart = ({title}) => {
+export const AboutEvantsCart = ({title,href}) => {
+  const router =useRouter()
+
+  const goPage = () => router.push(href)
   return (
     <div className={styles.aboutEvantsCart}>
         <div>
@@ -15,7 +20,7 @@ export const AboutEvantsCart = ({title}) => {
             {title}
          </p>
          <div>
-         <ButtonComp title="See more" />
+         <ButtonComp title="See more" onClick={goPage} />
          </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { AboutEvantsCart } from './AboutEvantsCart/AboutEvantsCart'
 
 import styles from "./AboutEvants.module.css"
 
-const AboutEvantsItems=[{title: "Upcoming Events"},{title: "Past Events"},{title: "On-Demand Programs"}]
+const AboutEvantsItems=[{title: "Upcoming Events" ,href : "/Events"},{title: "Past Events",href : "/PastEvents"},{title: "Sponsorship",href : "/Sponsorship"}]
 
 export const AboutEvants = () => {
   return (
@@ -11,7 +11,7 @@ export const AboutEvants = () => {
         <div className={styles.aboutEvants_carts}>
             
             {
-                AboutEvantsItems.map(({title})=> <AboutEvantsCart key={title} title={title} />)
+                AboutEvantsItems.map(({title,href})=> <AboutEvantsCart key={title} title={title} href={href} />)
             }
             
         </div>

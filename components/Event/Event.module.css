@@ -12,6 +12,10 @@
     
 }
 
+.event_body{
+    cursor: pointer;
+}
+
 
 .events{
     display: flex;
@@ -30,7 +34,7 @@
 
 
 .event_body{
-    background-color: grey;
+    /* background-color: grey; */
     width: calc(25% - 32px);
     height: 267px;
 }

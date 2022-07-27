@@ -1,13 +1,13 @@
 .seamlessService{
     padding-top: 120px;
     padding-bottom: 120px;
-    padding-left: 212px;
-    padding-right: 188px;
     background: #FFFFFB;
 }
 
 .seamlessService_content{
     display: flex;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .content_right{
@@ -72,6 +72,6 @@
     display: flex;
 }
 
-.left_btns div:not(:last-child){
+.play{
     margin-right: 32px;
 }

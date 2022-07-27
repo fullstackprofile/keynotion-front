@@ -1,15 +1,19 @@
-
-import Image from 'next/image'
 import React from 'react'
 
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
-import styles from "./AboutKeyNation.module.css"
+
 import { ButtonComp } from '../Button/Button'
 import { Title } from '../TItle/Title'
 
+import styles from "./AboutKeyNation.module.css"
 
 
 export const AboutKeyNation = () => {
+  const router =useRouter()
+
+  const goPage = () => router.push("/About")
   return (
     <div className={styles.aboutKeyNation}>
         <Title title="About" title_2="Keynotion" nogradiental/>
@@ -26,10 +30,11 @@ export const AboutKeyNation = () => {
             </p>
             <p className={styles.about_subTitle}>Our conferences aim to provide our participants a highly value adding experience and help them perform in their daily responsibilities while overcoming any possible challenges.
             </p>
+            <div >
+            <ButtonComp title="Reed more" onClick={goPage} />
+            </div>
         </div>
-        <div>
-            <ButtonComp title="Reed more" />
-        </div>
+        
     </div>
   )
 }

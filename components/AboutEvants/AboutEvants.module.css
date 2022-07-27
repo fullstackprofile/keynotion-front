@@ -1,9 +1,11 @@
 .aboutEvants{
-    padding: 120px 188px;
+    padding: 120px 0px ;
     background: #FFFFFB;
 }
 
 .aboutEvants_carts{
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }

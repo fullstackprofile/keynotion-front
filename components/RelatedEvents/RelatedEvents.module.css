@@ -1,0 +1,58 @@
+.relatedEvents{
+    padding-bottom: 120px;
+}
+
+.body{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    
+}
+
+
+
+
+
+.content{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.content_body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 32px 15px;
+}
+
+.price_block{
+    margin-top: 32px;
+}
+
+.price{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #623D90 2.31%, #9F0B00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.btn{
+    margin-top: 32px;
+}

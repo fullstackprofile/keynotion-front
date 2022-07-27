@@ -1,6 +1,6 @@
 .getinformed{
-    padding: 120px 188px;
-    background:linear-gradient(180deg, #FFFFFB 56.57%, #e1e1e1 109.92%) ;
+    padding: 120px 15px;
+    background: linear-gradient(180deg, #FFFFFB 56.57%, rgba(225, 225, 225, 0) 109.92%);
 }
 
 .heading{
@@ -25,8 +25,8 @@
     margin-top: 72px;
     display: flex;
     justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.GetInformedCarts div:not(:last-child){
-    margin-right: 28px;
-}

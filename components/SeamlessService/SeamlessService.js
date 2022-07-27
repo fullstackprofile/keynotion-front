@@ -1,4 +1,5 @@
 import Image from 'next/image'
+
 import React from 'react'
 
 
@@ -11,6 +12,7 @@ import { ButtonComp } from '../Button/Button'
 import styles from "./SeamlessService.module.css"
 
 export const SeamlessService = () => {
+  
   return (
     <div className={styles.seamlessService}>
         <div className={styles.seamlessService_content}>
@@ -35,11 +37,15 @@ export const SeamlessService = () => {
                     <p className={styles.left_subTitle}>CONNECT WITH OUR CUTTING-EDGE DIGITAL CONFERENCE PLATFORM</p>
                 </div>
                 <div className={styles.left_btns}>
-                    <div>
-                        <ButtonComp  title="Watch Video"/>
+                    <div className={styles.play}>
+                        <a href="https://play.google.com/store/apps/details?id=com.keynotion.app&hl=en-GB" target="_blank">
+                        <ButtonComp  title="Play Google" />
+                        </a>
                     </div>
                     <div>
-                        <ButtonComp  title="Learn More" transparent/>
+                    <a href="https://apps.apple.com/cz/app/keynotion-summit/id1623607620" target="_blank">
+                        <ButtonComp  title="App Store" transparent />
+                    </a>
                     </div>
                 </div>
             </div>

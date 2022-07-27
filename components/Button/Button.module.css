@@ -5,6 +5,7 @@
     line-height: 130% !important;
     color: #FFFFF6 !important;
     text-transform: none;
+    transition: 0.3s;
 }
 
 .btn_see_more_big{
@@ -15,6 +16,7 @@
   color: #FFFFF6 !important;
   text-transform: none;
   font-size: 18px;
+  transition: 0.3s;
 }
 
 .btn_see_more_2{
@@ -26,7 +28,7 @@
     background-clip: content-box, border-box !important;
     box-shadow: 2px 1000px 1px #fff inset !important;
     text-transform: none;
-
+    transition: 0.3s;
 
   }
 
@@ -35,5 +37,31 @@
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       line-height: 130% !important ;
+     
   }
    
+.btn_icon{
+  display: flex;
+}
+
+.img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_see_more:hover{
+  transition: 0.3s;
+  transform: scale(1.1); 
+}
+
+
+.btn_see_more_2:hover{
+  transition: 0.3s;
+  transform: scale(1.1); 
+}
+
+.btn_see_more_big:hover{
+  transition: 0.3s;
+  transform: scale(1.1); 
+}

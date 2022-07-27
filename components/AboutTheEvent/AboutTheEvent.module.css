@@ -1,0 +1,25 @@
+.aboutTheEvent{
+    padding: 120px 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.body{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+}
+
+.content{
+    width: 44%;
+}
+
+.img{
+    width: 52%;
+}
+
+.text{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 140%;
+}

@@ -1,0 +1,99 @@
+.dialog_head{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_close{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
+
+
+
+.dialog_wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.dialog_left{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog_right{
+    width: 67%;
+}
+
+.left_title_block{
+    display: flex;
+    margin-bottom: 48px;
+    justify-content: center;
+}
+
+.left_title{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    background: linear-gradient(270deg, #9F0A00 49.83%, #623D90 103.41%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-right: 8px;
+}
+
+.noliner{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #121212;
+}
+
+
+.filds_half{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.dialog_content_{
+    width: 48%;
+    margin-bottom: 22px;
+}
+
+
+.dialog_filds_ .dialog_content:not(:first-child){
+    margin-top: 22px;
+}
+
+.remember{
+    display: flex;
+    align-items: center;
+    
+}
+
+.remember_label{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: #121212;
+    
+}
+
+.dialog_content_btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+
+.selecttt{
+    
+}

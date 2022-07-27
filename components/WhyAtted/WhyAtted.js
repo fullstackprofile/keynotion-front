@@ -44,7 +44,7 @@ export const WhyAtted = () => {
         className={styles.my_swiper}
       >
         {
-          WhyAttedItems.map(({title,subTitle})=><SwiperSlide><WhyAttedCart key={title} title={title} subTitle={subTitle}></WhyAttedCart></SwiperSlide> )
+          WhyAttedItems.map(({title,subTitle},index)=><SwiperSlide key={index}><WhyAttedCart key={title} title={title} subTitle={subTitle}></WhyAttedCart></SwiperSlide> )
         }
         
        

@@ -1,0 +1,38 @@
+.blogHeading{
+    margin: 0 60px;
+    background: #FAFAFA;
+    padding-left: 48px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.blogHeading_content{
+    display: flex;
+    align-items: center;
+}
+
+.arrow{
+    margin: 0 18px;
+    display: flex;
+    align-items: center;
+}
+
+.home{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    color: #121212;
+
+}
+
+
+.blog{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 130%;
+    background: linear-gradient(89.83deg, #623D90 2.44%, #9F0B00 82.9%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}

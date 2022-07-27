@@ -1,0 +1,19 @@
+.keyTopics{
+    width: 80%;
+    margin: 0 auto;
+    padding: 120px 15px;
+}
+
+.body{
+    margin-top: 72px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img{
+    width: 42%;
+}
+
+.content{
+    width: 49%;
+}

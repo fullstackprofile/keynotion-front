@@ -1,0 +1,21 @@
+.keySpeakers{
+    width: 80%;
+    margin: 0 auto;
+    padding: 120px 15px;
+}
+
+.speakers{
+    margin-top: 56px;
+    margin-bottom: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+
+.btn{
+    display: flex;
+    justify-content: center;
+}

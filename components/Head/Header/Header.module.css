@@ -115,3 +115,41 @@
     color: red;
     margin-top: 12px;
 }
+
+.userPageIcon{
+    cursor: pointer;
+}
+
+
+.dropedMenu{
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    position: absolute;
+    z-index: 9999;
+    width: 232px;
+    top: 100px;
+    right: 104px;
+    border: 0.5px solid #B8B8B8; 
+    border-radius: 6px;
+}
+
+.dropedMenu_item{
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-top: 22px;
+    padding-bottom: 22px;
+}
+
+.dropedMenu_item:not(:last-child){
+    border-bottom: 0.5px solid #B8B8B8; 
+}
+
+.dropedMenu_item_title{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #000000;
+}

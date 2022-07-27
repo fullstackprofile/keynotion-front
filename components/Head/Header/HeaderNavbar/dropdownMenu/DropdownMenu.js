@@ -6,7 +6,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import styles from "./DropdownMenu.module.css"
 import Link from 'next/link';
 
-export const DropdownMenu = ({title,modal,href}) => {
+export const DropdownMenu = ({title,modal}) => {
 
     const [open, setOpen] = React.useState(false);
 
@@ -28,20 +28,21 @@ export const DropdownMenu = ({title,modal,href}) => {
                         </div>
                       {
                         open && 
+                        
                         <div className={styles.dropedMenu}>
-                          
+                            {modal.map(({modalTitle,href},index)=> 
                             
-                            {modal.map(({modalTitle,href})=> 
-                            <Link href={ href ? `/${href}` : "#"} >
+                            <Link key={index} href={ href ? `/${href}` : "#"} >
                             <div className={styles.dropedMenu_item}>
+                                
                                 <p className={styles.dropedMenu_item_title}>
                                     {modalTitle}
                                 </p>
                             </div>
                             </Link>
                             )}
-                          
                         </div>
+                        
                         }
                       </div>
                     </div> 

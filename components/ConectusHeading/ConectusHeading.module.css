@@ -1,0 +1,40 @@
+.conectusHeading{
+    padding-top: 140px;
+    padding-bottom: 120px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1680px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.conectusHeading_content{
+    width: 53%;
+    margin-top: 82px;
+}
+
+.content_title{
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 120%;
+    background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 40.61%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.content_SubTitle{
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 120%
+}
+.content_SubTitles_block p:not(:last-child){
+    margin-bottom: 32px;
+}
+
+.content_SubTitles_block{
+    margin-top: 32px;
+}

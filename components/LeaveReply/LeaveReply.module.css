@@ -1,0 +1,38 @@
+.leaveReply{
+    padding: 120px 384px;
+}
+
+.leaveReply_form{
+    margin-top: 72px;
+}
+
+.row_block{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+
+.row{
+    width: 49%;
+}
+
+.website{
+    margin-top: 22px;
+}
+
+.remember{
+    display: flex;
+    align-items: center;
+}
+
+.remember_label{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: #A0A8B3;
+}
+
+.btn{
+    margin-top: 22px;
+    float: right;
+}

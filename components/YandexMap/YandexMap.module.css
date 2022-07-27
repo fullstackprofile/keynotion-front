@@ -1,0 +1,16 @@
+.yandexMap{
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 120px;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 130%;
+    text-align: center;
+    color: #121212;
+    margin-top: 48px;
+    margin-bottom: 72px;
+}
+

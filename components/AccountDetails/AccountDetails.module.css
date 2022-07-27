@@ -1,0 +1,51 @@
+.accountDetails_body{
+
+}
+
+.half{
+    display: flex;
+    justify-content: space-between;
+}
+
+.half_item{
+    width: 48%;
+}
+
+.dialog_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+    margin-bottom: 12px;
+}
+
+.dialog_content{
+    margin-bottom: 22px;
+}
+
+
+.passwordss{
+    margin-top: 48px;
+}
+
+.passwordss_label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #121212;
+}
+
+.row{
+    margin-top: 12px;
+    border: 1px solid #B8B8B8;
+}
+
+.passwordss_block{
+    margin-top: 48px;
+}
+
+.dialog_content_btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 48px;
+}
