@@ -1,13 +1,12 @@
 import React from 'react'
 import { Header } from '../Head/Header/Header'
 
+import styles from './EventsHead.module.css'
 
-import styles from "./EventsHead.module.css"
-
-export const EventsHead = ({blog}) => {
+export const EventsHead = ({ blog }) => {
   return (
     <div className={styles.eventsHead}>
-        <Header blog={blog && true}/>
+      <Header blog={blog && true} />
     </div>
   )
 }

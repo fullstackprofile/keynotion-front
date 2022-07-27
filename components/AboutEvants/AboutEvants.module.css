@@ -1,9 +1,9 @@
-.aboutEvants{
+.aboutEvants {
     padding: 120px 0px ;
     background: #FFFFFB;
 }
 
-.aboutEvants_carts{
+.aboutEvants_carts {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -12,4 +12,14 @@
 
 .aboutEvants_carts li:not(:last-child){
     margin-right: 28px;
+}
+
+@media (max-width: 1200px) {
+    .aboutEvants {
+        padding: 40px 0px;
+    }
+    .aboutEvants_carts {  
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }

@@ -153,3 +153,10 @@
     line-height: 130%;
     color: #000000;
 }
+
+@media (max-width: 1200px) {
+    .header_nav_login{  
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

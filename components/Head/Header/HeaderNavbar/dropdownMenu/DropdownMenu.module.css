@@ -74,3 +74,12 @@
     line-height: 130%;
     color: #000000;
 }
+
+
+/* media */
+
+@media (max-width: 998px) {
+    .menu_item {  
+        font-size: 18px;
+    }
+}

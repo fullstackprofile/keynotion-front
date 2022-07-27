@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   output: {
@@ -7,4 +7,4 @@ module.exports = {
   module: {
     rules: [{ test: /\.txt$/, use: 'raw-loader' }],
   },
-};
+}

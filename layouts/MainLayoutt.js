@@ -3,8 +3,7 @@ import Head from 'next/head'
 import { Footer } from '../components/Footer/Footer'
 import { EventsHead } from '../components/EventsHead/EventsHead'
 
-
-const MainLayoutt = ({children, title = 'Key-Notion',blog}) => {
+const MainLayoutt = ({ children, title = 'Key-Notion', blog }) => {
   return (
     <div>
       <Head>
@@ -13,11 +12,11 @@ const MainLayoutt = ({children, title = 'Key-Notion',blog}) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-    <EventsHead blog={blog}/>
+      <EventsHead blog={blog} />
 
-    {children}
+      {children}
 
-    <Footer />
+      <Footer />
     </div>
   )
 }

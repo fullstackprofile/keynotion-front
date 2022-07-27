@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "lint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
+    "prettier:fix": "prettier --write \"./**/*.{js,jsx}\"",
+    "lf": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -38,6 +40,9 @@
   },
   "devDependencies": {
     "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
   }
 }

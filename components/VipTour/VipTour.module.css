@@ -3,12 +3,12 @@
 }
 
 .subTitle{
-    margin: 0 auto;
     margin-top: 48px;
+    display: flex;
+    justify-content: center;
     font-weight: 600;
     font-size: 23px;
     line-height: 130%;
-    width: 16%;
     background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

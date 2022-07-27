@@ -30,3 +30,12 @@
     margin-right: auto;
 }
 
+@media (max-width: 1100px) {
+    .getinformed{
+        padding: 40px 15px;
+    }
+    
+   .GetInformedCarts {
+    flex-wrap: wrap;
+   }
+}

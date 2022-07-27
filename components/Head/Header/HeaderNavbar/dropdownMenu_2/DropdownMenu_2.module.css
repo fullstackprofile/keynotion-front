@@ -128,3 +128,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* media */
+
+@media (max-width: 998px) {
+    .menu_item{  
+        font-size: 18px;
+    }
+}

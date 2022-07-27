@@ -36,3 +36,19 @@
     line-height: 130%;
     color: #121212;
 }
+
+
+@media (max-width: 1100px) {
+    .unknow{
+        padding: 40px 0px;
+    }
+    
+    .content_items{
+        flex-wrap: wrap;
+    }
+
+    .content_items li {
+       width: 100%;
+       margin-top: 10px;
+    }
+}

@@ -24,6 +24,15 @@
     margin-left: 16px;
 }
 
+@media (max-width: 1200px) {
+    .menu_item {  
+        font-size: 18px;
+    }
+    .HeaderNavbar {
+        margin-bottom: 15px;
+    }
+}
+
 
 
 

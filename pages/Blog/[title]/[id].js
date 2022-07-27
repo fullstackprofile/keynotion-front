@@ -10,29 +10,30 @@ import { LeaveReply } from '../../../components/LeaveReply/LeaveReply'
 
 import MainLayoutt from '../../../layouts/MainLayoutt'
 
- const BlogNews = ({data}) => {
-    // const {query} = useRouter()
-    // const id = query.id
+const BlogNews = ({ data }) => {
+  // const {query} = useRouter()
+  // const id = query.id
 
   return (
     <MainLayoutt>
       <div>
-      <BlogNewsHeading/>
-      <News  data={data}/>
-      <LeaveReply />
+        <BlogNewsHeading />
+        <News data={data} />
+        <LeaveReply />
       </div>
     </MainLayoutt>
   )
 }
 
 export async function getServerSideProps(context) {
+  const { params } = context
 
-  const {params} = context
-
-  const {data} = await axios.get(`http://laratest.key-notion.com/api/news/${params.id}`)
+  const { data } = await axios.get(
+    `http://laratest.key-notion.com/api/news/${params.id}`
+  )
 
   return {
-    props: {data: data.data}
+    props: { data: data.data },
   }
 }
 

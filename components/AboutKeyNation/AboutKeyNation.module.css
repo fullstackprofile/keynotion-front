@@ -53,3 +53,18 @@
     background-clip: text;
    
 }
+@media (max-width: 1100px) {
+    .aboutKeyNation{
+        padding: 20px 0px;
+    }
+    .about_content .about_title{
+         text-align: center;
+    }
+    .btnWrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .about_content{
+        text-align: center;
+    }
+}

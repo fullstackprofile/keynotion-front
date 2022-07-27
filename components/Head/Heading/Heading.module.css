@@ -35,3 +35,19 @@
 .heading_img{
     width: 60%;
 }
+
+@media (max-width: 1092px) {
+    .heading {
+        margin-top: 40px; 
+        align-items: center;
+        flex-direction: column;
+    }
+    .heading_content {
+        align-items: center;
+        width: auto;
+        text-align: center;
+    }
+    .heading_img {
+        margin-top: 20px;
+    }
+}

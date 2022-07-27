@@ -30,7 +30,7 @@
 
 .subTitle{
     font-weight: 600;
-    font-size: 28px;
+    font-size: 26px;
     line-height: 130%;
     color: #121212;
     margin-bottom: 40px;
@@ -63,4 +63,58 @@
     font-size: 22px;
     line-height: 130%;
     color: #121212;
+}
+
+
+@media (max-width: 1200px) {
+    .title{  
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .subTitle {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 100%;
+      margin-bottom: 30px;
+    }
+    .company_name{
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 110%;
+  }
+}
+
+@media (max-width: 900px) {
+    .title {  
+      font-size: 22px;
+      font-weight: 500;  
+    }
+    .subTitle {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 120%;
+      margin-bottom: 20px;
+    }
+    .company_name{
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 100%;
+  }
+}
+@media (max-width: 700px) {
+  .title {  
+    font-size: 18px;
+    font-weight: 500;  
+  }
+  .subTitle {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    margin-bottom: 20px;
+  }
+  .company_name{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 80%;
+}
 }

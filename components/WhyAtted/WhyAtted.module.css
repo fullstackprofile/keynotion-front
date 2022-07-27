@@ -42,5 +42,16 @@
    position: relative;
 }
 
+@media (max-width: 1200px) {
+    .whyAtted {  
+        padding: 20px 150px;
+        text-align: center;
+    }
+    .subTitle{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
 
 
