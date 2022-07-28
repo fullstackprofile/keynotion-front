@@ -82,6 +82,9 @@
     .subscribe {
         padding: 10px 15px;
         flex-wrap: wrap-reverse;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
     }
     .subscribe_right{
         width: 100%;
@@ -96,5 +99,15 @@
     }
     .right_content{
         padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .subscribe {
+        padding: 10px 15px;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+        flex-direction: column;
+        width: 60%;
     }
 }

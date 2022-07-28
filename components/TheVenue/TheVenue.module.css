@@ -36,8 +36,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
-    
+    text-fill-color: transparent; 
 }
 
 .subTitle_block{
@@ -50,7 +49,6 @@
     font-size: 22px;
     line-height: 120%;
     color: #121212;
-
 }
 
 .body_content_img{
@@ -63,4 +61,52 @@
 
 .body_img{
     height: fit-content;
+}
+
+@media (max-width: 1200px) {
+    .theVenue{
+        padding: 60px 15px;
+    }
+    .title{
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 800px) {
+    .theVenue{
+        padding: 20px 15px;
+    }
+
+    .theVenue_body{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+    
+    .title{
+        font-size: 22px;
+    }
+    .theVenue_body{
+        flex-direction: column;
+        align-items: center;
+    }
+    .body_content{
+        width: 100%;
+    }
+    .body_img {
+        margin-top: 20px;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .title{
+        font-size: 16px;
+    }
+    .subTitle{
+        font-size: 14px;
+    }
+    .body_img {
+        margin-top: 15px;
+    }
 }

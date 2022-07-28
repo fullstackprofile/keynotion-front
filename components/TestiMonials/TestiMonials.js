@@ -77,7 +77,7 @@ export const TestiMonials = () => {
           slidesPerGroup={1}
           loop={true}
           loopFillGroupWithBlank={true}
-          navigation={true}
+          navigation={isMobile <= 900 ? false : true}
           modules={[Navigation]}
           className={styles.my_swiper}
         >

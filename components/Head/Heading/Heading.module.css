@@ -50,4 +50,22 @@
     .heading_img {
         margin-top: 20px;
     }
+    .content_title{
+        font-size: 48px;
+
+    }
+}
+
+@media (max-width: 900px) {
+    .content_title{
+        font-size: 38px;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .content_title{
+        font-size: 28px;
+
+    }
 }

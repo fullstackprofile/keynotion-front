@@ -59,3 +59,27 @@
     margin-bottom: 72px;
 
 }
+
+@media (max-width: 1200px) {
+    .ourPastAttendees{
+        padding: 60px 15px;
+    }
+    .liner{
+        font-size: 32px;
+    }
+    .title{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 800px) {
+    .ourPastAttendees{
+        padding: 20px 15px;
+    }
+    .liner{
+        font-size: 28px;
+    }
+    .title{
+        font-size: 28px;
+    }
+}

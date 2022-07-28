@@ -81,12 +81,20 @@
         padding-top: 40px;
         padding-bottom: 40px;
         background: #FFFFFB;
+        align-items: center;
+        flex-direction: column;
     }
     
    .seamlessService_content {
         flex-wrap: wrap;
         text-align: center;
    }
+   .seamlessService_content{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+
    .content_right {
     width: 100%;
    }
@@ -102,5 +110,8 @@
     }
     .left_btns{
         justify-content: center;
+    }
+    .right_block{
+        font-size: 14px !important; 
     }
 }

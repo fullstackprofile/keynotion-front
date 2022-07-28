@@ -46,3 +46,42 @@
     width: 100%;
     background: linear-gradient(#9F0A00, #623D90);
 }
+
+@media (max-width: 1100px) {
+    .getInformedCart {
+        font-weight: 700;
+        font-size: 38px;
+    }
+    .title_{
+        font-weight: 700;
+        font-size: 28px;
+    }
+    .title {
+        font-size: 38px;
+
+    }
+}
+
+@media (max-width: 800px) {
+    .title_{
+        font-weight: 700;
+        font-size: 28px;
+    }
+    .title {
+        font-size: 28px;
+
+    }
+}
+
+@media (max-width: 400px) {
+    .title_{
+        font-weight: 700;
+        font-size: 22px;
+    }
+    .title {
+        font-size: 16px;
+
+    }
+}
+
+

@@ -23,3 +23,34 @@
     font-size: 24px;
     line-height: 140%;
 }
+
+@media (max-width: 1200px) {
+    .aboutTheEvent{
+        padding: 60px 15px;
+     }
+     .text{
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutTheEvent{
+        padding: 20px 15px;
+        flex-direction: column;
+     }
+     .text{
+        font-size: 18px;
+    }
+    .body{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .content{
+        width: 100%;
+    }
+    .img{
+        margin-top: 20px;
+        width: 80%;
+    }
+}

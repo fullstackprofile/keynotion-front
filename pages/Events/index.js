@@ -14,7 +14,7 @@ export default function Events({ data }) {
       <div>
         <EventsHeading
           title="Our Upcoming Events"
-          img="/EventsBackground.png"
+          img="/eventsBackground.png"
           subTitle="Check Them Out!"
         />
         <Event All={data.data} />

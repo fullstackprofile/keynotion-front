@@ -56,6 +56,9 @@
 @media (max-width: 1100px) {
     .aboutKeyNation{
         padding: 20px 0px;
+        align-items: center;
+        flex-direction: column;
+        display: flex;
     }
     .about_content .about_title{
          text-align: center;
@@ -66,5 +69,24 @@
     }
     .about_content{
         text-align: center;
+    }
+    .about_title{
+        font-weight: 600;
+        font-size: 28px;
+    }
+    .aboutKeyNationImg {
+        width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+    .about_title{
+        font-weight: 600;
+        font-size: 24px;
+    }
+
+    .about_title{
+        font-weight: 600;
+        font-size: 22px;
     }
 }

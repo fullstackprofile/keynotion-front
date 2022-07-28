@@ -22,10 +22,20 @@
     margin-bottom: 28px;
 }
 
-
-
 .icon{
-    
     float: right;
 }
+
+@media (max-width: 1100px) {
+    .title{
+        font-size: 16px;
+    }
+    .subTitle{
+        font-size: 16px;
+    }
+    .WhyAttedCart{
+        padding: 32px;
+    }
+}
+
 

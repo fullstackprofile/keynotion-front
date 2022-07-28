@@ -19,7 +19,7 @@ export const KeySpeakers = ({ speakers }) => {
     <div className={styles.keySpeakers}>
       <Title title_2="Key Speakers" />
       <div className={styles.speakers}>
-        <Masonry columns={4} spacing={2}>
+        <Masonry columns={12} spacing={2}>
           {speakers
             .slice(0, show == false ? 8 : speakers.length)
             .map(

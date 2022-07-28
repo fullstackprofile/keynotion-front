@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Controller, useForm } from 'react-hook-form'
-import { Title } from '../Title/Title'
+import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { TextArea } from '../TextArea/TextArea'

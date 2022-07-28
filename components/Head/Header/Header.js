@@ -3,20 +3,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SmallButton } from '../../Button/SmallButton'
 import { HeaderNavbar } from './HeaderNavbar/HeaderNavbar'
+import { MobileMenu } from './HeaderNavbar/MobileMenu'
 import { Login } from '../../Login/Login'
 import { SignUp } from '../../SignUp/SignUp'
 import { ForgotPass } from '../../Login/ForgotPass/ForgotPass'
-
 import { useRouter } from 'next/router'
-
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
 import styles from './Header.module.css'
 import { DropdownMenu } from './HeaderNavbar/dropdownMenu/DropdownMenu'
 import { ClickAwayListener } from '@mui/material'
 import AppContext from '../../AppContext/AppContext'
 import { StyledBadge } from '../../StyledBadge/StyledBadge'
+import useIsMobile from '../../../Helpers/helpers'
 
 export const Header = ({ blog }) => {
+  const isMobile = useIsMobile()
   function Logout() {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
@@ -81,7 +82,11 @@ export const Header = ({ blog }) => {
         </div>
       </Link>
       <div className={styles.header_nav_login}>
-        <HeaderNavbar blog={blog && true} />
+        {isMobile <= 800 ? (
+          <MobileMenu blog={blog && true} />
+        ) : (
+          <HeaderNavbar blog={blog && true} />
+        )}
         <div className={styles.shopingCart} onClick={goCard}>
           <StyledBadge badgeContent={context.session.count}>
             <Image

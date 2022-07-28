@@ -9,14 +9,9 @@
     justify-content: space-between;
 }
 
-
 .left{
     width: 48%;
 }
-
-
-
-
 
 .title{
     font-weight: 400;
@@ -81,7 +76,76 @@
 .btns{
     width: 70%;
     display: flex;
-    justify-content: space-between;
     margin: 0 auto;
     margin-top: 72px;
+    gap: 12px;
+}
+
+@media (max-width: 1100px) {
+    .eventsInnerHeading_body{
+    }
+    .title{
+        font-size: 28px;
+    }
+    .subTitle{
+        font-size: 22px;
+    }
+    .date_block{
+        padding-top: 18px;
+        padding-bottom: 18px;
+        padding-left: 20px;
+    }
+    .date{
+        font-size: 18px;
+    }
+    .country{
+        font-size: 16px;
+    }
+    .btns{
+        flex-wrap: nowrap;
+        margin-top: 40px;
+    }
+    .btns button {
+        margin-top: 10px;
+        padding: 10px 8px 10px 8px;
+    }
+}
+@media (max-width: 900px) {
+    .eventsInnerHeading_body{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title{
+        font-size: 32px;
+    }
+    .subTitle{
+        font-size: 20px;
+    }
+    .date_block{
+        padding-top: 14px;
+        padding-bottom: 16px;
+        padding-left: 14px;
+    }
+    .date{
+        font-size: 16px;
+    }
+    .country{
+        font-size: 14px;
+    }
+    .left{
+        width: 100%;
+        text-align: center;
+    }
+    .right{
+        width: 80%;
+    } 
+    .btns{
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+    .btns button {
+        width: 100%;
+        margin-top: 10px;
+    }
 }

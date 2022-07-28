@@ -112,3 +112,45 @@
     line-height: 165%;
     color: #121212;
 }
+
+@media (max-width: 1200px) {
+    .footer_content {
+        width: 70%;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer_content {
+        display: flex;
+        flex-direction: column;
+    }
+    .subTitle{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 130%;
+        color: #121212;
+    }
+    
+    .prague_phone{
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .prague_title{
+        font-weight: 700;
+        font-size: 22px;
+    }
+    .keyNation_title{
+        font-weight: 700;
+        font-size: 22px;
+    }
+    .gradient{
+        font-weight: 700;
+        font-size: 22px;
+    }
+    .keyNation{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+}
