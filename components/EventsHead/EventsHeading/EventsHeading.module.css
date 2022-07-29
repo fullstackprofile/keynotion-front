@@ -40,3 +40,30 @@
 .btn{
     margin-top: 32px;
 }
+
+@media (max-width: 1200px) {
+    .eventsHeading_title{
+        font-weight: 700;
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 800px) {
+    .eventsHeading_title{
+        font-weight: 600;
+        font-size: 32px;
+    }
+    .eventsHeading_title_block{
+        top: 45%;  
+    }
+}
+
+@media (max-width: 600px) {
+    .eventsHeading_title{
+        font-weight: 600;
+        font-size: 26px;
+    }
+    .eventsHeading_title_block{
+        top: 45%;  
+    }
+}

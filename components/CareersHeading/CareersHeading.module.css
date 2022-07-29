@@ -39,3 +39,50 @@
 .careersHeading_img{
     width: 48%;
 }
+
+@media (max-width: 1200px) {
+    .careersHeading{
+        padding: 50px 15px;
+    }
+    .content_title{
+        font-size: 56px;
+    }
+    .content_SubTitle{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .careersHeading{
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 15px;
+    }
+    .content_title{
+        font-size: 42px;
+    }
+    .content_SubTitle{
+        font-size: 18px;
+    }
+    .careersHeading_content{
+        width: 100%;
+        margin-top: 50px;
+    }
+    .careersHeading_img{
+        margin-top: 20px;
+    }
+}
+@media (max-width: 700px) {
+    .careersHeading{
+        padding: 10px 15px;
+    }
+    .content_title{
+        font-size: 38px;
+    }
+    .content_SubTitle{
+        font-size: 16px;
+    }
+    .careersHeading_content{
+        margin-top: 30px;
+    }
+}

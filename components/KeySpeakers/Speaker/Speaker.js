@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 import styles from './Speaker.module.css'
+import useIsMobile from '../../../Helpers/helpers'
 
 export const Speaker = ({
   full_name,
@@ -28,6 +29,7 @@ export const Speaker = ({
       arr1.push(i)
     }
   }
+  const isMobile = useIsMobile()
 
   const [isHovering, setIsHovering] = useState(false)
 
@@ -44,11 +46,13 @@ export const Speaker = ({
       <div className={styles.speaker_img_block}>
         <div
           className={
-            length >= 8 || length === 4
-              ? arr1.includes(index)
-                ? styles.speaker_img_litle
+            isMobile >= 1200
+              ? length >= 8 || length === 4
+                ? arr1.includes(index)
+                  ? styles.speaker_img_litle
+                  : styles.speaker_img
                 : styles.speaker_img
-              : styles.speaker_img
+              : styles.speaker_img_litle
           }
           style={{ backgroundImage: `url(${avatar})` }}
           onMouseEnter={handleMouseEnter}

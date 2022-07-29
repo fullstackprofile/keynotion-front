@@ -32,3 +32,16 @@
 .body_content{
     width: 60%;
 }
+
+
+@media (max-width: 950px) {
+    .faq{
+        padding: 40px 15px;
+    }
+
+    .faq_body{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}

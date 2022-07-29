@@ -39,7 +39,6 @@
 }
 
 .content_body{
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,8 +49,13 @@
     width: 85%;
 }
 
-
-
-
-
+@media (max-width: 900px) {
+    .content_title{
+        font-size: 26px;
+    }
+    
+    .content_title_liner{
+        font-size: 26px;
+    }
+}
 

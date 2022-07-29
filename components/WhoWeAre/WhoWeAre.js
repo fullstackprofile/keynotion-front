@@ -49,7 +49,7 @@ export const WhoWeAre = () => {
       <div className={styles.whoWeAre_content_icons}>
         <div className={styles.content_icon}>
           <Image
-            src="/innovation.png"
+            src="/Innovation.png"
             width={150}
             height={209}
             alt="innovation"

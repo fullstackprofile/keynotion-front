@@ -24,12 +24,12 @@
     text-fill-color: transparent;
 }
 
-
 .content_SubTitle{
     font-weight: 700;
     font-size: 23px;
     line-height: 120%
 }
+
 .content_SubTitles_block p:not(:last-child){
     margin-bottom: 32px;
 }
@@ -48,4 +48,42 @@
 
 .aboutHeading_img{
     width: 46%;
+}
+
+@media (max-width: 1200px) {
+    .aboutHeading{
+        padding-top: 80px;
+        padding-bottom: 80px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutHeading_content{
+        width: 100%;
+    }
+    .content_title{
+        font-size: 56px;
+    }
+    .content_SubTitle{
+        font-size: 18px;
+    }
+    .aboutHeading_img{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutHeading{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .content_title{
+        font-size: 32px;
+    
+    }
+    .content_SubTitle{
+        font-size: 16px;
+    }
+    .aboutHeading_img{
+       margin-top: 30px;
+    }
 }

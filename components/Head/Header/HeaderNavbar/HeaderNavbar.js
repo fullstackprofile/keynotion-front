@@ -1,13 +1,9 @@
 import React from 'react'
-
 import Link from 'next/link'
-
 import { DropdownMenu } from './dropdownMenu/DropdownMenu'
-
 import styles from './HeaderNavbar.module.css'
 import Image from 'next/image'
 import { DropdownMenu_2 } from './dropdownMenu_2/DropdownMenu_2'
-
 const HeaderNavbarItems = [
   { title: 'Home', href: '/' },
   {

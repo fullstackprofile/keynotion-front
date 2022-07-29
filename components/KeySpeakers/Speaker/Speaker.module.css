@@ -145,3 +145,28 @@
     margin: 0 auto;
     height: 80%;
 }
+
+
+@media (max-width: 1200px) {
+    .speaker{
+        width: 35%;
+        margin-bottom: 24px;
+    }
+    
+}
+
+@media (max-width: 800px) {
+    .speaker{
+        width: 45%;
+        margin-bottom: 24px;
+    }
+    
+}
+
+@media (max-width: 800px) {
+    .speaker{
+        width: 55%;
+        margin-bottom: 24px;
+    }
+    
+}

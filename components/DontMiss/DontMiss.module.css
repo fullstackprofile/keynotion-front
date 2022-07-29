@@ -48,6 +48,10 @@
 }
 
 @media (max-width: 1200px) {
+    .dontMiss{
+        padding: 80px 15px;
+    }
+  
     .title{
         font-size: 28px;
     }
@@ -62,6 +66,19 @@
     }
 }
 @media (max-width: 800px) {
+    .dontMiss{
+        padding: 40px 15px;
+    }
+    .dontMiss_body{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .content {
+        margin-top: 20px;
+    }
+    
+    
     .title{
         font-size: 16px;
     }
@@ -77,6 +94,10 @@
 
 }
 @media (max-width: 600px) {
+    .dontMiss{
+        padding: 30px 15px;
+    }
+    
     .title{
         font-size: 16px;
     }

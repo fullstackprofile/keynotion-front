@@ -17,7 +17,7 @@
 
 .previousHeading_title{
     font-weight: 700;
-    font-size: 72px;
+    font-size: 64px;
     line-height: 130%;
     color: #FFFFF6;
 } 
@@ -53,4 +53,61 @@
 
 .checkOut_btn{
     margin-top: 62px;
+}
+
+@media (max-width: 1200px) {
+    .previousHeading_title{
+        font-size: 30px;
+    } 
+    .previousHeading_block{
+        top: 70%;  
+        left: 50%; 
+        padding: 72px 0;
+    }
+    .checkOut_block{
+        padding: 34px 80px;
+        margin-top: 35px;
+    }
+    .checkOut_subTitle{
+        font-size: 16px;
+    }
+}
+@media (max-width: 1470px) {
+    .previousHeading_title{
+        font-size: 42px;
+    } 
+    .previousHeading_block{
+        top: 50%;  
+        left: 50%; 
+        padding: 72px 0;
+    }
+    .checkOut_block{
+        padding: 5px 10px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 970px) {
+    .previousHeading_title{
+        font-size: 26px;
+    } 
+    .previousHeading_block{
+        top: 50%;  
+        left: 50%; 
+        padding: 72px 0;
+    }
+    .checkOut_block{
+        padding: 5px 10px;
+        margin-top: 25px;
+    }
+}
+@media (max-width: 850px) {
+    
+    .previousHeading_title{
+        display: none;
+    }
+    .previousHeading_block{
+     display: flex;
+     flex-direction: column;
+    }
 }

@@ -42,7 +42,6 @@
     font-size: 24px;
     line-height: 130%;
     background: linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%);
-  
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -84,7 +83,6 @@
         flex-wrap: wrap-reverse;
         align-items: center;
         flex-direction: column;
-        width: 80%;
     }
     .subscribe_right{
         width: 100%;
@@ -108,6 +106,20 @@
         flex-wrap: wrap-reverse;
         align-items: center;
         flex-direction: column;
-        width: 60%;
+    }
+    .title{
+        font-size: 18px;
+    }
+    .subTitle{
+        font-size: 16px;
+    }
+    .gradient{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .input{
+        width: 63%;
     }
 }

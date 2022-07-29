@@ -16,3 +16,9 @@
 .black{
     color: #121212;
 }
+
+@media (max-width: 900px) {
+    .item_text{
+        font-size: 18px;
+    }
+}

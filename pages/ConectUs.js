@@ -1,7 +1,5 @@
 import React from 'react'
-
 import Head from 'next/head'
-
 import { ConectusHeading } from '../components/ConectusHeading/ConectusHeading'
 import { OurNumbers } from '../components/OurNumbers/OurNumbers'
 import { OurEmails } from '../components/OurEmails/OurEmails'

@@ -17,12 +17,35 @@
     justify-content: center;
 }
 
+.speakersWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 @media (max-width: 1200px) {
     .keySpeakers{
         padding: 80px 15px;
-}}
+        
+    }
+    .speakersWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+    }
+}
 
 @media (max-width: 900px) {
         .keySpeakers{
             padding: 40px 15px;
-}}
+        }
+        .speakersWrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+}

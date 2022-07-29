@@ -1,7 +1,6 @@
 .whoWeAre{
     padding: 120px 340px;
-    background: #FAFAFA;
-    
+    background: #FAFAFA; 
 }
 
 .whoWeAre_content{
@@ -15,3 +14,31 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media (max-width: 1200px) {
+    .whoWeAre{
+        padding: 20px 220px;
+    }
+    .whoWeAre_content {
+        flex-direction: column;
+    }
+  
+}
+
+@media (max-width: 900px) {
+    .whoWeAre_content {
+        flex-direction: column;
+    }
+    .whoWeAre{
+        padding: 10px 180px;
+        background: #FAFAFA;
+    }
+  
+}
+
+@media (max-width: 600px) {
+    .whoWeAre{
+        padding: 10px 120px;
+    }
+}
+

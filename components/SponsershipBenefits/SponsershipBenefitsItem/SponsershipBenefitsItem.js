@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-
+import useIsMobile from '../../../Helpers/helpers'
 import styles from './SponsershipBenefitsItem.module.css'
 
 export const SponsershipBenefitsItem = ({
@@ -11,9 +11,13 @@ export const SponsershipBenefitsItem = ({
   height,
   fullWidht,
 }) => {
+  const isMobile = useIsMobile()
   return (
     <>
-      <div className={styles.content_item} style={{ width: fullWidht }}>
+      <div
+        className={styles.content_item}
+        style={{ width: isMobile >= 1200 && fullWidht }}
+      >
         <div className={styles.content_item_img}>
           <Image
             src={src}

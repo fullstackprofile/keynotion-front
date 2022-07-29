@@ -117,7 +117,7 @@ export const AnyQuestions = () => {
             </div>
           </form>
         </div>
-        <div>
+        <div className={styles.imgWrapper}>
           <Image
             src="/AnyQuestion.png"
             alt="AnyQuestion.png"

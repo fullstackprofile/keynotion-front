@@ -84,13 +84,6 @@ const HeaderNavbarItems_2 = [
   },
 ]
 
-const arr1 = [
-  { title: 'home', name: 'Գլխավոր' },
-  { title: 'about', name: 'Մեր Մասին' },
-  { title: 'contacts', name: 'Կապ' },
-  { title: 'buy', name: 'Պատվիրել' },
-]
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',

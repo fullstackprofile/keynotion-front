@@ -27,3 +27,23 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@media (max-width: 900px) {
+    .dataPrivacyFaq{
+        padding: 80px 15px;
+    }
+    
+    .dataPrivacyFaq_subTitle{
+        font-size: 28px;
+    } 
+}
+
+@media (max-width: 700px) {
+    .dataPrivacyFaq{
+        padding: 40px 15px;
+    }
+    
+    .dataPrivacyFaq_subTitle{
+        font-size: 22px;
+    } 
+}

@@ -86,3 +86,16 @@
         font-size: 16px;
     }
 }
+
+@media (max-width: 500px) {
+    .title{
+        font-size: 14px;
+    }
+    
+    .title_{
+        font-size: 14px;
+    }
+    .subTitle{
+        font-size: 14px;
+    }
+}

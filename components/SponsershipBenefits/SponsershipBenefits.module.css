@@ -12,3 +12,24 @@
     justify-content: space-between;
     margin-top: 72px;
 }
+
+
+@media (max-width: 1200px) {
+    .sponsershipBenefits {
+        padding: 80px 15px;
+    }
+    .sponsershipBenefits_content{
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .sponsershipBenefits {
+        padding: 60px 15px;
+    }
+    .sponsershipBenefits_content{
+        width: 80%;
+    }
+}

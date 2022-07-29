@@ -19,8 +19,42 @@
 
 .aboutEvantsCart_subTitle{
     font-weight: 600;
-    font-size: 42px;
+    font-size: 38px;
     line-height: 120%;
     text-align: center;
     color: #000000;
+}
+
+@media (max-width: 1400px) {
+    .aboutEvantsCart_title{
+        font-size: 26px;
+    }
+    .aboutEvantsCart_subTitle{
+        font-size: 32px;
+    }
+  
+}
+
+@media (max-width: 1200px) {
+    .aboutEvantsCart_title{
+        font-size: 22px;
+    }
+    .aboutEvantsCart_subTitle{
+        font-size: 28px;
+    }
+    .aboutUsCard{
+        width: 45%;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutEvantsCart_title{
+        font-size: 18px;
+    }
+    .aboutEvantsCart_subTitle{
+        font-size: 22px;
+    }
+    .aboutUsCard{
+        width: 60%;
+    }
 }
