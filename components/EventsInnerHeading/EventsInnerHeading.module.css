@@ -81,7 +81,7 @@
     gap: 12px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .eventsInnerHeading_body{
     }
     .title{
@@ -110,7 +110,7 @@
         padding: 10px 8px 10px 8px;
     }
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .eventsInnerHeading_body{
         flex-direction: column;
         justify-content: center;

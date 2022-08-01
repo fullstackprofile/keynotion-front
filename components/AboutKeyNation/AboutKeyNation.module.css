@@ -53,7 +53,7 @@
     background-clip: text;
    
 }
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .aboutKeyNation{
         padding: 20px 0px;
         align-items: center;
@@ -69,6 +69,7 @@
     }
     .about_content{
         text-align: center;
+        margin-bottom: 50px;
     }
     .about_title{
         font-weight: 600;
@@ -77,16 +78,22 @@
     .aboutKeyNationImg {
         width: 70%;
     }
+    .about_subTitle {
+        font-size: 28px;
+
+    }
 }
 
 @media (max-width: 700px) {
     .about_title{
-        font-weight: 600;
-        font-size: 24px;
+        font-size: 16px;
     }
 
-    .about_title{
-        font-weight: 600;
-        font-size: 22px;
+    .about_subTitle{
+        font-size: 16px;
+    }
+    .about_content{
+        text-align: center;
+        margin-bottom: 10px;
     }
 }

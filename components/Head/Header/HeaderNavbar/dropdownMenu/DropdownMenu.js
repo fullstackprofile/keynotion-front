@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
-
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-
+import useIsMobile from '../../../../../Helpers/helpers'
 import styles from './DropdownMenu.module.css'
 import Link from 'next/link'
 
 export const DropdownMenu = ({ title, modal }) => {
+  const isMobile = useIsMobile()
   const [open, setOpen] = React.useState(false)
 
   const handleOpen = () => {
@@ -30,7 +30,11 @@ export const DropdownMenu = ({ title, modal }) => {
               </div>
             </div>
             {open && (
-              <div className={styles.dropedMenu}>
+              <div
+                className={
+                  isMobile <= 900 ? styles.dropedMenuMobile : styles.dropedMenu
+                }
+              >
                 {modal.map(({ modalTitle, href }, index) => (
                   <Link key={index} href={href ? `/${href}` : '#'}>
                     <div className={styles.dropedMenu_item}>

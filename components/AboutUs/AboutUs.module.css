@@ -20,9 +20,9 @@
   
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .aboutUs{
-        padding: 80px 15px;
+        padding: 10px 15px;
     }
     .aboutUs_content{
         justify-content: center;
@@ -30,9 +30,9 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .aboutUs{
-        padding: 40px 15px;
+        padding: 10px 15px;
     }
     .aboutUs_content{
         display: flex;

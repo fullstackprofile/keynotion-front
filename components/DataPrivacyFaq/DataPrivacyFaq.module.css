@@ -28,9 +28,19 @@
     margin-right: auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .dataPrivacyFaq{
-        padding: 80px 15px;
+        padding: 40px 15px;
+    }
+    
+    .dataPrivacyFaq_subTitle{
+        font-size: 28px;
+    } 
+}
+
+@media (max-width: 800px) {
+    .dataPrivacyFaq{
+        padding: 20px 15px;
     }
     
     .dataPrivacyFaq_subTitle{
@@ -40,7 +50,7 @@
 
 @media (max-width: 700px) {
     .dataPrivacyFaq{
-        padding: 40px 15px;
+        padding: 10px 15px;
     }
     
     .dataPrivacyFaq_subTitle{

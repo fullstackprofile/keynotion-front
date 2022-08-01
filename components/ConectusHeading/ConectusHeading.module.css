@@ -40,13 +40,13 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .conectusHeading{
-        padding-top: 80px;
-        padding-bottom: 60px;
+        padding-top: 40px;
+        padding-bottom: 20px;
     }
     .content_title{
-        font-size: 58px;
+        font-size: 46px;
     }
     
     .content_SubTitle{
@@ -54,7 +54,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .conectusHeading{
         padding-top: 10px;
         padding-bottom: 20px;
@@ -70,7 +70,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .content_title{
         font-size: 26px;
     }

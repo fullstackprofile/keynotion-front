@@ -16,9 +16,15 @@
    position: relative;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .testiMonials {  
         padding: 40px 150px;
     }
 }
 
+
+@media (max-width: 768px) {
+    .testiMonials {  
+        padding: 20px 50px;
+    }
+}

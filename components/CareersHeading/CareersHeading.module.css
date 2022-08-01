@@ -40,9 +40,10 @@
     width: 48%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .careersHeading{
         padding: 50px 15px;
+        align-items: center;
     }
     .content_title{
         font-size: 56px;
@@ -52,7 +53,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .careersHeading{
         flex-direction: column;
         align-items: center;

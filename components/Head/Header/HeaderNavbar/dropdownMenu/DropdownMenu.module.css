@@ -31,10 +31,23 @@
     border: 0.5px solid #B8B8B8; 
     border-radius: 6px;
 }
+
+.dropedMenuMobile{
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    position: absolute;
+    z-index: 9999;
+    width: 160px;
+    top: 100px;
+    border: 0.5px solid #B8B8B8; 
+    border-radius: 6px;
+}
+
+
 .dropdown_{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .dropedMenu_item:not(:last-child){

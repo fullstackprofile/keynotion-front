@@ -101,7 +101,7 @@
         margin-top: 25px;
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     
     .previousHeading_title{
         display: none;
@@ -109,5 +109,18 @@
     .previousHeading_block{
      display: flex;
      flex-direction: column;
+    }
+    .checkOut_block{
+        padding: 5px 10px;
+        margin-top: 100px;
+    }
+    .checkOut_title {
+        font-size: 16px;
+    }
+    .checkOut_subTitle{
+        font-size: 14px;
+    }
+    .checkOut_btn{
+        margin-top: 15px;
     }
 }

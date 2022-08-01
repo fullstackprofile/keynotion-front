@@ -90,12 +90,24 @@
     color: rgb(136, 18, 18);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .conectUsAnyQuestions{
-        padding-top: 10px;
-        padding-bottom: 20px;
+        padding: 20px 120px;
         flex-direction: column;
         align-items: center;
+    }
+    .form{
+        width: 100%;
+    }
+    .subTitle{
+        font-size: 22px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .conectUsAnyQuestions{
+        padding: 10px 120px;
     }
     .form{
         width: 100%;

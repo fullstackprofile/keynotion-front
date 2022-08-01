@@ -31,7 +31,7 @@ export const WhyAtted = () => {
       </div>
       <div className={styles.why_carusel}>
         <Swiper
-          slidesPerView={isMobile >= 1300 ? 3 : isMobile >= 900 ? 2 : 1}
+          slidesPerView={isMobile > 1300 ? 3 : isMobile >= 900 ? 2 : 1}
           spaceBetween={30}
           slidesPerGroup={1}
           loop={true}

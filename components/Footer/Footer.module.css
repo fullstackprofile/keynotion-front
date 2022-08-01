@@ -113,44 +113,47 @@
     color: #121212;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .footer_content {
         width: 70%;
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 798px) {
     .footer_content {
         display: flex;
         flex-direction: column;
     }
     .subTitle{
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 130%;
         color: #121212;
     }
     
     .prague_phone{
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
     }
     .prague_title{
         font-weight: 700;
-        font-size: 22px;
+        font-size: 18px;
     }
     .keyNation_title{
         font-weight: 700;
-        font-size: 22px;
+        font-size: 16px;
     }
     .gradient{
         font-weight: 700;
-        font-size: 22px;
+        font-size: 18px;
     }
     .keyNation{
         display: flex;
         flex-direction: column;
         width: 100%;
+    }
+    .keyNation_subTitle {
+        font-size: 16px;
     }
     
 }

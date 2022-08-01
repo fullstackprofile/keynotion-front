@@ -14,9 +14,9 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .sponsershipBenefits {
-        padding: 80px 15px;
+        padding: 20px 15px;
     }
     .sponsershipBenefits_content{
         flex-wrap: wrap;
@@ -25,9 +25,9 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 8px) {
     .sponsershipBenefits {
-        padding: 60px 15px;
+        padding: 20px 15px;
     }
     .sponsershipBenefits_content{
         width: 80%;

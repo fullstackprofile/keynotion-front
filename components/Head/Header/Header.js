@@ -106,7 +106,7 @@ export const Header = ({ blog }) => {
                 transparent
               />
             </div>
-            <div>
+            <div style={{ marginTop: '10px' }}>
               <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
             </div>
           </div>

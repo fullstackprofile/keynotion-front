@@ -36,7 +36,7 @@
     width: 60%;
 }
 
-@media (max-width: 1092px) {
+@media (max-width: 1024px) {
     .heading {
         margin-top: 40px; 
         align-items: center;
@@ -68,4 +68,8 @@
         font-size: 28px;
 
     }
+    .content_subTitle{
+        font-size: 16px;
+    }
 }
+

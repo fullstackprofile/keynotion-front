@@ -76,7 +76,7 @@
     margin-right: 32px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .seamlessService{
         padding-top: 40px;
         padding-bottom: 40px;
@@ -113,5 +113,23 @@
     }
     .right_block{
         font-size: 14px !important; 
+    }
+}
+
+@media (max-width: 768px) {
+    .right_title_block {
+        font-size: 18px;
+    }
+    .seamlessService_content {
+        width: 80%;
+    }
+    .right_block {
+        padding: 13px 16px !important;
+    }
+    .left_title {
+        font-size: 16px;
+    }
+    .left_subTitle{
+        font-size: 16px;
     }
 }

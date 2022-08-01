@@ -36,3 +36,23 @@
     margin-top: 22px;
     float: right;
 }
+
+
+@media (max-width: 1024px) {
+    .leaveReply{
+        padding: 0px 200px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .leaveReply{
+        padding: 120px 384px;
+    }
+}
+
+@media (max-width: 385px) {
+    .leaveReply{
+        padding: 120px 384px;
+    }
+    
+}

@@ -1,8 +1,6 @@
 .news{
     padding-top: 56px;
     padding-bottom: 120px;
-    /* padding-right: 188px;
-    padding-left: 188px; */
     background: linear-gradient(180deg, #FFFFFB 56.57%, rgba(225, 225, 225, 0) 109.92%);
 }
 
@@ -25,10 +23,8 @@
 }
 
 .news_body{
-    padding-top: 72px;
-    padding-bottom: 120px;
-    padding-right: 188px;
-    padding-left: 188px;  
+    padding: 72px 188px 120px 188px;
+
 }
 
 .description{
@@ -77,4 +73,33 @@
 }
 .answers_block{
     margin-top: 32px;
+}
+
+
+@media (max-width: 1024px) {
+    .news{
+        padding-bottom: 40px;
+    }
+    .news_body{
+        padding: 72px 188px 50px 188px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news{
+        padding-bottom: 20px;
+    }
+    .news_body{
+        padding: 72px 188px 40px 188px;
+    }
+}
+
+@media (max-width: 385px) {
+    .news{
+        padding-bottom: 15px;
+    }
+    .news_body{
+        padding: 72px 188px 25px 188px;
+    }
+    
 }

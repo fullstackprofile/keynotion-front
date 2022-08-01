@@ -51,13 +51,14 @@
     margin-left: 14px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .anyQuestions{
         padding: 20px 188px; 
     }
     .anyQuestions_content{
         align-items: center;
         flex-direction: column;
+        margin-top: 30px;
     }
     .anyQuestions_form{
         width: 100%;
@@ -65,9 +66,9 @@
     
 }
 
-@media (max-width: 800px) {
+@media (max-width: 798px) {
     .anyQuestions{
-        padding: 10px 100px; 
+        padding: 10px 75px; 
     }
     .anyQuestions_content{
         flex-direction: column;
@@ -86,6 +87,9 @@
     }
     .dialog_content input{
         font-size: 14px;
+    }
+    .dialog_content_info_title {
+        font-size: 18px;
     }
     
 }

@@ -7,7 +7,7 @@ import useIsMobile from '../../../../Helpers/helpers'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Link from 'next/link'
 import { DropdownMenu } from './dropdownMenu/DropdownMenu'
-import styles from './HeaderNavbar.module.css'
+import styles from './MobileMenu.module.css'
 import Image from 'next/image'
 import { DropdownMenu_2 } from './dropdownMenu_2/DropdownMenu_2'
 
@@ -114,7 +114,10 @@ export const MobileMenu = ({ blog }) => {
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
-      <div className={styles.HeaderNavbar}>
+      <div
+        style={{ position: 'absolute', left: '10px' }}
+        className={styles.HeaderNavbar}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -132,6 +135,7 @@ export const MobileMenu = ({ blog }) => {
             flexShrink: 0,
             '& .MuiDrawer-paper': {
               width: drawerWidth,
+              paddingTop: '150px',
             },
           }}
           variant="persistent"
@@ -150,24 +154,24 @@ export const MobileMenu = ({ blog }) => {
             <ul className={styles.nav_items}>
               {!blog
                 ? HeaderNavbarItems.map(({ title, href, modal }) => (
-                    <li key={title} className={styles.nav_item}>
+                    <li key={title}>
                       {modal ? (
                         <DropdownMenu title={title} modal={modal} />
                       ) : href ===
                         'https://www.flickr.com/photos/187400605@N02/albums' ? (
                         <a href={href} target="_blank" rel="noreferrer">
-                          <p className={styles.menu_item}>{title}</p>
+                          <p>{title}</p>
                         </a>
                       ) : (
                         <Link href={href}>
-                          <p className={styles.menu_item}>{title}</p>
+                          <p>{title}</p>
                         </Link>
                       )}
                     </li>
                   ))
                 : HeaderNavbarItems_2.map(
                     ({ title, modal_1, modal, subTitle, href }) => (
-                      <li key={title} className={styles.nav_item}>
+                      <li key={title}>
                         {modal_1 ? (
                           <DropdownMenu_2
                             title={title}
@@ -179,7 +183,7 @@ export const MobileMenu = ({ blog }) => {
                           <DropdownMenu title={title} modal={modal} />
                         ) : (
                           <Link href={href}>
-                            <p className={styles.menu_item}>{title}</p>
+                            <p>{title}</p>
                           </Link>
                         )}
                       </li>

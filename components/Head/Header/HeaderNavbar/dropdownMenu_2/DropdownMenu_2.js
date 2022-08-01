@@ -5,6 +5,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 
 import styles from './DropdownMenu_2.module.css'
 import Link from 'next/link'
+import useIsMobile from '../../../../../Helpers/helpers'
 
 const dropdownIcons = [
   {
@@ -35,6 +36,7 @@ const dropdownIcons = [
 
 export const DropdownMenu_2 = ({ title, modal, modal_1 }) => {
   const [open, setOpen] = React.useState(false)
+  const isMobile = useIsMobile()
 
   const handleOpen = () => {
     setOpen(!open)
@@ -57,8 +59,18 @@ export const DropdownMenu_2 = ({ title, modal, modal_1 }) => {
               </div>
             </div>
             {open && (
-              <div className={styles.dropedMenu}>
-                <div className={styles.dropedMenu_up}>
+              <div
+                className={
+                  isMobile <= 900 ? styles.dropedMenuMobile : styles.dropedMenu
+                }
+              >
+                <div
+                  className={
+                    isMobile <= 900
+                      ? styles.dropedMenu_upMobile
+                      : styles.dropedMenu_up
+                  }
+                >
                   <div className={styles.left}>
                     {modal_1.map(
                       ({ modalTitle, href, modalTitle_1, subTitle }, index) => (

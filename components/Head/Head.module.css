@@ -1,6 +1,5 @@
 .Head{
     padding-top: 32px;
-   
     padding-bottom: 189px;
     background:linear-gradient(180deg, #FFFFFB 56.57%, #e1e1e1 109.92%) ;
 }
@@ -8,4 +7,16 @@
 .Head_{
     width: 80%;
     margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .Head{
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 798px) {
+    .Head{
+        padding-bottom: 40px;
+    }
 }

@@ -27,10 +27,19 @@
     position: absolute;
     z-index: 9999;
     width: 500px;
+    right: 175px;
     top: 100px;
     border: 0.5px solid #B8B8B8; 
     border-radius: 6px;
-    /* justify-content: space-between; */
+}
+
+.dropedMenuMobile {
+    background-color: #FAFAFA;
+    position: absolute;
+    z-index: 9999;
+    width: 160px;
+    border: 0.5px solid #B8B8B8; 
+    border-radius: 6px;
 }
 
 .dropedMenu_up{
@@ -39,10 +48,13 @@
     justify-content: space-between;
 }
 
+.dropedMenu_upMobile{
+    display: block;
+}
+
 .dropdown_{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .dropedMenu_item:not(:last-child){
