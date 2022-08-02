@@ -22,7 +22,7 @@ export const Header = ({ blog }) => {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
   }
-
+  console.log(isMobile, 'isMobile')
   const [openLogin, setOpenLogin] = React.useState(false)
   const [openSingup, setOpenSingup] = React.useState(false)
   const [openForgot, setOpenForgot] = React.useState(false)
@@ -106,7 +106,7 @@ export const Header = ({ blog }) => {
                 transparent
               />
             </div>
-            <div style={{ marginTop: '10px' }}>
+            <div style={{ marginTop: isMobile <= 800 ? '10px' : '0px' }}>
               <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
             </div>
           </div>

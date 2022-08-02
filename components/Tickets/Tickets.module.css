@@ -18,3 +18,29 @@
     margin-left: auto;
     margin-right: auto;
 }
+@media (max-width: 1024px) {
+    .tickets{
+        padding-top: 80px;
+    }
+    .tickets_block{
+        margin-top: 80px;
+        
+    }
+    .ticket_{
+        width: 80%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .tickets{
+        padding-top: 20px;
+    }
+    .tickets_block{
+        margin-top: 40px;
+        
+    }
+    .ticket_{
+        width: 100%;
+    }
+}

@@ -79,3 +79,22 @@
     color: red;
     margin-top: 12px;
 }
+
+@media (max-width: 768px) {
+    .dialog_title{
+        font-size: 32px;
+        margin-bottom: 0px;
+    }
+    .dialog_label{
+        font-size: 16px;
+        padding-left: 32px;
+        margin-bottom: 12px;
+    }
+    .remember_label{
+        font-size: 14px;
+    }
+    .forget_title {
+        font-size: 16px;
+
+    }
+}  

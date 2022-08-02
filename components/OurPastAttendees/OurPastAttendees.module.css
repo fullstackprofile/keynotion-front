@@ -60,7 +60,7 @@
 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .ourPastAttendees{
         padding: 60px 15px;
     }
@@ -72,7 +72,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .ourPastAttendees{
         padding: 20px 15px;
     }
@@ -82,4 +82,8 @@
     .title{
         font-size: 28px;
     }
+    .OurPastAttendees_content{
+        margin-top: 16px;
+    }
+    
 }

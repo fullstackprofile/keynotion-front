@@ -10,13 +10,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    
-    
 }
-
-
-
-
 
 .content{
     width: 33%;
@@ -55,4 +49,25 @@
 
 .btn{
     margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+    .relatedEvents{
+        padding-bottom: 60px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .relatedEvents{
+        padding-bottom: 30px;
+    }
+    .body {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .content {
+        width: 100%;
+    }
+
 }

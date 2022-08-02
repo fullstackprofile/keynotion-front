@@ -127,3 +127,29 @@
     display: flex;
     justify-content: center;
 }
+
+
+
+@media (max-width: 1024px) {
+    .price{
+        font-size: 34px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .price{
+        font-size: 28px;
+    }
+    .content_body{
+        padding: 10px 0;
+    }
+    .content{
+        margin-top: 32px;
+        padding: 10px;
+    }
+    .content_price{
+        width: 100%;
+    }
+    
+}

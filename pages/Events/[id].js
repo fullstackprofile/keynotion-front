@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Cpd } from '../../components/Cpd/Cpd'
 
-import { EventsHead } from '../../components/EventsHead/EventsHead'
 import { EventsInnerHeading } from '../../components/EventsInnerHeading/EventsInnerHeading'
 import { KeySpeakers } from '../../components/KeySpeakers/KeySpeakers'
 import { AboutTheEvent } from '../../components/AboutTheEvent/AboutTheEvent'
@@ -13,7 +12,6 @@ import { OurPastAttendees } from '../../components/OurPastAttendees/OurPastAtten
 import { TheVenue } from '../../components/TheVenue/TheVenue'
 import { DontMiss } from '../../components/DontMiss/DontMiss'
 import { Subscribe } from '../../components/Subscribe/Subscribe'
-import { Footer } from '../../components/Footer/Footer'
 import axios from 'axios'
 import MainLayoutt from '../../layouts/MainLayoutt'
 
@@ -108,10 +106,3 @@ export async function getServerSideProps(context) {
     props: { data: data.data },
   }
 }
-
-// export const getServerSideProps = async () => {
-
-//     return {
-//       props: {data}
-//     }
-//   }

@@ -21,6 +21,7 @@ function GoogleMaps({ lat, lng }) {
   })
 
   const [map, setMap] = useState(null)
+  console.log(map, 'map')
 
   const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds(center)
@@ -32,7 +33,8 @@ function GoogleMaps({ lat, lng }) {
     setMap(null)
   }, [])
 
-  return isLoaded ? (
+  if (!isLoaded) return <div>Loading ...</div>
+  return (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -41,10 +43,7 @@ function GoogleMaps({ lat, lng }) {
       onUnmount={onUnmount}
     >
       <Marker key="marker_1" position={center} />
-      <></>
     </GoogleMap>
-  ) : (
-    <></>
   )
 }
 

@@ -67,7 +67,6 @@
     padding-right: 12px;
 }
 
-
 .usersMenu_item{
     font-weight: 500;
     font-size: 20px;
@@ -76,12 +75,9 @@
 
 }
 
-
 .usersdetails{
     width: 55%;
 }
-
-
 
 .liner{
     background: linear-gradient(90.33deg, #623D90 2.4%, #9F0B00 99.72%);
@@ -92,5 +88,28 @@
     cursor: pointer;
 }
 
-/* ==================================== */
+@media (max-width: 1000px) {
+    .body{
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0px 60px 0px;
+
+    }
+    .usersMenu{
+        width: 90%;
+    }
+    .usersdetails{
+        width: 80%;
+    }
+
+}
+@media (max-width: 768px) {
+    .first_name{
+        font-size: 18px;
+    }
+    .last_name{
+        font-size: 18px;
+    }
+
+}
 

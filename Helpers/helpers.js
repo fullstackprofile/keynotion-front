@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default function useIsMobile() {
-  const [isMobile, setIsMobile] = useState()
+  const [isMobile, setIsMobile] = useState(1590)
 
   useEffect(() => {
     const onResize = () => {

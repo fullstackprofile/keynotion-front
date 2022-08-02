@@ -2,11 +2,7 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 130%;
-    /* identical to box height, or 130% */
-
-
     color: #121212;
-
 }
 
 .vacance_body .vacance_body_content:not(:last-child){
@@ -14,7 +10,6 @@
 }
 
 .subtitles{
-    
     margin-top: 16px;
 }
 
@@ -60,4 +55,29 @@
     font-size: 20px;
     line-height: 130%;
     color: #121212;
+}
+
+
+@media (max-width: 1024px) {
+    .vacance_title{
+        font-size: 28px;
+    }
+    .subtitle {
+font-size: 16px;
+    }
+    .subtitle_body_text_ {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vacance_title{
+        font-size: 18px;
+    }
+    .subtitle {
+        font-size: 14px;
+    }
+    .subtitle_body_text_ {
+        font-size: 16px;
+    }
 }

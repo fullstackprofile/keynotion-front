@@ -1,8 +1,5 @@
 .ticketsOnline{
-    padding-top: 72px;
-    padding-bottom: 120px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 72px 30px 120px 30px;
 }
 
 .body{
@@ -72,3 +69,43 @@
     background-clip: text;
     text-fill-color: transparent;
 }
+
+@media (max-width: 1024px) {
+    .ticketsOnline{
+        padding: 30px 30px 40px 30px;
+    }
+    .body{
+        width: 75%;
+    }
+    .left_title{
+        font-size: 22px;
+    }
+    .right_title{
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticketsOnline{
+        padding: 20px 30px 30px 30px;
+    }
+
+    .body{
+        width: 100%;
+        padding: 20px;
+    }
+    .left_title{
+        font-size: 18px;
+    }
+    .right_title{
+        font-size: 18px;
+    }
+    .right_subTitle{
+        font-size: 16px;
+    }
+    .right{
+        padding-left: 10px;
+    }
+
+}
+

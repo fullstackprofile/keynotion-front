@@ -83,6 +83,9 @@
     .news_body{
         padding: 72px 188px 50px 188px;
     }
+    .img_text{
+        font-size: 28px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -90,16 +93,19 @@
         padding-bottom: 20px;
     }
     .news_body{
-        padding: 72px 188px 40px 188px;
+        padding: 72px 40px 40px 40px;
     }
-}
-
-@media (max-width: 385px) {
-    .news{
-        padding-bottom: 15px;
-    }
-    .news_body{
-        padding: 72px 188px 25px 188px;
+    .description_text{
+        font-size: 16px;
     }
     
+    .action{
+        font-size: 16px;
+    }
+    .answer{
+        font-size: 16px;
+    }
+    .img_text{
+        font-size: 22px;
+    }
 }

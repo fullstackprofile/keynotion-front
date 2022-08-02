@@ -60,7 +60,7 @@
 
 @media (max-width: 768px) {
     .event{
-        padding: 10px 60px 20px 60px;
+        padding: 10px 60px 5px 60px;
     }
     .event_category{
         padding-left: 0px;
@@ -80,9 +80,6 @@
     }
     .events{
         justify-content: center;
-    }
-    .event{
-        padding-bottom: 90px;
     }
 }
 

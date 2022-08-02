@@ -3,16 +3,14 @@ import axios from 'axios'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { Input } from '../Input/Input'
-
 import { getCookies, setCookies } from 'cookies-next'
 import { ButtonComp } from '../Button/Button'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
-
 import styles from './Login.module.css'
 import { setCookie } from 'nookies'
+import useIsMobile from '../../Helpers/helpers'
 
 const LoginSchema = yup.object().shape({
   email: yup.string().email().required('please Enter your Email'),
@@ -22,6 +20,7 @@ const LoginSchema = yup.object().shape({
 export const cookie = getCookies('token')
 
 export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
+  const isMobile = useIsMobile()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       checked: false,
@@ -58,8 +57,16 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
 
   return (
     <>
-      <Dialog open={open} onClose={handleClose}>
-        <div className={styles.dialog_head}>
+      <Dialog
+        PaperProps={{ sx: { width: '100%', padding: '10px' } }}
+        open={open}
+        onClose={handleClose}
+        sx={{
+          padding: '10px',
+          width: '100%',
+        }}
+      >
+        <div style={{ width: '80%' }} className={styles.dialog_head}>
           <p className={styles.dialog_title}>Sign In</p>
           <div className={styles.dialog_close} onClick={handleClose}>
             <Image src="/closeIcon.png" width={36} height={36} />

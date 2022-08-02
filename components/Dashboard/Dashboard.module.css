@@ -24,3 +24,17 @@
     text-fill-color: transparent;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .dashboard_body{
+        padding-top: 20px;
+
+    }
+    .usersMenu{
+        width: 90%;
+    }
+    .usersdetails{
+        width: 80%;
+    }
+
+}

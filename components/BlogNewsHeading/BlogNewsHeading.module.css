@@ -2,9 +2,8 @@
     margin: 0 60px;
     margin-top: 32px;
     background: #FAFAFA;
-    padding-left: 48px;
-    padding-top: 22px;
-    padding-bottom: 22px;
+    padding: 22px 0px 22px 48px;
+
 }
 
 .blogHeading_content{
@@ -43,4 +42,21 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .blogNewsHeading{
+        margin: 0 5px;
+        padding: 22px 0px 22px 5px;
+    }
+    .home{
+        font-size: 16px;
+    }
+    
+    .blog{
+        font-size: 16px;
+    }
+    .news{
+        font-size: 16px;
+    }
 }

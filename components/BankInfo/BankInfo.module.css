@@ -49,3 +49,10 @@
     line-height: 130%;
     color: #121212;
 }
+
+@media (max-width: 768px) {
+    .bankInfo{
+        padding-bottom: 10px;
+        padding-top:10px;
+    }
+}

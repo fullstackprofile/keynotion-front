@@ -1,5 +1,5 @@
 import React from 'react'
-import { Title } from '../Title/Title'
+import { Title } from '../TItle/Title'
 
 import styles from './BankInfo.module.css'
 

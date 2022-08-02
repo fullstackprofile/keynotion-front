@@ -15,7 +15,7 @@
     justify-content: space-between;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .whoWeAre{
         padding: 20px 220px;
     }
@@ -25,20 +25,20 @@
   
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .whoWeAre_content {
         flex-direction: column;
     }
     .whoWeAre{
-        padding: 10px 180px;
+        padding: 10px 80px;
         background: #FAFAFA;
     }
   
 }
 
-@media (max-width: 600px) {
+@media (max-width: 486px) {
     .whoWeAre{
-        padding: 10px 120px;
+        padding: 10px 40px;
     }
 }
 
