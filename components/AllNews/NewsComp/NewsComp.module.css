@@ -4,10 +4,8 @@
 }
 
 .name_date{
-    margin-top: 18px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 5px;
 }
 
 .news_img{
@@ -16,12 +14,6 @@
     width: 100%;
     height: 400px;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover ;
-    /* border-top: 1px solid #B8B8B8;
-    border-left: 1px solid #B8B8B8; 
-    border-right: 1px solid #B8B8B8;  */
-    border-radius: 6px; 
     position: relative;
 }
 
@@ -30,14 +22,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover ;
-    /* border-top: 1px solid #B8B8B8;
-    border-left: 1px solid #B8B8B8; 
-    border-right: 1px solid #B8B8B8;  */
     border-radius: 6px; 
     position: relative;
 }
 
 .name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     font-weight: 600;
     font-size: 20px;
     line-height: 130%;
@@ -51,10 +43,9 @@
     background-origin: border-box !important;
     background-clip: content-box, border-box !important;
     box-shadow: 2px 1000px 1px #fff inset !important;
-    padding: 14px;
     border-radius: 3px;
     text-align: center;
-    position: relative;
+    width: 150px;
 }
 
 .date{

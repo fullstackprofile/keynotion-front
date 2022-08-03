@@ -10,6 +10,7 @@ import { AllNews } from '../../../components/AllNews/AllNews'
 import MainLayoutt from '../../../layouts/MainLayoutt'
 
 const TitlePage = ({ data }) => {
+  console.log(data, 'databack')
   const {
     query: { title },
   } = useRouter()

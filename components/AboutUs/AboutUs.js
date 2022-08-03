@@ -1,6 +1,5 @@
 import React from 'react'
 import { AboutEvantsCart } from '../AboutEvants/AboutEvantsCart/AboutEvantsCart'
-
 import styles from './AboutUs.module.css'
 import { AboutUsCard } from './AboutUsCard/AboutUsCard'
 

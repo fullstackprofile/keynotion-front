@@ -2,10 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../AppContext/AppContext'
-
 import styles from './CardContent.module.css'
 import { CardItem } from './CardItem/CardItem'
-
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { CouponForm } from './CouponForm/CouponForm'

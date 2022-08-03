@@ -1,14 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
 import axios from 'axios'
-
 import styles from './CheckOutBody.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import { Country } from '../Country/Country'
@@ -74,7 +70,7 @@ export const CheckOutBody = ({
     // defaultValues :{
     //   order_type : "Invoice - Direct Bank Transfer"
     // }
-    // resolver: yupResolver(CheckOutBodysSchema)
+    // resolver: yupResolver(CheckOutBodysSchema),
   })
 
   // const watchShowAge = watch("order_type");

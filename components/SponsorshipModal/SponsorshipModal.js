@@ -169,10 +169,10 @@ export const SponsorshipModal = ({
                     control={control}
                     render={({ field, fieldState: { error } }) => (
                       <div className={styles.dialog_content}>
-                        <Input
-                          type="text"
+                        <TextArea
+                          litle={true}
+                          placeholder="Proposal"
                           {...field}
-                          placeholder="Presentation Proposal"
                         />
                         <p className={styles.error}>{error?.message}</p>
                       </div>
@@ -185,7 +185,11 @@ export const SponsorshipModal = ({
                     control={control}
                     render={({ field, fieldState: { error } }) => (
                       <div className={styles.dialog_content}>
-                        <Input type="text" {...field} placeholder="Comments" />
+                        <TextArea
+                          litle={true}
+                          placeholder="Comments"
+                          {...field}
+                        />
                         <p className={styles.error}>{error?.message}</p>
                       </div>
                     )}

@@ -5,7 +5,10 @@ import { ButtonComp } from '../Button/Button'
 
 import styles from './EmptyCard.module.css'
 
-export const EmptyCard = () => {
+export const EmptyCard = ({
+  title = 'YOUR CART IS CURRENTLY EMPTY.',
+  btnTitle = 'Return To Shop',
+}) => {
   const router = useRouter()
   const goEvents = () => router.push('/Events')
   return (
@@ -13,10 +16,10 @@ export const EmptyCard = () => {
       <div className={styles.emptyCard_body}>
         <div className={styles.left}>
           <div className={styles.left_block}>
-            <p className={styles.left_title}>YOUR CART IS CURRENTLY EMPTY.</p>
+            <p className={styles.left_title}>{title}</p>
           </div>
           <div className={styles.left_btn}>
-            <ButtonComp title="Return To Shop" onClick={goEvents} />
+            <ButtonComp title={btnTitle} onClick={goEvents} />
           </div>
         </div>
         <div className={styles.right}>

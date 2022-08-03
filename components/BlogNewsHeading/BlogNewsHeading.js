@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-
 import styles from './BlogNewsHeading.module.css'
 
 export const BlogNewsHeading = () => {

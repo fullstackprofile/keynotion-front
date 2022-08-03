@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 import { Title } from '../TItle/Title'
-
 import styles from './AboutTheEvent.module.css'
 
 export const AboutTheEvent = ({ about, cover }) => {

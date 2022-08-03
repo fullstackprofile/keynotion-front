@@ -1,5 +1,4 @@
 import { AboutEvantsCart } from './AboutEvantsCart/AboutEvantsCart'
-
 import styles from './AboutEvants.module.css'
 
 const AboutEvantsItems = [

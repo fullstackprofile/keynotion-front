@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '@mui/material'
-
 import styles from './SmallButton.module.css'
 
 export const SmallButton = ({ title, transparent, onClick }) => {

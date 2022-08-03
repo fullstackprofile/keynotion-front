@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
-
 import styles from './NewsComp.module.css'
 
 export const NewsComp = ({ title, date, id, cover, title_, index, length }) => {
   let arr1 = []
-
   let count = 1
   let number = 4
   for (let i = 0; i <= length; i++) {
@@ -18,7 +16,6 @@ export const NewsComp = ({ title, date, id, cover, title_, index, length }) => {
       arr1.push(i)
     }
   }
-
   return (
     <div className={styles.news}>
       <Link href={`/Blog/${title_}/${id}`}>
@@ -35,7 +32,6 @@ export const NewsComp = ({ title, date, id, cover, title_, index, length }) => {
           ></div>
         </div>
       </Link>
-
       <div className={styles.name_date}>
         <p className={styles.name}>{title}</p>
         <div className={styles.date_block}>

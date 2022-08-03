@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
-
 import styles from './Accardion.module.css'
 import Image from 'next/image'
 
 export const Accardion = ({ title, subTitle, round, formBack }) => {
   const [show, setShow] = useState(false)
-
   return (
     <>
       <div className={styles.accordion}>

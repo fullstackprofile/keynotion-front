@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
 import { ButtonComp } from '../../Button/Button'
-
 import styles from './AboutEvantsCart.module.css'
 
 export const AboutEvantsCart = ({ title, href }) => {

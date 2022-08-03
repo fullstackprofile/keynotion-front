@@ -18,11 +18,11 @@ import useIsMobile from '../../../Helpers/helpers'
 
 export const Header = ({ blog }) => {
   const isMobile = useIsMobile()
+
   function Logout() {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
   }
-  console.log(isMobile, 'isMobile')
   const [openLogin, setOpenLogin] = React.useState(false)
   const [openSingup, setOpenSingup] = React.useState(false)
   const [openForgot, setOpenForgot] = React.useState(false)
@@ -55,7 +55,9 @@ export const Header = ({ blog }) => {
 
   const router = useRouter()
 
-  const goCard = () => router.push('/Card')
+  const goCard = () => {
+    !login ? router.push('/Card') : router.push('/UserPage/Orders')
+  }
   const goUserPage = () => router.push('/UserPage')
 
   const cookie = parseCookies('token')

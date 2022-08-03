@@ -5,10 +5,8 @@ import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { TextArea } from '../TextArea/TextArea'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
 import styles from './AnyQuestions.module.css'
 import axios from 'axios'
 import { parseCookies } from 'nookies'

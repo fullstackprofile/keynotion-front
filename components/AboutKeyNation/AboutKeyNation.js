@@ -1,11 +1,8 @@
 import React from 'react'
-
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
 import { ButtonComp } from '../Button/Button'
 import { Title } from '../TItle/Title'
-
 import styles from './AboutKeyNation.module.css'
 
 export const AboutKeyNation = () => {

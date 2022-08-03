@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react'
-
 import { Controller, useForm } from 'react-hook-form'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
 import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
-
 import styles from './AccountDetails.module.css'
 
 export const AccountDetails = ({ user }) => {

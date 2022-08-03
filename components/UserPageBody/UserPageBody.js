@@ -12,6 +12,7 @@ import styles from './UserPageBody.module.css'
 import { Dashboard } from '../Dashboard/Dashboard'
 import { AccountDetails } from '../AccountDetails/AccountDetails'
 import { BilingAddress } from '../BilingAddress/BilingAddress'
+import UserOrders from '../UserOrders/UserOrders'
 
 export const UserPageBody = ({ title }) => {
   const router = useRouter()
@@ -121,6 +122,7 @@ export const UserPageBody = ({ title }) => {
           )}
           {title == 'AccountDetails' && <AccountDetails user={user} />}
           {title == 'Address' && <BilingAddress user={user} />}
+          {title == 'Orders' && <UserOrders />}
         </div>
       </div>
     </div>
