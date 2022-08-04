@@ -1,10 +1,8 @@
 import React from 'react'
-import Head from 'next/head'
 import { ConectusHeading } from '../components/ConectusHeading/ConectusHeading'
 import { OurNumbers } from '../components/OurNumbers/OurNumbers'
 import { OurEmails } from '../components/OurEmails/OurEmails'
 import { ConectUsAnyQuestions } from '../components/ConectUsAnyQuestions/ConectUsAnyQuestions'
-
 import GoogleMaps from '../components/GoogleMaps/GoogleMaps'
 import MainLayoutt from '../layouts/MainLayoutt'
 

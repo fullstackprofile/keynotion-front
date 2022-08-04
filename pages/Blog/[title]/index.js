@@ -1,16 +1,12 @@
 import React from 'react'
-
 import axios from 'axios'
-
 import { useRouter } from 'next/router'
-
 import { BlogHeading } from '../../../components/BlogHeading/BlogHeading'
 import { AllNews } from '../../../components/AllNews/AllNews'
-
 import MainLayoutt from '../../../layouts/MainLayoutt'
 
 const TitlePage = ({ data }) => {
-  console.log(data, 'databack')
+  console.log(data)
   const {
     query: { title },
   } = useRouter()
@@ -30,7 +26,9 @@ export async function getServerSideProps(context) {
 
   console.log(params.title)
 
-  const { data } = await axios.get(`http://laratest.key-notion.com/api/news`)
+  const { data } = await axios.get(
+    `http://laratest.key-notion.com/api/news_api`
+  )
 
   return {
     props: { data: data.data },

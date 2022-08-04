@@ -56,7 +56,7 @@ export const Header = ({ blog }) => {
   const router = useRouter()
 
   const goCard = () => {
-    !login ? router.push('/Card') : router.push('/UserPage/Orders')
+    router.push('/Card')
   }
   const goUserPage = () => router.push('/UserPage')
 

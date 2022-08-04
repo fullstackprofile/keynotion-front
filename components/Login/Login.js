@@ -66,7 +66,7 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
           width: '100%',
         }}
       >
-        <div style={{ width: '80%' }} className={styles.dialog_head}>
+        <div className={styles.dialog_head}>
           <p className={styles.dialog_title}>Sign In</p>
           <div className={styles.dialog_close} onClick={handleClose}>
             <Image src="/closeIcon.png" width={36} height={36} />

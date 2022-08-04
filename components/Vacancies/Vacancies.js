@@ -1,8 +1,6 @@
 import React from 'react'
-
 import { Title } from '../TItle/Title'
 import { Vacance } from './Vacance/Vacance'
-
 import styles from './Vacancies.module.css'
 
 export const Vacancies = ({ data }) => {

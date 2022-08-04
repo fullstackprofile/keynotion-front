@@ -1,16 +1,12 @@
 import React, { useContext } from 'react'
-
 import { CheckOutBody } from '../components/CheckOutBody/CheckOutBody'
-
 import MainLayoutt from '../layouts/MainLayoutt'
-
 import AppContext from '../components/AppContext/AppContext'
 
 export default function CheckOut() {
   const context = useContext(AppContext)
   const index = context.session.index
   const items = context.session.itemsss
-
   return (
     <MainLayoutt>
       <div>

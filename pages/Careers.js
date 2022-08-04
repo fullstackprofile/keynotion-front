@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { CareersHeading } from '../components/CareersHeading/CareersHeading'
 import { CareersIcons } from '../components/CareersIcons/CareersIcons'
 import { Vacancies } from '../components/Vacancies/Vacancies'

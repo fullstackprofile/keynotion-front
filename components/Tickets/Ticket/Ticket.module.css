@@ -126,10 +126,8 @@
 .btn{
     display: flex;
     justify-content: center;
+
 }
-
-
-
 @media (max-width: 1024px) {
     .price{
         font-size: 34px;

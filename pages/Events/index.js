@@ -1,11 +1,8 @@
 import React from 'react'
-
 import axios from 'axios'
-
 import { AnyQuestions } from '../../components/AnyQuestions/AnyQuestions'
 import { Event } from '../../components/Event/Event'
 import { EventsHeading } from '../../components/EventsHead/EventsHeading/EventsHeading'
-
 import MainLayoutt from '../../layouts/MainLayoutt'
 
 export default function Events({ data }) {
@@ -26,7 +23,6 @@ export default function Events({ data }) {
 
 export const getServerSideProps = async () => {
   const { data } = await axios.get('http://laratest.key-notion.com/api/events')
-
   return {
     props: { data },
   }

@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
-
 import Head from 'next/head'
-
 import { UserPageBody } from '../../../components/UserPageBody/UserPageBody'
 import { EventsHead } from '../../../components/EventsHead/EventsHead'
-
 import { useRouter } from 'next/router'
-
 import { parseCookies } from 'nookies'
-
 import axios from 'axios'
 
 export default function UserPage() {

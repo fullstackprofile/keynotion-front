@@ -1,24 +1,8 @@
 import React from 'react'
-
 import { ButtonComp } from '../../Button/Button'
-
 import { useContext, useState } from 'react'
 import AppContext from '../../AppContext/AppContext'
-
 import styles from './Ticket.module.css'
-
-// const items= [
-//             {
-//                 "id": 1,
-//                 "slug": "test",
-//                 "title": "Access to 2 days event (presentations/panel discussions/breakout sessions)"
-//             },
-//             {
-//                 "id": 2,
-//                 "slug": "geafdsf",
-//                 "title": "Access to Speaker Presentations"
-//             }
-//         ]
 
 export const Ticket = ({
   price,
@@ -36,6 +20,8 @@ export const Ticket = ({
   console.log(context.session, 'session ticket')
 
   const onBook = () => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     const obj = {
       price: price,
       type: type,

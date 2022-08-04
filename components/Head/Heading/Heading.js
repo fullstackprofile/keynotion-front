@@ -1,10 +1,7 @@
 import React from 'react'
-
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-
 import { ButtonComp } from '../../Button/Button'
-
 import styles from './Heading.module.css'
 
 export const Heading = () => {

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
 import Image from 'next/image'
-
 import { destroyCookie, parseCookies } from 'nookies'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
 import styles from './UserPageBody.module.css'
-
 import { Dashboard } from '../Dashboard/Dashboard'
 import { AccountDetails } from '../AccountDetails/AccountDetails'
 import { BilingAddress } from '../BilingAddress/BilingAddress'

@@ -7,9 +7,13 @@ import { CardItem } from './CardItem/CardItem'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { CouponForm } from './CouponForm/CouponForm'
+import { useRouter } from 'next/router'
+import { Login } from '../../components/Login/Login'
 
 export const CardContent = () => {
+  const [openForgot, setOpenForgot] = React.useState(false)
   const cookie = parseCookies('token')
+  const router = useRouter()
 
   const config = {
     headers: { Authorization: `Bearer ${cookie.token}` },
@@ -55,6 +59,16 @@ export const CardContent = () => {
   const handleClose = () => {
     setOpenLogin(false)
   }
+  const handleClickOpenForgot = () => {
+    setOpenLogin(false)
+    setOpenForgot(true)
+  }
+
+  const [login, setLogin] = useState()
+
+  useEffect(() => {
+    cookie.token ? setLogin(true) : setLogin(false)
+  }, [cookie])
 
   return (
     <div className={styles.body}>
@@ -132,7 +146,9 @@ export const CardContent = () => {
             </div>
             <p className={styles.return_text}>
               Returning Customer?{' '}
-              <span className={styles.liner}>Click Here To Login</span>
+              <span onClick={handleClickOpen} className={styles.liner}>
+                Click Here To Login
+              </span>
             </p>
           </div>
         )}
@@ -151,6 +167,11 @@ export const CardContent = () => {
         </div>
         {open && <CouponForm />}
       </div>
+      <Login
+        open={openLogin}
+        handleClose={handleClose}
+        handleClickOpenForgot={handleClickOpenForgot}
+      />
     </div>
   )
 }

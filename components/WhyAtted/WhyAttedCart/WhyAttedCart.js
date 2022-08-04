@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-
 import styles from './WhyAttedCart.module.css'
 
 export const WhyAttedCart = ({ title, subTitle }) => {

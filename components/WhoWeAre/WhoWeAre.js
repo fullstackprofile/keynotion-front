@@ -1,12 +1,8 @@
-import { height, width } from '@mui/system'
 import Image from 'next/image'
 import React from 'react'
 import { SponsershipBenefitsItem } from '../SponsershipBenefits/SponsershipBenefitsItem/SponsershipBenefitsItem'
-
 import { Title } from '../TItle/Title'
-
 import styles from './WhoWeAre.module.css'
-
 const content = [
   {
     src: '/OurMisson.svg',
