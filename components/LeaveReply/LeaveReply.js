@@ -1,17 +1,14 @@
 import React from 'react'
-
 import { Title } from '../TItle/Title'
-
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { TextArea } from '../TextArea/TextArea'
-
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
 import styles from './LeaveReply.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import { Checkbox } from '@mui/material'
+import axios from 'axios'
 
 const LeaveReplySchema = yup.object().shape({
   name: yup.string().required('please Enter your Name'),
@@ -21,20 +18,33 @@ const LeaveReplySchema = yup.object().shape({
   save: yup.boolean(),
 })
 
-export const LeaveReply = () => {
+export const LeaveReply = ({ id }) => {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(LeaveReplySchema),
   })
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = async (dataSponsor) => {
+    const dataToSend = {
+      email: dataSponsor.email,
+      name: dataSponsor.name,
+      website: dataSponsor.website,
+      phone_number: dataSponsor.phone_number,
+      news_id: id,
+      comment: dataSponsor.comment,
+    }
+
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/comment-store',
+      dataToSend
+    )
     console.log(data)
-  })
+  }
 
   return (
     <div className={styles.leaveReply}>
       <Title title_2="Leave a Reply" full />
       <div className={styles.leaveReply_form}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="comment"
             control={control}

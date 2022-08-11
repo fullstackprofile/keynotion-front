@@ -59,4 +59,8 @@
         flex-wrap: wrap;
         padding: 10px;
     }
+    .item_title{
+        font-size: 12px;
+    }
+    
 }

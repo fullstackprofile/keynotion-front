@@ -1,0 +1,20 @@
+.commnets{
+    padding: 50px 100px;
+}
+.commnetsAvatar {
+    display: flex;
+    align-items: center;
+}
+.comment {
+    margin-top: 30px;
+}
+.date {
+    margin-top: 30px;
+    color: #73838A;
+}
+.users_nameComment {
+    margin-left: 30px;
+}
+.user {
+    font-weight: 600;
+}

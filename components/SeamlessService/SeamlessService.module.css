@@ -127,9 +127,12 @@
         padding: 13px 16px !important;
     }
     .left_title {
-        font-size: 16px;
+        font-size: 12px;
+        margin-bottom: 18px;
     }
     .left_subTitle{
-        font-size: 16px;
+        font-size: 12px;
+        margin-bottom: 18px;
+
     }
 }

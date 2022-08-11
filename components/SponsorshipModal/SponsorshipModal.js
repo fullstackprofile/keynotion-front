@@ -1,16 +1,15 @@
 import React from 'react'
 import ReactSelect from 'react-select'
-
+import axios from 'axios'
 import Image from 'next/image'
 import { Controller, useForm } from 'react-hook-form'
 import { Checkbox, Dialog } from '@mui/material'
 import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
-
 import { yupResolver } from '@hookform/resolvers/yup'
-
 import styles from './SponsorshipModal.module.css'
 import { TextArea } from '../TextArea/TextArea'
+import { setCookie } from 'nookies'
 
 export const SponsorshipModal = ({
   open,
@@ -31,8 +30,75 @@ export const SponsorshipModal = ({
     resolver: yupResolver(SponsorshipSchema),
   })
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = async (dataSponsor) => {
+    if (title === 'Brochure') {
+      console.log(dataSponsor, 'ok')
+      const dataToSendBrochure = {
+        name: dataSponsor.name,
+        surname: dataSponsor.surname,
+        company_name: dataSponsor.company_name,
+        job_title: dataSponsor.job_title,
+        phone: dataSponsor.phone_number,
+        corporate_email: dataSponsor.corporate_email,
+        country: dataSponsor.country,
+        summit_name: dataSponsor.summit_name,
+        comment: dataSponsor.comments,
+        learn: dataSponsor.Learn_about_us.value,
+        other: dataSponsor.your_way_get_us || 'ok',
+      }
+      const { data } = await axios.post(
+        'http://laratest.key-notion.com/api/brochure',
+        dataToSendBrochure
+      )
+      if (data) {
+        handleClose()
+      }
+    }
+    if (title === 'Apply') {
+      console.log(dataSponsor, 'ok1')
+      const dataToSendSpeaker = {
+        name: dataSponsor.name,
+        surname: dataSponsor.surname,
+        company_name: dataSponsor.company_name,
+        job_title: dataSponsor.job_title,
+        phone: dataSponsor.phone_number,
+        corporate_email: dataSponsor.corporate_email,
+        country: dataSponsor.country,
+        summit_name: dataSponsor.summit_name,
+        presentation_proposal: dataSponsor.presentation,
+        learn: dataSponsor.Learn_about_us.value,
+        other: dataSponsor.your_way_get_us || 'ok',
+      }
+      const { data } = await axios.post(
+        'http://laratest.key-notion.com/api/apply_speaker',
+        dataToSendSpeaker
+      )
+      if (data) {
+        handleClose()
+      }
+    }
+    if (title === 'Sponsorship') {
+      const dataToSendSponsor = {
+        name: dataSponsor.name,
+        surname: dataSponsor.surname,
+        company_name: dataSponsor.company_name,
+        job_title: dataSponsor.job_title,
+        phone_number: dataSponsor.phone_number,
+        corporate_email: dataSponsor.corporate_email,
+        country: dataSponsor.country,
+        summit_name: dataSponsor.summit_name,
+        comments: dataSponsor.comments,
+        package_name: dataSponsor.package_name?.value,
+        confirm: dataSponsor.confirm,
+      }
+      const { data } = await axios.post(
+        'http://laratest.key-notion.com/api/sponsorship',
+        dataToSendSponsor
+      )
+      if (data) {
+        handleClose()
+      }
+    }
   }
 
   return (

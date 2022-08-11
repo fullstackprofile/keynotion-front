@@ -17,21 +17,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .title{
-    font-weight: 500;
+    font-weight: 600;
     font-size: 20px;
     line-height: 130%;
     color: #121212;
-    margin-bottom: 22px;
-    margin-top: 32px;
 }
 
 .subTitle{
-    font-weight: 600;
-    font-size: 26px;
-    line-height: 130%;
+    font-size: 24px;
     color: #121212;
     margin-bottom: 40px;
 }
@@ -64,6 +61,9 @@
     line-height: 130%;
     color: #121212;
 }
+.title_block {
+  margin-top: 20px;
+}
 
 
 @media (max-width: 1024px) {
@@ -72,7 +72,6 @@
         font-weight: 400;
     }
     .subTitle {
-      font-weight: 600;
       font-size: 24px;
       line-height: 100%;
       margin-bottom: 30px;
@@ -90,7 +89,6 @@
       font-weight: 500;  
     }
     .subTitle {
-      font-weight: 600;
       font-size: 24px;
       line-height: 120%;
       margin-bottom: 20px;
@@ -104,11 +102,10 @@
 @media (max-width: 768px) {
   .title {  
     font-size: 16px;
-    font-weight: 500;  
+    font-weight: 600;  
   }
   .subTitle {
-    font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 100%;
     margin-bottom: 20px;
   }
@@ -116,5 +113,9 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 80%;
+}
+.testiMonialsCart_block {
+  height: 420px;
+  padding: 30px;
 }
 }

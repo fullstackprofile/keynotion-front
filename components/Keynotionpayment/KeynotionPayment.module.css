@@ -1,5 +1,7 @@
 .accountDetails_body{
-
+display: flex;
+justify-content: space-around;
+margin-top: 30px;
 }
 
 .half{
@@ -19,10 +21,13 @@
     margin-bottom: 12px;
 }
 
+.dialog_contentPaymentPrice{
+    margin-bottom: 22px;
+    width: 25%;
+}
 .dialog_content{
     margin-bottom: 22px;
 }
-
 
 .passwordss{
     margin-top: 48px;
@@ -50,12 +55,24 @@
     margin-top: 48px;
 }
 
+@media (max-width: 1024px) {
+    .accountDetails_body{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .passwordss{
+        width: 70%;
+    }
+}
+
 @media (max-width: 768px) {
-    .passwordss_label{
-        font-size: 16px;
+    .accountDetails_body{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    .dialog_label {
-        font-size: 16px;
+    .passwordss{
+        width: 60%;
     }
-    
 }

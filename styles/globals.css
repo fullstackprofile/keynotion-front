@@ -221,3 +221,12 @@ ymaps[class$="map"]:first-child:not(:last-child) {
 input[name="order_type"] {
 	accent-color: #623D90;
 }
+
+@media (max-width: 368px) {
+ p {
+    font-size: 12px;
+ }
+ span {
+    font-size: 12px;
+ }
+}

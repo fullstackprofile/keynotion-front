@@ -4,7 +4,6 @@ export const convertDateText = (text) => {
 }
 
 export const convertMountName = (text) => {
-  console.log(text)
   const newText = text.slice(0, 6)
   return newText
 }

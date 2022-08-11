@@ -1,8 +1,7 @@
 import React from 'react'
-
 import Image from 'next/image'
-
 import styles from './Sections.module.css'
+import useIsMobile from '../../Helpers/helpers'
 
 const SectionsItems = [
   { img: '/setting.svg', title: 'Manufacturing & Engineering' },
@@ -12,6 +11,7 @@ const SectionsItems = [
 ]
 
 export const Sections = () => {
+  const isMobile = useIsMobile()
   return (
     <div className={styles.unknow}>
       <div className={styles.unknow_content}>
@@ -20,7 +20,12 @@ export const Sections = () => {
             <li className={styles.content_item} key={title}>
               <div className={styles.item}>
                 <div className={styles.icon}>
-                  <Image src={img} alt="img" width={38} height={38} />
+                  <Image
+                    src={img}
+                    alt="img"
+                    width={isMobile >= 768 ? 38 : 20}
+                    height={isMobile >= 768 ? 38 : 20}
+                  />
                 </div>
                 <p className={styles.item_title}>{title}</p>
               </div>

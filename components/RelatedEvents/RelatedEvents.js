@@ -5,53 +5,29 @@ import { Title } from '../TItle/Title'
 
 import styles from './RelatedEvents.module.css'
 
-export const RelatedEvents = () => {
+export const RelatedEvents = ({ data }) => {
   return (
     <div className={styles.relatedEvents}>
       <Title title_2="Related Events" />
       <div className={styles.body}>
-        <div className={styles.content}>
-          <div className={styles.img}>
-            <Image src="/EmptyCard.png" width={496} height={278} />
-          </div>
-          <div className={styles.content_body}>
-            <p>Ticket: Lorem Ipsum</p>
-            <div className={styles.price_block}>
-              <p className={styles.price}>$450.00 - $9,500.00 excl. VAT</p>
+        {data.map((item) => (
+          <div key={item.id} className={styles.content}>
+            <div className={styles.img}>
+              <Image src={item.event_cover} width={496} height={278} />
             </div>
-            <div className={styles.btn}>
-              <ButtonComp title="Select Options" />
-            </div>
-          </div>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.img}>
-            <Image src="/EmptyCard.png" width={496} height={278} />
-          </div>
-          <div className={styles.content_body}>
-            <p>Ticket: Lorem Ipsum</p>
-            <div className={styles.price_block}>
-              <p className={styles.price}>$450.00 - $9,500.00 excl. VAT</p>
-            </div>
-            <div className={styles.btn}>
-              <ButtonComp title="Select Options" />
+            <div className={styles.content_body}>
+              <p>Ticket: {item.event_title}</p>
+              <div className={styles.price_block}>
+                <p className={styles.price}>
+                  {item.min_price}$ - {item.max_price}$ excl. VAT
+                </p>
+              </div>
+              <div className={styles.btn}>
+                <ButtonComp title="Select Options" />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.content}>
-          <div className={styles.img}>
-            <Image src="/EmptyCard.png" width={496} height={278} />
-          </div>
-          <div className={styles.content_body}>
-            <p>Ticket: Lorem Ipsum</p>
-            <div className={styles.price_block}>
-              <p className={styles.price}>$450.00 - $9,500.00 excl. VAT</p>
-            </div>
-            <div className={styles.btn}>
-              <ButtonComp title="Select Options" />
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   )

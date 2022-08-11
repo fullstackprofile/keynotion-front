@@ -122,3 +122,19 @@
     justify-content: center;
     margin-top: 32px;
 }
+
+@media (max-width: 768px) {
+    .labell_name{
+        font-size: 16px;
+    }
+    .form_title{
+        font-size: 18px;
+    }
+    
+    .delegate_title{
+        font-size: 18px;
+    }
+    .dialog_label{
+        font-size: 16px;
+    }
+}

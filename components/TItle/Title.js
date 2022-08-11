@@ -9,9 +9,13 @@ export const Title = ({
   conected,
   full,
   norow,
+  center = true,
 }) => {
   return (
-    <div className={styles.main_title}>
+    <div
+      style={{ alignItems: center ? 'center' : '' }}
+      className={styles.main_title}
+    >
       <div className={conected ? styles.titlescon : styles.titles}>
         <p className={nogradiental ? styles.title_ : styles.title}>{title}</p>
         <p className={styles.title_}>{title_2}</p>

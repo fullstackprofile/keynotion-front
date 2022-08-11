@@ -7,8 +7,9 @@ import { WhyAtted } from '../components/WhyAtted/WhyAtted'
 import { Getinformed } from '../components/GetInformed/Getinformed'
 import { Subscribe } from '../components/Subscribe/Subscribe'
 import MainLayout from '../layouts/MainLayout'
+import axios from 'axios'
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <MainLayout>
       <div>
@@ -17,10 +18,27 @@ export default function Home() {
         <AboutKeyNation />
         <WhyAtted />
         <SeamlessService />
-        <TestiMonials />
-        <Getinformed />
+        <TestiMonials data={data.testiMonialsData} />
+        <Getinformed data={data.getinformedData} />
         <Subscribe />
       </div>
     </MainLayout>
   )
+}
+
+export const getServerSideProps = async () => {
+  const { data: testiMonialsData } = await axios.get(
+    'http://laratest.key-notion.com/api/testimonials'
+  )
+  const { data: getinformedData } = await axios.get(
+    `http://laratest.key-notion.com/api/news_home`
+  )
+  return {
+    props: {
+      data: {
+        testiMonialsData: testiMonialsData.data,
+        getinformedData: getinformedData.data,
+      },
+    },
+  }
 }

@@ -5,6 +5,8 @@ import { BlogNewsHeading } from '../../../components/BlogNewsHeading/BlogNewsHea
 import { News } from '../../../components/News/News'
 import { LeaveReply } from '../../../components/LeaveReply/LeaveReply'
 import MainLayoutt from '../../../layouts/MainLayoutt'
+import Comments from '../../../components/Commnets/Comments'
+
 const BlogNews = ({ data }) => {
   // const {query} = useRouter()
   // const id = query.id
@@ -12,8 +14,9 @@ const BlogNews = ({ data }) => {
     <MainLayoutt>
       <div>
         <BlogNewsHeading />
-        <News data={data} />
-        <LeaveReply />
+        <News data={data.data} />
+        <Comments data={data.dataComment} />
+        <LeaveReply id={data.data.id} />
       </div>
     </MainLayoutt>
   )
@@ -22,12 +25,19 @@ const BlogNews = ({ data }) => {
 export async function getServerSideProps(context) {
   const { params } = context
 
-  const { data } = await axios.get(
+  const { data: data } = await axios.get(
     `http://laratest.key-notion.com/api/news/${params.id}`
   )
-
+  const { data: dataComment } = await axios.get(
+    `http://laratest.key-notion.com/api/comments?news_id=${params.id}`
+  )
   return {
-    props: { data: data.data },
+    props: {
+      data: {
+        data: data.data,
+        dataComment: dataComment.data,
+      },
+    },
   }
 }
 

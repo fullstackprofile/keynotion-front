@@ -6,7 +6,7 @@ export const Vacance = ({ data }) => {
   return (
     <div className={styles.vacance}>
       <div className={styles.vacance_body}>
-        {data.map(
+        {data[0]?.map(
           (
             { title, job_description, about_role, looking_for, benefits },
             index
@@ -25,7 +25,7 @@ export const Vacance = ({ data }) => {
                 <div className={styles.subtitle_block}>
                   <p className={styles.subtitle}>About the role</p>
                   <div className={styles.subtitle_body}>
-                    {about_role.map(({ item }, index) => (
+                    {about_role?.map(({ item }, index) => (
                       <div
                         key={index}
                         className={styles.block_subtitle_body_text_}
@@ -41,7 +41,7 @@ export const Vacance = ({ data }) => {
                 <div className={styles.subtitle_block}>
                   <p className={styles.subtitle}>What we are looking for</p>
                   <div className={styles.subtitle_body}>
-                    {looking_for.map(({ item }, index) => (
+                    {looking_for?.map(({ item }, index) => (
                       <div
                         className={styles.block_subtitle_body_text_}
                         key={index}
@@ -57,7 +57,7 @@ export const Vacance = ({ data }) => {
                 <div className={styles.subtitle_block}>
                   <p className={styles.subtitle}>Benefits</p>
                   <div className={styles.subtitle_body}>
-                    {benefits.map(({ item }, index) => (
+                    {benefits?.map(({ item }, index) => (
                       <div
                         key={index}
                         className={styles.block_subtitle_body_text_}

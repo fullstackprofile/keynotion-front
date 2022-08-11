@@ -17,8 +17,8 @@ export const OurPastAttendees = ({ attendees, title, title_2 }) => {
             <div key={index} className={styles.OurPastAttendees_content_item}>
               <Image
                 src={logo}
-                width={width ? width : 210}
-                height={height ? height : 100}
+                width={width ? width : 120}
+                height={height ? height : 80}
               />
             </div>
           ))}

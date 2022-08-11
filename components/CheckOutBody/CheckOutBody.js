@@ -95,6 +95,9 @@ export const CheckOutBody = ({
         `/DirectBankTransfer/${context.session.itemsss[index].order_number}`
       )
     }
+    if (data.order_type == 'Visa or Mastercard') {
+      router.push(`/Payment`)
+    }
     // console.log(data);
   })
 

@@ -21,7 +21,6 @@ function GoogleMaps({ lat, lng }) {
   })
 
   const [map, setMap] = useState(null)
-  console.log(map, 'map')
 
   const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds(center)

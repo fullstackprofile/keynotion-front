@@ -17,8 +17,6 @@ export const Ticket = ({
 }) => {
   const context = useContext(AppContext)
 
-  console.log(context.session, 'session ticket')
-
   const onBook = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0

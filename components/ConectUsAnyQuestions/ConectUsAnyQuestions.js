@@ -12,15 +12,15 @@ import axios from 'axios'
 import { parseCookies } from 'nookies'
 
 const ConectUsAnyQuestionsSchema = yup.object().shape({
-  first_name: yup.string().required('please Enter your First Name'),
-  phone_number: yup.string().required('please Enter your Phone Number'),
-  company_name: yup.string().required('please Enter your Company Name'),
-  email_address: yup.string().email().required('please Enter your Email'),
+  name: yup.string().required('please Enter your First Name'),
+  phone: yup.string().required('please Enter your Phone Number'),
+  company: yup.string().required('please Enter your Company Name'),
+  email: yup.string().email().required('please Enter your Email'),
   attending: yup.boolean(),
   speaking: yup.boolean(),
   sponsoring: yup.boolean(),
-  event_name: yup.string(),
-  message: yup.string().required('please Enter your Message'),
+  event: yup.string(),
+  question: yup.string().required('please Enter your Question'),
 })
 
 export const ConectUsAnyQuestions = () => {
@@ -39,8 +39,6 @@ export const ConectUsAnyQuestions = () => {
 
   const [user, setUser] = useState()
 
-  console.log(user, 'user')
-
   useEffect(() => {
     onSubmita()
   }, [])
@@ -50,17 +48,31 @@ export const ConectUsAnyQuestions = () => {
   }, [user])
 
   const { control, handleSubmit, reset } = useForm({
+    resolver: yupResolver(ConectUsAnyQuestionsSchema),
     defaultValues: {
       attending: false,
       speaking: false,
       sponsoring: false,
     },
-    resolver: yupResolver(ConectUsAnyQuestionsSchema),
   })
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
-  })
+  const onSubmit = async (dataQuestions) => {
+    console.log(dataQuestions)
+    const dataToSend = {
+      email: dataQuestions.email,
+      name: dataQuestions.name,
+      phone: dataQuestions.phone,
+      question: dataQuestions.question,
+      company: dataQuestions.company,
+      // interested: dataQuestions.speaking,
+      event: dataQuestions.event,
+    }
+
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/questions_contact',
+      dataToSend
+    )
+  }
 
   return (
     <div className={styles.conectUsAnyQuestions}>
@@ -73,10 +85,10 @@ export const ConectUsAnyQuestions = () => {
         </p>
       </div>
       <div className={styles.form}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.form_content_1}>
             <Controller
-              name="first_name"
+              name="name"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
@@ -106,7 +118,7 @@ export const ConectUsAnyQuestions = () => {
               )}
             />
             <Controller
-              name="company_name"
+              name="company"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
@@ -154,7 +166,7 @@ export const ConectUsAnyQuestions = () => {
             </div>
           </div>
           <Controller
-            name="event_name"
+            name="event"
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content_}>
@@ -165,7 +177,7 @@ export const ConectUsAnyQuestions = () => {
           />
           <p className={styles.how_help}>How Can We Help?</p>
           <Controller
-            name="message"
+            name="question"
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content_}>

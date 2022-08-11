@@ -4,10 +4,10 @@ import { ButtonComp } from '../Button/Button'
 // import { GooglePlacesScript } from '../GoogleMap/GoogleMap'
 import { Title } from '../TItle/Title'
 import GoogleMaps from '../GoogleMaps/GoogleMaps'
-
 import styles from './TheVenue.module.css'
+import { useRouter } from 'next/router'
 
-export const TheVenue = ({ the_venue, the_venue_logo }) => {
+export const TheVenue = ({ the_venue, the_venue_logo, link }) => {
   return (
     <div className={styles.theVenue}>
       <Title title="The" title_2="Venue" />
@@ -23,7 +23,9 @@ export const TheVenue = ({ the_venue, the_venue_logo }) => {
             <Image src={the_venue_logo} width={151} height={118} />
           </div>
           <div className={styles.btn}>
-            <ButtonComp title="Book Room" transparent />
+            <a href={link} target="_blank" rel="noreferrer">
+              <ButtonComp title="Book Room" transparent />
+            </a>
           </div>
         </div>
         <div className={styles.body_img}>

@@ -36,3 +36,12 @@
     background-clip: text;
     text-fill-color: transparent;
 }
+
+@media (max-width: 768px) {
+    .blog {
+        font-size: 14px;
+    }
+    .home{
+        font-size: 14px;
+    }
+}

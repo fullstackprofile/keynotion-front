@@ -2,7 +2,14 @@ import { Button } from '@mui/material'
 import Image from 'next/image'
 import styles from './Button.module.css'
 
-export const ButtonComp = ({ arrow, title, transparent, big, onClick }) => {
+export const ButtonComp = ({
+  arrow,
+  title,
+  transparent,
+  big,
+  onClick,
+  padding,
+}) => {
   return (
     <>
       {big ? (

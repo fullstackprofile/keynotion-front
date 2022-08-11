@@ -1,14 +1,12 @@
 import React from 'react'
 import { ButtonComp } from '../Button/Button'
-
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-
 import Image from 'next/image'
 import { Input } from '../Input/Input'
-
 import styles from './Subscribe.module.css'
+import axios from 'axios'
 
 const SubscribeSchema = yup.object().shape({
   email: yup.string().required('please Enter your Email'),
@@ -19,8 +17,15 @@ export const Subscribe = () => {
     resolver: yupResolver(SubscribeSchema),
   })
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = async (subscriber) => {
+    const dataToSend = {
+      email: subscriber.email,
+    }
+
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/subscriber-store',
+      dataToSend
+    )
   }
 
   return (
@@ -42,9 +47,6 @@ export const Subscribe = () => {
               Get upcoming event updates right in your inbox.
             </p>
           </div>
-          {/* <div className={styles.input_block}>
-                    <input type="email" placeholder='Email' className={styles.input}></input>
-                </div> */}
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
               name="email"

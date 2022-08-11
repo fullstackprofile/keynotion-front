@@ -84,16 +84,26 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .about_title{
         font-size: 16px;
     }
 
     .about_subTitle{
-        font-size: 16px;
+        font-size: 12px;
     }
     .about_content{
         text-align: center;
         margin-bottom: 10px;
+    }
+    .about_subTitle_gradient{
+        font-size: 12px;
+    }
+    .about_content .about_title{
+        margin-bottom: 20px;
+    }
+    
+    .about_content .about_subTitle:not(:last-child){
+        margin-bottom: 20px;
     }
 }

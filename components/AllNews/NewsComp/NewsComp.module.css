@@ -6,6 +6,7 @@
 .name_date{
     display: flex;
     gap: 5px;
+    margin-top: 20px;
 }
 
 .news_img{
@@ -15,6 +16,8 @@
     height: 400px;
     background-repeat: no-repeat;
     position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
 .news_img_litle{
@@ -24,6 +27,8 @@
     background-size: cover ;
     border-radius: 6px; 
     position: relative;
+    cursor: pointer;
+
 }
 
 .name{
@@ -57,4 +62,11 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .name{
+        font-size: 16px;
+    }
+    
 }

@@ -11,11 +11,8 @@ import MainLayoutt from '../../layouts/MainLayoutt'
 import { useRouter } from 'next/router'
 
 export default function Ticket({ data }) {
-  console.log(data.firstRequestData)
-
   const { query } = useRouter()
   const id_ = query.id
-
   return (
     <MainLayoutt>
       <div>
@@ -31,7 +28,7 @@ export default function Ticket({ data }) {
           event={data.secondRequestData.title}
         />
         <TicketsOnline />
-        <RelatedEvents />
+        <RelatedEvents data={data.randomRequestData} />
       </div>
     </MainLayoutt>
   )
@@ -48,11 +45,16 @@ export async function getServerSideProps(context) {
     `http://laratest.key-notion.com/api/events/${params.id}`
   )
 
+  const { data: randomRequestData } = await axios.get(
+    `http://laratest.key-notion.com/api/ticket_related?exclude_event=${params.id}`
+  )
+
   return {
     props: {
       data: {
         firstRequestData: data.data,
         secondRequestData: secondRequestData.data,
+        randomRequestData: randomRequestData.data,
       },
     },
   }

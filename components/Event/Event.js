@@ -6,14 +6,6 @@ import { Category } from './Category/Category'
 
 import styles from './Event.module.css'
 
-// const items = [
-//     {
-//         id: 1,
-//         title: "All categories",
-//         categoryItems: []
-//     }
-// ]
-
 const categorys = [
   { title: 'All Categories' },
   { title: 'Live' },
@@ -27,7 +19,7 @@ export const Event = ({ All, Past }) => {
     <div className={styles.event}>
       {!Past && (
         <div className={styles.event_category}>
-          {categorys.map(({ title }) => (
+          {categorys?.map(({ title }) => (
             <Category
               key={title}
               title={title}
@@ -50,7 +42,7 @@ export const Event = ({ All, Past }) => {
               </Link>
             ))
           : active === 'Live'
-          ? All.map(
+          ? All?.map(
               ({ title, id, category, cover }, index) =>
                 category === 'Live' && (
                   <Link
@@ -64,7 +56,7 @@ export const Event = ({ All, Past }) => {
                 )
             )
           : active === 'Virtual' &&
-            All.map(
+            All?.map(
               ({ title, id, category, cover }, index) =>
                 category === 'Virtual' && (
                   <Link

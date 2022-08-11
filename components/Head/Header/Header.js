@@ -79,9 +79,12 @@ export const Header = ({ blog }) => {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <div className={styles.header_logo}>
-          <Image src="/HeaderLogo.png" alt="Logo" width={91} height={64} />
-        </div>
+        <Image
+          src="/HeaderLogo.png"
+          alt="Logo"
+          width={isMobile >= 768 ? 91 : 40}
+          height={isMobile >= 768 ? 64 : 20}
+        />
       </Link>
       <div className={styles.header_nav_login}>
         {isMobile <= 800 ? (
@@ -94,8 +97,8 @@ export const Header = ({ blog }) => {
             <Image
               src="/shopingCart.svg"
               alt="shopCart"
-              width={31}
-              height={38}
+              width={isMobile >= 768 ? 31 : 40}
+              height={isMobile >= 768 ? 38 : 20}
             />
           </StyledBadge>
         </div>
@@ -108,7 +111,7 @@ export const Header = ({ blog }) => {
                 transparent
               />
             </div>
-            <div style={{ marginTop: isMobile <= 800 ? '10px' : '0px' }}>
+            <div>
               <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
             </div>
           </div>

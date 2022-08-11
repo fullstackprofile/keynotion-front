@@ -37,6 +37,8 @@ const HeaderNavbarItems = [
       { modalTitle: 'Healthcare', href: 'Blog/Healthcare' },
       { modalTitle: 'Retail', href: 'Blog/Retail' },
       { modalTitle: 'Consumer Goods', href: 'Blog/ConsumerGoods' },
+      { modalTitle: 'Biotech', href: 'Blog/Biotech' },
+      { modalTitle: 'Manufacturing', href: 'Blog/Manufacturing' },
     ],
   },
 ]
@@ -67,6 +69,8 @@ const HeaderNavbarItems_2 = [
       { modalTitle: 'Healthcare', href: 'Blog/Healthcare' },
       { modalTitle: 'Retail', href: 'Blog/Retail' },
       { modalTitle: 'Consumer Goods', href: 'Blog/ConsumerGoods' },
+      { modalTitle: 'Biotech', href: 'Blog/Biotech' },
+      { modalTitle: 'Manufacturing', href: 'Blog/Manufacturing' },
     ],
     modal_1: [
       { subTitle: 'Evants' },

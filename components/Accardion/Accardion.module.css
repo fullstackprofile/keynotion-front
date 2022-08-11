@@ -96,16 +96,16 @@
         font-size: 16px;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .accordion_title{
         font-size: 16px;
     }
     .accordion_content_text{
-        font-size: 14px;
+        font-size: 12px;
     }
     
     .accordion_content_text__{
-        font-size: 14px;
+        font-size: 12px;
     }
     
 }

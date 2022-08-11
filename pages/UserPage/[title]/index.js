@@ -29,7 +29,6 @@ export default function UserPage() {
   const {
     query: { title },
   } = useRouter()
-  console.log(title)
 
   return (
     <div>
@@ -47,23 +46,3 @@ export default function UserPage() {
     </div>
   )
 }
-
-// export const getServerSideProps = async (ctx) => {
-
-//   const {data}= await instance.get("/profile")
-
-//   // console.log(data);
-//   // if (data.instanceOf(AxiosError)) {
-//   //   console.log(123);
-//   // }else{
-//   //   console.log(456);
-//   // }
-
-//   return {
-//     ...(data?.email ? {props: {data: data}} : {redirect: {
-//       permanent: false,
-//       destination: "/",
-//     }})
-
-//   }
-// }

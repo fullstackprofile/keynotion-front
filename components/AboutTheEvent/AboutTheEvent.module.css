@@ -54,3 +54,9 @@
         width: 80%;
     }
 }
+
+@media (max-width: 768px) {
+    .text{
+        font-size: 14px;
+    }
+}

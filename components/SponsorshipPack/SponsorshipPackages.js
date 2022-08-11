@@ -199,7 +199,7 @@ const SponsorshipSchema = yup.object().shape({
   surname: yup.string().required('please Enter your Surname'),
   company_name: yup.string().required('please Enter your Company_name'),
   job_title: yup.string().required('please Enter your Job Title'),
-  phone_number: yup.number().required('please Enter your Phone Number'),
+  phone_number: yup.string().required('please Enter your Phone Number'),
   corporate_email: yup
     .string()
     .email()

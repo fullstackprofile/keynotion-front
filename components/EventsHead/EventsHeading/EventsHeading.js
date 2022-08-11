@@ -6,10 +6,9 @@ import { ButtonComp } from '../../Button/Button'
 import styles from './EventsHeading.module.css'
 
 export const EventsHeading = ({ title, subTitle, img, ticket, id }) => {
-  console.log(id, 'idididiid')
   const router = useRouter()
 
-  const goEvents = () => router.push(`/Events/${id}`)
+  const goEvents = () => router.push(`/events/${id}`)
   return (
     <div className={styles.eventsHeading}>
       <div className={styles.eventsHeading_content}>

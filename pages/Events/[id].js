@@ -22,8 +22,8 @@ export default function EventsInner({ data }) {
           the_venue_logo={data.the_venue_logo[0].logo}
           small_description={data.small_description}
           cover={data.cover}
-          country={data.country}
-          city={data.city}
+          // country={data.country}
+          // city={data.city}
         />
         <KeySpeakers speakers={data.speakers} />
         <AboutTheEvent about={data.about} cover={data.cover_about} />
@@ -47,6 +47,7 @@ export default function EventsInner({ data }) {
         <TheVenue
           the_venue={data.the_venue}
           the_venue_logo={data.the_venue_logo[0].logo}
+          link={data.the_venue[0].link}
         />
         <DontMiss />
         <Subscribe />

@@ -6,7 +6,6 @@ import { AllNews } from '../../../components/AllNews/AllNews'
 import MainLayoutt from '../../../layouts/MainLayoutt'
 
 const TitlePage = ({ data }) => {
-  console.log(data)
   const {
     query: { title },
   } = useRouter()
@@ -24,11 +23,7 @@ const TitlePage = ({ data }) => {
 export async function getServerSideProps(context) {
   const { params } = context
 
-  console.log(params.title)
-
-  const { data } = await axios.get(
-    `http://laratest.key-notion.com/api/news_api`
-  )
+  const { data } = await axios.get(`http://laratest.key-notion.com/api/news`)
 
   return {
     props: { data: data.data },

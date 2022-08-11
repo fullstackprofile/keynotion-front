@@ -27,7 +27,7 @@ const ApplySchema = yup.object().shape({
   surname: yup.string().required('please Enter your Surname'),
   company_name: yup.string().required('please Enter your Company_name'),
   job_title: yup.string().required('please Enter your Job Title'),
-  phone_number: yup.number().required('please Enter your Phone Number'),
+  phone_number: yup.string().required('please Enter your Phone Number'),
   corporate_email: yup
     .string()
     .email()
@@ -48,7 +48,7 @@ const BrochureSchema = yup.object().shape({
   surname: yup.string().required('please Enter your Surname'),
   company_name: yup.string().required('please Enter your Company_name'),
   job_title: yup.string().required('please Enter your Job Title'),
-  phone_number: yup.number().required('please Enter your Phone Number'),
+  phone_number: yup.string().required('please Enter your Phone Number'),
   corporate_email: yup
     .string()
     .email()
@@ -108,12 +108,12 @@ export const EventsInnerHeading = ({
             <p className={styles.title}>{title}</p>
             <p className={styles.subTitle}>{small_description}</p>
           </div>
-          <div className={styles.date_block}>
+          {/* <div className={styles.date_block}>
             <p className={styles.date}>23rd - 25th of November 2022</p>
             <p className={styles.country}>
               {country},{city}
             </p>
-          </div>
+          </div> */}
           <div className={styles.logo}>
             <Image src={the_venue_logo} width={82} height={64} />
           </div>
@@ -142,7 +142,7 @@ export const EventsInnerHeading = ({
       <SponsorshipModal
         open={openLogin}
         handleClose={handleClose}
-        title="Apply "
+        title="Apply"
         subtitle="To Speak"
         SponsorshipSchema={ApplySchema}
         options={options}
@@ -154,7 +154,7 @@ export const EventsInnerHeading = ({
       <SponsorshipModal
         open={openBrouchure}
         handleClose={handleCloseBrochure}
-        title="Brochure  "
+        title="Brochure"
         subtitle="Request"
         SponsorshipSchema={BrochureSchema}
         options={options}

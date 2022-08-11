@@ -9,7 +9,7 @@ const GetinformedItems = [
   { title: 'Smart Manufacturing World', dateTitle: 'Nov. 30', id: 3 },
 ]
 
-export const Getinformed = () => {
+export const Getinformed = ({ data }) => {
   return (
     <div className={styles.getinformed}>
       <Title title="GET" title_2="INFORMED" />
@@ -17,12 +17,14 @@ export const Getinformed = () => {
         <p className={styles.title}>Latest News And Blog Event</p>
       </div>
       <div className={styles.GetInformedCarts}>
-        {GetinformedItems.map(({ title, dateTitle, id }) => (
+        {data?.map(({ title, id, cover, category, date }) => (
           <GetInformedCart
-            key={title}
+            key={id}
+            cover={cover}
             title={title}
             id={id}
-            dateTitle={dateTitle}
+            dateTitle={date}
+            category={category}
           />
         ))}
       </div>

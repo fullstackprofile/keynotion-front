@@ -14,7 +14,7 @@ import { parseCookies } from 'nookies'
 const AnyQuestionsSchema = yup.object().shape({
   name: yup.string().required('please Enter your Name'),
   email: yup.string().email().required('please Enter your Email'),
-  number: yup.number().required('please Enter your Phone Number'),
+  number: yup.string().required('please Enter your Phone Number'),
   message: yup.string().required('please Enter your Message'),
 })
 
@@ -46,18 +46,28 @@ export const AnyQuestions = () => {
     resolver: yupResolver(AnyQuestionsSchema),
   })
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
-  })
+  const onSubmit = async (dataQuestions) => {
+    const dataToSend = {
+      email: dataQuestions.email,
+      name: dataQuestions.name,
+      number: dataQuestions.number,
+      message: dataQuestions.message,
+    }
+
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/questions',
+      dataToSend
+    )
+  }
 
   return (
     <div className={styles.anyQuestions}>
       <Title title="Any?" title_2="Questions" nogradiental />
       <div className={styles.anyQuestions_content}>
         <div className={styles.anyQuestions_form}>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
-              name="first_name"
+              name="name"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
@@ -66,7 +76,6 @@ export const AnyQuestions = () => {
                 </div>
               )}
             />
-
             <Controller
               name="email"
               control={control}
@@ -78,7 +87,7 @@ export const AnyQuestions = () => {
               )}
             />
             <Controller
-              name="phone"
+              name="number"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
