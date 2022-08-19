@@ -37,7 +37,6 @@ export const LeaveReply = ({ id }) => {
       'http://laratest.key-notion.com/api/comment-store',
       dataToSend
     )
-    console.log(data)
   }
 
   return (

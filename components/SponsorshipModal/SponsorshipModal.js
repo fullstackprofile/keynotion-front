@@ -32,7 +32,6 @@ export const SponsorshipModal = ({
 
   const onSubmit = async (dataSponsor) => {
     if (title === 'Brochure') {
-      console.log(dataSponsor, 'ok')
       const dataToSendBrochure = {
         name: dataSponsor.name,
         surname: dataSponsor.surname,
@@ -55,7 +54,6 @@ export const SponsorshipModal = ({
       }
     }
     if (title === 'Apply') {
-      console.log(dataSponsor, 'ok1')
       const dataToSendSpeaker = {
         name: dataSponsor.name,
         surname: dataSponsor.surname,

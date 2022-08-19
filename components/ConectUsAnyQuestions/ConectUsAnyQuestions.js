@@ -57,14 +57,28 @@ export const ConectUsAnyQuestions = () => {
   })
 
   const onSubmit = async (dataQuestions) => {
-    console.log(dataQuestions)
+    const interestedData = []
+
+    if (dataQuestions.attending) {
+      interestedData.push('attending')
+    }
+
+    if (dataQuestions.speaking) {
+      interestedData.push('speaking')
+    }
+    if (dataQuestions.sponsoring) {
+      interestedData.push('sponsoring')
+    }
+
+    let result = interestedData.toString()
+
     const dataToSend = {
       email: dataQuestions.email,
       name: dataQuestions.name,
       phone: dataQuestions.phone,
       question: dataQuestions.question,
       company: dataQuestions.company,
-      // interested: dataQuestions.speaking,
+      interested: result,
       event: dataQuestions.event,
     }
 

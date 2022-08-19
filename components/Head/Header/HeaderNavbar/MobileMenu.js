@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles'
 import Drawer from '@mui/material/Drawer'
 import Toolbar from '@mui/material/Toolbar'
@@ -10,6 +10,10 @@ import { DropdownMenu } from './dropdownMenu/DropdownMenu'
 import styles from './MobileMenu.module.css'
 import Image from 'next/image'
 import { DropdownMenu_2 } from './dropdownMenu_2/DropdownMenu_2'
+import { SmallButton } from '../../../Button/SmallButton'
+import { Login } from '../../../Login/Login'
+import { SignUp } from '../../../SignUp/SignUp'
+import { ForgotPass } from '../../../Login/ForgotPass/ForgotPass'
 
 const HeaderNavbarItems = [
   { title: 'Home', href: '/' },
@@ -93,6 +97,35 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }))
 
 export const MobileMenu = ({ blog }) => {
+  const [openLogin, setOpenLogin] = useState(false)
+  const [openSingup, setOpenSingup] = useState(false)
+  const [openForgot, setOpenForgot] = useState(false)
+
+  const handleClickOpenSignup = () => {
+    setOpenSingup(true)
+  }
+
+  const handleClickCloseSignup = () => {
+    setOpenSingup(false)
+  }
+
+  const handleClickOpen = () => {
+    setOpenLogin(true)
+  }
+
+  const handleClose = () => {
+    setOpenLogin(false)
+  }
+
+  const handleClickOpenForgot = () => {
+    setOpenLogin(false)
+    setOpenForgot(true)
+  }
+
+  const handleCloseForgot = () => {
+    setOpenForgot(false)
+    setOpenLogin(true)
+  }
   let drawerWidth = 240
   const isMobile = useIsMobile()
 
@@ -114,10 +147,7 @@ export const MobileMenu = ({ blog }) => {
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
-      <div
-        style={{ position: 'absolute', left: '10px' }}
-        className={styles.HeaderNavbar}
-      >
+      <div style={{ position: 'absolute' }} className={styles.HeaderNavbar}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -190,8 +220,32 @@ export const MobileMenu = ({ blog }) => {
                     )
                   )}
             </ul>
+            {isMobile <= 768 && (
+              <div className={styles.header_login_reg}>
+                <div>
+                  <SmallButton
+                    title="Sign In"
+                    onClick={handleClickOpen}
+                    transparent
+                  />
+                </div>
+                <div>
+                  <SmallButton
+                    title="Sign Up"
+                    onClick={handleClickOpenSignup}
+                  />
+                </div>
+              </div>
+            )}
           </DrawerHeader>
         </Drawer>
+        <Login
+          open={openLogin}
+          handleClose={handleClose}
+          handleClickOpenForgot={handleClickOpenForgot}
+        />
+        <SignUp open={openSingup} handleClose={handleClickCloseSignup} />
+        <ForgotPass open={openForgot} handleClose={handleCloseForgot} />
       </div>
     </ClickAwayListener>
   )

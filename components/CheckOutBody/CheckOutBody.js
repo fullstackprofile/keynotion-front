@@ -33,7 +33,6 @@ export const CheckOutBody = ({
   other_type,
   index,
 }) => {
-  console.log(index, 'indexxxxxxxxxxxxxxxxxxxxxxx')
   const context = useContext(AppContext)
 
   const router = useRouter()
@@ -48,7 +47,7 @@ export const CheckOutBody = ({
 
   const cookie = parseCookies('token')
 
-  const onSubmita = async () => {
+  const getUserDataForReset = async () => {
     const users = await axios.get(
       'http://laratest.key-notion.com/api/profile',
       { headers: { Authorization: `Bearer ${cookie.token}` } }
@@ -59,7 +58,7 @@ export const CheckOutBody = ({
   const [user, setUser] = useState()
 
   useEffect(() => {
-    onSubmita()
+    getUserDataForReset()
   }, [])
 
   useEffect(() => {
@@ -75,15 +74,29 @@ export const CheckOutBody = ({
 
   // const watchShowAge = watch("order_type");
 
-  // console.log(watchShowAge,"watchShowAge");
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = async (data) => {
     if (data.order_type == 'Invoice - Direct Bank Transfer') {
       // zapros order numberi hamar
+      const orderStore = {
+        name: data.name,
+        surname: data.surname,
+        company_name: data.company_name,
+        job_title: data.job_title,
+        phone: data.phone_number,
+        corporate_email: data.corporate_email,
+        country: data.country,
+        summit_name: data.summit_name,
+        comment: data.comments,
+        learn: data.Learn_about_us.value,
+        other: data.your_way_get_us || 'ok',
+      }
+      const { data } = await axios.post(
+        'http://laratest.key-notion.com/api/order/store',
+        orderStore
+      )
       context.setSession((prev) => {
         let newArr = [...context.session.itemsss]
-
         newArr[index].order_number = 1523
-
         return {
           itemsss: newArr,
           count: newArr.length,
@@ -98,14 +111,13 @@ export const CheckOutBody = ({
     if (data.order_type == 'Visa or Mastercard') {
       router.push(`/Payment`)
     }
-    // console.log(data);
-  })
+  }
 
   return (
     <div className={styles.checkOutBody}>
       <Title title={ticketName} />
       <p className={styles.subtitle_}>{`${type}${other_type}`}</p>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.forms}>
           <div className={styles.right}>
             <p className={styles.form_title}>Company Details</p>

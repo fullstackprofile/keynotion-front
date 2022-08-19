@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
-
+import axios from 'axios'
 import AppContext from '../../AppContext/AppContext'
 import { SmallButton } from '../../Button/SmallButton'
-
 import styles from './CardItem.module.css'
 
 export const CardItem = ({
@@ -13,44 +12,30 @@ export const CardItem = ({
   other_type,
   price,
   count,
-  currency,
-  title_,
+  title,
+  cart_id,
 }) => {
   const context = useContext(AppContext)
-
   const router = useRouter()
-
-  // const getind=()=>{
-  //     let newArr = [...context.session.itemsss]
-  //     let index=newArr.findIndex(el => el.id === id)
-  //     newArr[index].count=newArr[index].count+1
-
-  // }
-
-  const removeItem = () => {
-    context.setSession((prev) => {
-      let newArr = [...context.session.itemsss]
-      let index = newArr.findIndex((el) => el.id === id)
-      newArr.splice(index, 1)
-
-      return {
-        itemsss: newArr,
-        count: newArr.length,
-      }
-    })
+  console.log(title)
+  const removeItem = async () => {
+    const { data } = await axios.delete(
+      `http://laratest.key-notion.com/api/cart/${cart_id}`
+    )
   }
 
   const plusItem = () => {
-    context.setSession((prev) => {
-      let newArr = [...context.session.itemsss]
-      let index = newArr.findIndex((el) => el.id === id)
-      newArr[index].count = newArr[index].count + 1
-
-      return {
-        itemsss: newArr,
-        count: newArr.length,
-      }
-    })
+    // context.setSession((prev) => {
+    //   let newArr = [...context.session.itemsss]
+    //   let index = newArr.findIndex((el) => el.id === id)
+    //   newArr[index].count = newArr[index].count + 1
+    //   return {
+    //     itemsss: newArr,
+    //     count: newArr.length,
+    //   }
+    // })
+    // context.setSession()
+    // context.session?.data?.items[0]?.count + 1
   }
 
   const minusItem = () => {
@@ -87,7 +72,7 @@ export const CardItem = ({
           <Image src="/remove.png" width={32} height={32} />
         </div>
         <p className={styles.item_name}>
-          Ticket: {} {title_} - {type}
+          Ticket: {} {title} - {type}
           {other_type}
         </p>
         <div>
@@ -112,10 +97,7 @@ export const CardItem = ({
         </div>
 
         <div className={styles.item_price_block}>
-          <p className={styles.item_price}>
-            {currency}
-            {price}
-          </p>
+          <p className={styles.item_price}>€{price}</p>
         </div>
       </div>
     </div>

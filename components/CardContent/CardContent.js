@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext, useEffect, useState } from 'react'
-import AppContext from '../AppContext/AppContext'
+import React, { useEffect, useState } from 'react'
 import styles from './CardContent.module.css'
 import { CardItem } from './CardItem/CardItem'
 import { parseCookies } from 'nookies'
@@ -10,10 +9,15 @@ import { CouponForm } from './CouponForm/CouponForm'
 import { useRouter } from 'next/router'
 import { Login } from '../../components/Login/Login'
 
-export const CardContent = () => {
-  const [openForgot, setOpenForgot] = React.useState(false)
+export const CardContent = ({ data }) => {
+  const [openForgot, setOpenForgot] = useState(false)
+  const [open, SetOpen] = useState(false)
   const cookie = parseCookies('token')
   const router = useRouter()
+  const [user, setUser] = useState()
+  const [openLogin, setOpenLogin] = useState(false)
+  const [login, setLogin] = useState()
+  const card_id = parseCookies('card_id')
 
   const config = {
     headers: { Authorization: `Bearer ${cookie.token}` },
@@ -27,30 +31,21 @@ export const CardContent = () => {
     setUser(users.data)
   }
 
-  const [user, setUser] = useState()
-
   useEffect(() => {
     onSubmita()
   }, [])
 
-  const [open, SetOpen] = useState(false)
-
   const onShowCoupon = () => {
     SetOpen(!open)
   }
+  console.log(data, 'oooooo')
 
-  const context = useContext(AppContext)
-  const items = context.session.itemsss
-
-  let prices = items.map(({ price, count }) => {
-    return price * count
+  let prices = data?.map((item) => {
+    return item.data.items[0].price * item.data.items[0].count
   })
-
-  let totalPrice = prices.reduce(function (previousValue, currentValue) {
+  let totalPrice = prices?.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue
   })
-
-  const [openLogin, setOpenLogin] = React.useState(false)
 
   const handleClickOpen = () => {
     setOpenLogin(true)
@@ -63,8 +58,6 @@ export const CardContent = () => {
     setOpenLogin(false)
     setOpenForgot(true)
   }
-
-  const [login, setLogin] = useState()
 
   useEffect(() => {
     cookie.token ? setLogin(true) : setLogin(false)
@@ -82,20 +75,17 @@ export const CardContent = () => {
             </div>
           </div>
           <div className={styles.card_items}>
-            {items.map(
-              (
-                { id, type, other_type, price, count, currency, title_ },
-                index
-              ) => (
+            {data?.items?.map(
+              ({ id, type, other_type, price, count, title }, index) => (
                 <CardItem
-                  title_={title_}
+                  title={title}
                   key={index + id}
                   count={count}
                   id={id}
                   type={type}
                   other_type={other_type}
                   price={price}
-                  currency={currency}
+                  cart_id={user ? user?.id : card_id.card_id}
                 />
               )
             )}
@@ -114,10 +104,7 @@ export const CardContent = () => {
             <div className={styles.subtotal_block}>
               <div className={styles.subtotal_block__}>
                 <p className={styles.subtotal_block_title}>Subtotal</p>
-                <p className={styles.total_block_price}>
-                  {items[0].currency}
-                  {totalPrice}
-                </p>
+                <p className={styles.total_block_price}>€{totalPrice}</p>
               </div>
             </div>
             <div className={styles.vat_block}>
@@ -129,10 +116,7 @@ export const CardContent = () => {
             <div className={styles.subtotal_block}>
               <div className={styles.subtotal_block__}>
                 <p className={styles.subtotal_block_title}>Total</p>
-                <p className={styles.total_block_price}>
-                  {items[0].currency}
-                  {totalPrice}
-                </p>
+                <p className={styles.total_block_price}>€{totalPrice}</p>
               </div>
             </div>
           </div>

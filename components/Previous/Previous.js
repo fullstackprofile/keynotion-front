@@ -5,7 +5,6 @@ import { ButtonComp } from '../Button/Button'
 import styles from './Previous.module.css'
 
 export const Previous = ({ img, title }) => {
-  console.log(title)
   return (
     <div className={styles.previousHeading_wrapper}>
       <div className={styles.previousHeading}>

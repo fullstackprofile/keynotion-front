@@ -1,3 +1,4 @@
+let lastId = 0
 export const convertDateText = (text) => {
   const newText = text.slice(0, 11)
   return newText
@@ -6,6 +7,10 @@ export const convertDateText = (text) => {
 export const convertMountName = (text) => {
   const newText = text.slice(0, 6)
   return newText
+}
+export const uniqueId = (prefix = 'id') => {
+  lastId++
+  return `${prefix}${lastId}`
 }
 
 export const attendees = [

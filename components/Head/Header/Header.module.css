@@ -162,14 +162,7 @@
 }
 
 @media (max-width: 768px) {
-    .header_login_reg{
-        align-items: center;
-    }
-    .header {
-        display: unset;
-    }
-    .header_nav_login{  
-        flex-wrap: wrap;
-        justify-content: end;
+    .header_nav_login{
+        margin-left: 0px;
     }
 }

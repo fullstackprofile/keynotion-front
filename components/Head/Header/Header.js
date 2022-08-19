@@ -16,16 +16,27 @@ import AppContext from '../../AppContext/AppContext'
 import { StyledBadge } from '../../StyledBadge/StyledBadge'
 import useIsMobile from '../../../Helpers/helpers'
 
+// import { useMediaQuery } from 'use-hooks'
+import useMediaQuery from '../../../Helpers/helpers'
+
 export const Header = ({ blog }) => {
+  const matches = useMediaQuery('(max-width: 768px)')
+  console.log(matches)
+
   const isMobile = useIsMobile()
+  const [openLogin, setOpenLogin] = useState(false)
+  const [openSingup, setOpenSingup] = useState(false)
+  const [openForgot, setOpenForgot] = useState(false)
+  const [login, setLogin] = useState()
+  const [open, setOpen] = useState(false)
+  const cookie = parseCookies('token')
+  const context = useContext(AppContext)
+  const router = useRouter()
 
   function Logout() {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
   }
-  const [openLogin, setOpenLogin] = React.useState(false)
-  const [openSingup, setOpenSingup] = React.useState(false)
-  const [openForgot, setOpenForgot] = React.useState(false)
 
   const handleClickOpenSignup = () => {
     setOpenSingup(true)
@@ -53,28 +64,18 @@ export const Header = ({ blog }) => {
     setOpenLogin(true)
   }
 
-  const router = useRouter()
-
   const goCard = () => {
     router.push('/Card')
   }
   const goUserPage = () => router.push('/UserPage')
 
-  const cookie = parseCookies('token')
-
-  const [login, setLogin] = useState()
-
   useEffect(() => {
     cookie.token ? setLogin(true) : setLogin(false)
   }, [cookie])
 
-  const [open, setOpen] = useState(false)
-
   const handleOpen = () => {
     setOpen(!open)
   }
-
-  const context = useContext(AppContext)
 
   return (
     <div className={styles.header}>
@@ -103,18 +104,20 @@ export const Header = ({ blog }) => {
           </StyledBadge>
         </div>
         {!login ? (
-          <div className={styles.header_login_reg}>
-            <div>
-              <SmallButton
-                title="Sign In"
-                onClick={handleClickOpen}
-                transparent
-              />
+          isMobile >= 768 && (
+            <div className={styles.header_login_reg}>
+              <div>
+                <SmallButton
+                  title="Sign In"
+                  onClick={handleClickOpen}
+                  transparent
+                />
+              </div>
+              <div>
+                <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
+              </div>
             </div>
-            <div>
-              <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
-            </div>
-          </div>
+          )
         ) : (
           <ClickAwayListener onClickAway={() => setOpen(false)}>
             <div className={styles.userPageIcon} onClick={handleOpen}>
