@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import axios from 'axios'
 import { AboutEvants } from '../components/AboutEvants/AboutEvants'
 import { AboutKeyNation } from '../components/AboutKeyNation/AboutKeyNation'
 import { SeamlessService } from '../components/SeamlessService/SeamlessService'
@@ -7,9 +9,45 @@ import { WhyAtted } from '../components/WhyAtted/WhyAtted'
 import { Getinformed } from '../components/GetInformed/Getinformed'
 import { Subscribe } from '../components/Subscribe/Subscribe'
 import MainLayout from '../layouts/MainLayout'
-import axios from 'axios'
+import { parseCookies } from 'nookies'
+import { addCard } from '../store/cardsSlice'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../store/userSlice'
+import { useSelector } from 'react-redux'
 
 export default function Home({ data }) {
+  const user = useSelector((state) => state.user.user)
+  const dispatch = useDispatch()
+  const card_id = parseCookies('card_id')
+  const cookie = parseCookies('token')
+  const config = {
+    headers: { Authorization: `Bearer ${cookie.token}` },
+  }
+  const getCard = async () => {
+    const { data } = await axios.get(
+      `http://laratest.key-notion.com/api/cart?cart_id=${
+        user ? user.id : card_id.card_id
+      }`
+    )
+
+    dispatch(addCard(data))
+  }
+
+  const getUser = async () => {
+    const user = await axios.get(
+      'http://laratest.key-notion.com/api/profile',
+      config
+    )
+    dispatch(addUser(user.data))
+  }
+
+  useEffect(() => {
+    getCard()
+  }, [user.id, card_id])
+
+  useEffect(() => {
+    getUser()
+  }, [])
   return (
     <MainLayout>
       <div>
@@ -33,6 +71,7 @@ export const getServerSideProps = async () => {
   const { data: getinformedData } = await axios.get(
     `http://laratest.key-notion.com/api/news_home`
   )
+
   return {
     props: {
       data: {

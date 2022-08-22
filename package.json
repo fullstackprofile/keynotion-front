@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
-    "prettier:fix": "prettier --write \"./**/*.{js,jsx}\"",
+    "lint:fix": "eslint \".//*.{js,jsx}\" --fix",
+    "prettier:fix": "prettier --write \".//*.{js,jsx}\"",
     "lf": "npm run lint:fix && npm run prettier:fix"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@mui/lab": "^5.0.0-alpha.89",
     "@mui/material": "^5.8.2",
     "@react-google-maps/api": "^2.12.0",
+    "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "cookies-next": "^2.1.1",
@@ -27,17 +28,21 @@
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.8.4",
     "nookies": "^2.5.2",
-    "react": "18.1.0",
+    "react": "^18.2.0",
     "react-dom": "18.1.0",
     "react-google-maps": "^7.3.0",
     "react-hook-form": "^7.32.1",
+    "react-redux": "^8.0.2",
     "react-select": "^5.3.2",
     "react-yandex-maps": "^4.6.0",
     "recompose": "^0.17.0",
+    "redux": "^4.2.0",
     "swiper": "^8.2.2",
     "swr": "^1.3.0",
+    "use-hooks": "2.0.0-rc.5",
     "yup": "^0.32.11",
-    "use-hooks": "2.0.0-rc.5"
+    "react-verification-input": "^2.0.6"
+
   },
   "devDependencies": {
     "eslint": "8.17.0",

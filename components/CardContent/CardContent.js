@@ -4,44 +4,31 @@ import React, { useEffect, useState } from 'react'
 import styles from './CardContent.module.css'
 import { CardItem } from './CardItem/CardItem'
 import { parseCookies } from 'nookies'
-import axios from 'axios'
 import { CouponForm } from './CouponForm/CouponForm'
 import { useRouter } from 'next/router'
 import { Login } from '../../components/Login/Login'
+import { useSelector } from 'react-redux'
 
-export const CardContent = ({ data }) => {
+export const CardContent = () => {
   const [openForgot, setOpenForgot] = useState(false)
   const [open, SetOpen] = useState(false)
   const cookie = parseCookies('token')
   const router = useRouter()
-  const [user, setUser] = useState()
   const [openLogin, setOpenLogin] = useState(false)
   const [login, setLogin] = useState()
-  const card_id = parseCookies('card_id')
+  const cart_id = parseCookies('cart_id')
+  const data = useSelector((state) => state.cards.card)
+  const user = useSelector((state) => state.user.user)
 
-  const config = {
-    headers: { Authorization: `Bearer ${cookie.token}` },
-  }
-
-  const onSubmita = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      config
-    )
-    setUser(users.data)
-  }
-
-  useEffect(() => {
-    onSubmita()
-  }, [])
+  console.log(user.id, 'user')
+  console.log(data, 'card')
 
   const onShowCoupon = () => {
     SetOpen(!open)
   }
-  console.log(data, 'oooooo')
 
   let prices = data?.map((item) => {
-    return item.data.items[0].price * item.data.items[0].count
+    return item.data.items?.[0]?.price * item.data.items?.[0]?.count
   })
   let totalPrice = prices?.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue
@@ -75,20 +62,18 @@ export const CardContent = ({ data }) => {
             </div>
           </div>
           <div className={styles.card_items}>
-            {data?.items?.map(
-              ({ id, type, other_type, price, count, title }, index) => (
-                <CardItem
-                  title={title}
-                  key={index + id}
-                  count={count}
-                  id={id}
-                  type={type}
-                  other_type={other_type}
-                  price={price}
-                  cart_id={user ? user?.id : card_id.card_id}
-                />
-              )
-            )}
+            {data?.map((item, index) => (
+              <CardItem
+                title={item.data.items?.[0]?.title}
+                key={index + item.data.items?.[0]?.ticket_id}
+                count={item.data.items?.[0]?.count}
+                id={item.data.items?.[0]?.ticket_id}
+                type={item.data.items?.[0]?.type}
+                other_type={item.data.items?.[0]?.other_type}
+                price={item.data.items?.[0]?.price}
+                cart_id={user ? user?.id : cart_id}
+              />
+            ))}
           </div>
         </div>
         <div className={styles.totals_block}>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SmallButton } from '../../Button/SmallButton'
@@ -8,35 +8,40 @@ import { Login } from '../../Login/Login'
 import { SignUp } from '../../SignUp/SignUp'
 import { ForgotPass } from '../../Login/ForgotPass/ForgotPass'
 import { useRouter } from 'next/router'
-import { setCookie, parseCookies, destroyCookie } from 'nookies'
+import { parseCookies, destroyCookie } from 'nookies'
 import styles from './Header.module.css'
 import { DropdownMenu } from './HeaderNavbar/dropdownMenu/DropdownMenu'
 import { ClickAwayListener } from '@mui/material'
-import AppContext from '../../AppContext/AppContext'
 import { StyledBadge } from '../../StyledBadge/StyledBadge'
 import useIsMobile from '../../../Helpers/helpers'
-
+import { useSelector } from 'react-redux'
 // import { useMediaQuery } from 'use-hooks'
-import useMediaQuery from '../../../Helpers/helpers'
+// import useMediaQuery from '../../../Helpers/helpers'
 
 export const Header = ({ blog }) => {
-  const matches = useMediaQuery('(max-width: 768px)')
-  console.log(matches)
-
+  // const matches = useMediaQuery('(max-width: 768px)')
+  const data = useSelector((state) => state.cards.card)
   const isMobile = useIsMobile()
   const [openLogin, setOpenLogin] = useState(false)
   const [openSingup, setOpenSingup] = useState(false)
   const [openForgot, setOpenForgot] = useState(false)
   const [login, setLogin] = useState()
+  const [newCount, setNewCount] = useState()
   const [open, setOpen] = useState(false)
   const cookie = parseCookies('token')
-  const context = useContext(AppContext)
   const router = useRouter()
 
   function Logout() {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
   }
+
+  useEffect(() => {
+    let count = data?.map((item) => {
+      return item.data.items?.[0]?.count
+    })
+    setNewCount(count)
+  }, [])
 
   const handleClickOpenSignup = () => {
     setOpenSingup(true)
@@ -76,7 +81,6 @@ export const Header = ({ blog }) => {
   const handleOpen = () => {
     setOpen(!open)
   }
-
   return (
     <div className={styles.header}>
       <Link href="/">
@@ -94,7 +98,7 @@ export const Header = ({ blog }) => {
           <HeaderNavbar blog={blog && true} />
         )}
         <div className={styles.shopingCart} onClick={goCard}>
-          <StyledBadge badgeContent={context.session.count}>
+          <StyledBadge badgeContent={newCount ? newCount : 0}>
             <Image
               src="/shopingCart.svg"
               alt="shopCart"

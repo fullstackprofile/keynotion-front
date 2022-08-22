@@ -31,15 +31,16 @@ export const SignUp = ({ open, handleClose }) => {
     resolver: yupResolver(RegisterSchema),
   })
 
-  const onSubmit = async (dd) => {
+  const onSubmit = async (dataInInput) => {
+    console.log(dataInInput, 'dataInInput')
     const dataToSend = {
-      country: dd.country,
-      email: dd.email,
-      first_name: dd.first_name,
-      last_name: dd.last_name,
-      password: dd.password,
-      password_confirmation: dd.password_confirmation,
-      phone: dd.phone,
+      country: dataInInput.country,
+      email: dataInInput.email,
+      first_name: dataInInput.first_name,
+      last_name: dataInInput.last_name,
+      password: dataInInput.password,
+      password_confirmation: dataInInput.password_confirmation,
+      phone: dataInInput.phone,
     }
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/register',
@@ -49,19 +50,7 @@ export const SignUp = ({ open, handleClose }) => {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
-    const dataToSendVerify = {
-      email: dd.email,
-    }
 
-    const cookie = parseCookies('token')
-    const config = {
-      headers: { Authorization: `Bearer ${cookie.token}` },
-    }
-    const { dataa } = await axios.post(
-      'http://laratest.key-notion.com/api/email/verification-notification',
-      dataToSendVerify,
-      config
-    )
     if (data) {
       handleClose()
     }

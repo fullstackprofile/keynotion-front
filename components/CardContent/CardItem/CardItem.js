@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import AppContext from '../../AppContext/AppContext'
 import { SmallButton } from '../../Button/SmallButton'
 import styles from './CardItem.module.css'
+import { useSelector } from 'react-redux'
 
 export const CardItem = ({
   id,
@@ -15,55 +15,60 @@ export const CardItem = ({
   title,
   cart_id,
 }) => {
-  const context = useContext(AppContext)
   const router = useRouter()
-  console.log(title)
+  console.log(count, 'count')
+  console.log(cart_id, 'cardId')
+  const [countTicket, setCountTicket] = useState(count)
+  const data = useSelector((state) => state.cards.card)
+  const user = useSelector((state) => state.user.user)
+
+  console.log(data, 'sss')
+  console.log(user, 'user')
+
   const removeItem = async () => {
     const { data } = await axios.delete(
-      `http://laratest.key-notion.com/api/cart/${cart_id}`
+      `http://laratest.key-notion.com/api/cart/${id}?cart_id=${
+        user ? user?.id : cart_id
+      }`
     )
   }
 
-  const plusItem = () => {
-    // context.setSession((prev) => {
-    //   let newArr = [...context.session.itemsss]
-    //   let index = newArr.findIndex((el) => el.id === id)
-    //   newArr[index].count = newArr[index].count + 1
-    //   return {
-    //     itemsss: newArr,
-    //     count: newArr.length,
-    //   }
-    // })
-    // context.setSession()
-    // context.session?.data?.items[0]?.count + 1
+  const dataTosendTicket = {
+    price: price,
+    ticket_id: id,
+    count: countTicket,
+    cart_id: user ? user?.id : cart_id,
   }
 
-  const minusItem = () => {
-    context.setSession((prev) => {
-      let newArr = [...context.session.itemsss]
-      let index = newArr.findIndex((el) => el.id === id)
-      newArr[index].count = newArr[index].count - 1
-
-      return {
-        itemsss: newArr,
-        count: newArr.length,
-      }
-    })
+  const plusItem = async () => {
+    setCountTicket((prev) => prev + 1)
+    const cart = await axios.post(
+      'http://laratest.key-notion.com/api/cart',
+      dataTosendTicket
+    )
   }
 
-  const CheckOut = () => {
-    context.setSession((prev) => {
-      let newArr = [...context.session.itemsss]
-      let index_ = newArr.findIndex((el) => el.id === id)
-
-      return {
-        itemsss: newArr,
-        count: newArr.length,
-        index: index_,
-      }
-    })
-    router.push('/CheckOut')
+  const minusItem = async () => {
+    setCountTicket((prev) => prev - 1)
+    const cart = await axios.post(
+      'http://laratest.key-notion.com/api/cart',
+      dataTosendTicket
+    )
   }
+
+  // const CheckOut = () => {
+  //   context.setSession((prev) => {
+  //     let newArr = [...context.session.itemsss]
+  //     let index_ = newArr.findIndex((el) => el.id === id)
+
+  //     return {
+  //       itemsss: newArr,
+  //       count: newArr.length,
+  //       index: index_,
+  //     }
+  //   })
+  //   router.push('/CheckOut')
+  // }
 
   return (
     <div className={styles.card_item}>
@@ -76,7 +81,7 @@ export const CardItem = ({
           {other_type}
         </p>
         <div>
-          <SmallButton transparent title="Check Out" onClick={CheckOut} />
+          {/* <SmallButton transparent title="Check Out" onClick={CheckOut} /> */}
         </div>
       </div>
       <div className={styles.item_right}>
@@ -89,7 +94,7 @@ export const CardItem = ({
             <p className={styles.icon}>-</p>
           </button>
           <div className={styles.count}>
-            <p className={styles.countt}>{count}</p>
+            <p className={styles.countt}>{countTicket}</p>
           </div>
           <button className={styles.plus} onClick={plusItem}>
             <p className={styles.icon}>+</p>

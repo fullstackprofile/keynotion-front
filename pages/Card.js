@@ -1,18 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { EmptyCard } from '../components/EmptyCard/EmptyCard'
 import { CardContent } from '../components/CardContent/CardContent'
 import MainLayoutt from '../layouts/MainLayoutt'
-import AppContext from '../components/AppContext/AppContext'
+import { useSelector } from 'react-redux'
 
 export default function Card() {
-  const context = useContext(AppContext)
-  const data = context.session.items
-  console.log(data, 'dddddddddddd')
+  const dataInStore = useSelector((state) => state.cards.card)
   return (
     <MainLayoutt>
-      <div>
-        {data ? <CardContent data={data} /> : <EmptyCard data={data} />}
-      </div>
+      <div>{dataInStore.length > 0 ? <CardContent /> : <EmptyCard />}</div>
     </MainLayoutt>
   )
 }

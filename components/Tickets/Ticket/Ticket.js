@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ButtonComp } from '../../Button/Button'
-import { useContext, useState } from 'react'
-import AppContext from '../../AppContext/AppContext'
 import styles from './Ticket.module.css'
 import axios from 'axios'
 import { parseCookies, setCookie } from 'nookies'
 import { uniqueId } from '../../../Helpers/help'
+import { useSelector } from 'react-redux'
 
 export const Ticket = ({
   price,
@@ -18,29 +17,17 @@ export const Ticket = ({
   id,
   event,
 }) => {
-  const context = useContext(AppContext)
-  const [user, setUser] = useState()
-  const cookie = parseCookies('token')
   const newUniqueId = uniqueId()
-  const getUserDataForReset = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      { headers: { Authorization: `Bearer ${cookie.token}` } }
-    )
-    setUser(users.data)
-  }
-  useEffect(() => {
-    getUserDataForReset()
-  }, [])
+  const user = useSelector((state) => state.user.user)
 
   const onBook = async () => {
     if (!user) {
-      setCookie(null, 'card_id', newUniqueId, {
+      setCookie(null, 'cart_id', newUniqueId, {
         maxAge: 30 * 24 * 60 * 60,
         path: '/',
       })
     }
-    const card_id = parseCookies('card_id')
+    const cart_id = parseCookies('cart_id')
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
@@ -53,18 +40,21 @@ export const Ticket = ({
       currency: currency,
       title: event,
       order_number: 0,
-      cart_id: user ? user?.id : card_id,
+      cart_id: user ? user?.id : cart_id.cart_id,
     }
     const obj1 = {
       price: price,
       ticket_id: id,
       count: 1,
-      title: event,
-      cart_id: user ? user?.id : card_id.card_id,
+      cart_id: user ? user?.id : cart_id.cart_id,
     }
     if (sale) {
       obj.price = sale
     }
+    const cart = await axios.post(
+      'http://laratest.key-notion.com/api/cart',
+      obj1
+    )
 
     // if (!context.session.itemsss?.length) {
     //   context.setSession((prev) => ({
@@ -91,11 +81,6 @@ export const Ticket = ({
     //     }
     //   })
     // }
-
-    const cart = await axios.post(
-      'http://laratest.key-notion.com/api/cart',
-      obj1
-    )
   }
 
   return (
