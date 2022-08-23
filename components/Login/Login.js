@@ -46,13 +46,6 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
     if (data) {
       handleClose()
     }
-
-    // const config = {
-    // headers: { Authorization: `Bearer ${data.token}` }
-    // };
-
-    // const user = await axios.get('http://laratest.key-notion.com/api/profile', config);
-    // console.log(user.data,"useruseruser");
   }
 
   return (

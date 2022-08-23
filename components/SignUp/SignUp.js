@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import { Controller, useForm } from 'react-hook-form'
@@ -12,6 +12,8 @@ import { setCookie } from 'nookies'
 import classNames from 'classnames'
 import { Country } from '../Country/Country'
 import { parseCookies } from 'nookies'
+import Verification from '../Verification/Verification'
+import { useRouter } from 'next/router'
 
 const RegisterSchema = yup.object().shape({
   first_name: yup.string().required('please Enter your First Name'),
@@ -27,12 +29,14 @@ const RegisterSchema = yup.object().shape({
 })
 
 export const SignUp = ({ open, handleClose }) => {
+  const [openVerify, setOpenVerify] = useState(false)
+  const [dataRegistr, setDataRegistr] = useState(null)
+  const router = useRouter()
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(RegisterSchema),
   })
 
   const onSubmit = async (dataInInput) => {
-    console.log(dataInInput, 'dataInInput')
     const dataToSend = {
       country: dataInInput.country,
       email: dataInInput.email,
@@ -53,7 +57,9 @@ export const SignUp = ({ open, handleClose }) => {
 
     if (data) {
       handleClose()
+      setOpenVerify((prev) => !prev)
     }
+    setDataRegistr(data)
   }
 
   return (
@@ -160,6 +166,7 @@ export const SignUp = ({ open, handleClose }) => {
           </div>
         </form>
       </Dialog>
+      <Verification openVerify={openVerify} dataRegistr={dataRegistr} />
     </>
   )
 }

@@ -26,7 +26,6 @@ export const Header = ({ blog }) => {
   const [openSingup, setOpenSingup] = useState(false)
   const [openForgot, setOpenForgot] = useState(false)
   const [login, setLogin] = useState()
-  const [newCount, setNewCount] = useState()
   const [open, setOpen] = useState(false)
   const cookie = parseCookies('token')
   const router = useRouter()
@@ -36,18 +35,19 @@ export const Header = ({ blog }) => {
     router.push('/')
   }
 
-  useEffect(() => {
-    let count = data?.map((item) => {
-      return item.data.items?.[0]?.count
-    })
-    setNewCount(count)
-  }, [])
+  let count = data?.map((item) => {
+    return item.data.items?.[0]?.count
+  })
+  //toString()
 
   const handleClickOpenSignup = () => {
     setOpenSingup(true)
   }
 
   const handleClickCloseSignup = () => {
+    setOpenSingup(false)
+  }
+  const handleClickCloseVerify = () => {
     setOpenSingup(false)
   }
 
@@ -98,7 +98,7 @@ export const Header = ({ blog }) => {
           <HeaderNavbar blog={blog && true} />
         )}
         <div className={styles.shopingCart} onClick={goCard}>
-          <StyledBadge badgeContent={newCount ? newCount : 0}>
+          <StyledBadge badgeContent={count ? count : 0}>
             <Image
               src="/shopingCart.svg"
               alt="shopCart"

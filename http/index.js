@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { parseCookies } from 'nookies'
-import { cookie } from '../components/Login/Login'
 
 export const instance = axios.create({
   baseURL: 'http://laratest.key-notion.com/api',
@@ -12,7 +11,6 @@ export const instance = axios.create({
 instance.interceptors.request.use(
   function (config) {
     const cookie = parseCookies('token')
-    console.log(cookie)
     config.headers['Authorization'] = `Bearer ${cookie.token}`
     return config
   },

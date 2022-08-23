@@ -4,7 +4,6 @@ import styles from './Comments.module.css'
 import Image from 'next/image'
 
 const Comments = ({ data }) => {
-  console.log(data)
   return (
     <div className={styles.commnets}>
       <Title center={false} title_2="Comments" full />

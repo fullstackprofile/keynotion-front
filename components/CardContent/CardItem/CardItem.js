@@ -5,30 +5,19 @@ import axios from 'axios'
 import { SmallButton } from '../../Button/SmallButton'
 import styles from './CardItem.module.css'
 import { useSelector } from 'react-redux'
+import { parseCookies } from 'nookies'
 
-export const CardItem = ({
-  id,
-  type,
-  other_type,
-  price,
-  count,
-  title,
-  cart_id,
-}) => {
+export const CardItem = ({ id, type, other_type, price, count, title }) => {
   const router = useRouter()
-  console.log(count, 'count')
-  console.log(cart_id, 'cardId')
   const [countTicket, setCountTicket] = useState(count)
   const data = useSelector((state) => state.cards.card)
   const user = useSelector((state) => state.user.user)
-
-  console.log(data, 'sss')
-  console.log(user, 'user')
+  const cart_id = parseCookies('cart_id')
 
   const removeItem = async () => {
     const { data } = await axios.delete(
       `http://laratest.key-notion.com/api/cart/${id}?cart_id=${
-        user ? user?.id : cart_id
+        user ? user?.id : cart_id.cart_id
       }`
     )
   }
@@ -37,7 +26,7 @@ export const CardItem = ({
     price: price,
     ticket_id: id,
     count: countTicket,
-    cart_id: user ? user?.id : cart_id,
+    cart_id: user ? user?.id : cart_id.cart_id,
   }
 
   const plusItem = async () => {
@@ -56,19 +45,9 @@ export const CardItem = ({
     )
   }
 
-  // const CheckOut = () => {
-  //   context.setSession((prev) => {
-  //     let newArr = [...context.session.itemsss]
-  //     let index_ = newArr.findIndex((el) => el.id === id)
-
-  //     return {
-  //       itemsss: newArr,
-  //       count: newArr.length,
-  //       index: index_,
-  //     }
-  //   })
-  //   router.push('/CheckOut')
-  // }
+  const CheckOut = () => {
+    router.push('/CheckOut')
+  }
 
   return (
     <div className={styles.card_item}>
@@ -81,7 +60,7 @@ export const CardItem = ({
           {other_type}
         </p>
         <div>
-          {/* <SmallButton transparent title="Check Out" onClick={CheckOut} /> */}
+          <SmallButton transparent title="Check Out" onClick={CheckOut} />
         </div>
       </div>
       <div className={styles.item_right}>

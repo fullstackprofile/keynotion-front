@@ -6,9 +6,13 @@ import { useSelector } from 'react-redux'
 
 export default function Card() {
   const dataInStore = useSelector((state) => state.cards.card)
+  let count = dataInStore?.map((item) => {
+    return item.data.items?.[0]?.ticket_id
+  })
+
   return (
     <MainLayoutt>
-      <div>{dataInStore.length > 0 ? <CardContent /> : <EmptyCard />}</div>
+      <div>{count.toString() ? <CardContent /> : <EmptyCard />}</div>
     </MainLayoutt>
   )
 }

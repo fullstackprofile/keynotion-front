@@ -22,14 +22,13 @@ export const CouponForm = () => {
   })
 
   const onSubmit = async (dataQuestions) => {
-    console.log(dataQuestions.code)
     const dataToSend = {
       code: dataQuestions.code,
     }
 
     const { data } = await axios.post(
       `http://laratest.key-notion.com/api/cart/coupon?cart_id=${
-        user ? user?.id : cart_id
+        user ? user?.id : cart_id.cart_id
       }`,
       dataToSend
     )

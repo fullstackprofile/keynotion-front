@@ -3,7 +3,6 @@ import { ButtonComp } from '../../Button/Button'
 import styles from './Ticket.module.css'
 import axios from 'axios'
 import { parseCookies, setCookie } from 'nookies'
-import { uniqueId } from '../../../Helpers/help'
 import { useSelector } from 'react-redux'
 
 export const Ticket = ({
@@ -17,18 +16,10 @@ export const Ticket = ({
   id,
   event,
 }) => {
-  const newUniqueId = uniqueId()
   const user = useSelector((state) => state.user.user)
+  const cart_id = parseCookies('cart_id')
 
   const onBook = async () => {
-    if (!user) {
-      setCookie(null, 'cart_id', newUniqueId, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: '/',
-      })
-    }
-    const cart_id = parseCookies('cart_id')
-
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     const obj = {

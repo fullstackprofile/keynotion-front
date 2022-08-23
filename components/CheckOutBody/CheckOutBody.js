@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
@@ -10,8 +11,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { Country } from '../Country/Country'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { parseCookies } from 'nookies'
-import AppContext from '../AppContext/AppContext'
 
 const CheckOutBodysSchema = yup.object().shape({
   first_name: yup.string().required('please Enter your Name'),
@@ -26,17 +25,9 @@ const CheckOutBodysSchema = yup.object().shape({
   order_type: yup.string().required(),
 })
 
-export const CheckOutBody = ({
-  ticketName,
-  count,
-  type,
-  other_type,
-  index,
-}) => {
-  const context = useContext(AppContext)
-
+export const CheckOutBody = ({ title, count, type, other_type }) => {
   const router = useRouter()
-
+  const user = useSelector((state) => state.user.user)
   const goPrivacy = () => router.push('/DataPrivacy')
 
   let delegate = []
@@ -44,22 +35,6 @@ export const CheckOutBody = ({
   for (let i = 1; i <= count; i++) {
     delegate.push(i)
   }
-
-  const cookie = parseCookies('token')
-
-  const getUserDataForReset = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      { headers: { Authorization: `Bearer ${cookie.token}` } }
-    )
-    setUser(users.data)
-  }
-
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    getUserDataForReset()
-  }, [])
 
   useEffect(() => {
     reset(user)
@@ -76,7 +51,6 @@ export const CheckOutBody = ({
 
   const onSubmit = async (data) => {
     if (data.order_type == 'Invoice - Direct Bank Transfer') {
-      // zapros order numberi hamar
       const orderStore = {
         name: data.name,
         surname: data.surname,
@@ -94,19 +68,19 @@ export const CheckOutBody = ({
         'http://laratest.key-notion.com/api/order/store',
         orderStore
       )
-      context.setSession((prev) => {
-        let newArr = [...context.session.itemsss]
-        newArr[index].order_number = 1523
-        return {
-          itemsss: newArr,
-          count: newArr.length,
-          index: index,
-        }
-      })
+      // context.setSession((prev) => {
+      //   let newArr = [...context.session.itemsss]
+      //   newArr[index].order_number = 1523
+      //   return {
+      //     itemsss: newArr,
+      //     count: newArr.length,
+      //     index: index,
+      //   }
+      // })
 
-      router.push(
-        `/DirectBankTransfer/${context.session.itemsss[index].order_number}`
-      )
+      // router.push(
+      //   `/DirectBankTransfer/${context.session.itemsss[index].order_number}`
+      // )
     }
     if (data.order_type == 'Visa or Mastercard') {
       router.push(`/Payment`)
@@ -115,7 +89,7 @@ export const CheckOutBody = ({
 
   return (
     <div className={styles.checkOutBody}>
-      <Title title={ticketName} />
+      <Title title={title} />
       <p className={styles.subtitle_}>{`${type}${other_type}`}</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.forms}>

@@ -16,22 +16,25 @@ export const CardContent = () => {
   const router = useRouter()
   const [openLogin, setOpenLogin] = useState(false)
   const [login, setLogin] = useState()
-  const cart_id = parseCookies('cart_id')
   const data = useSelector((state) => state.cards.card)
   const user = useSelector((state) => state.user.user)
-
-  console.log(user.id, 'user')
-  console.log(data, 'card')
 
   const onShowCoupon = () => {
     SetOpen(!open)
   }
 
-  let prices = data?.map((item) => {
-    return item.data.items?.[0]?.price * item.data.items?.[0]?.count
+  // let prices = data?.map((item) => {
+  //   return item.data.items?.[0]?.price * item.data.items?.[0]?.count
+  // })
+  // let totalPrice = prices?.reduce(function (previousValue, currentValue) {
+  //   return previousValue + currentValue
+  // })
+
+  let subtotal = data.map((item) => {
+    return item.data.subtotal
   })
-  let totalPrice = prices?.reduce(function (previousValue, currentValue) {
-    return previousValue + currentValue
+  let total = data.map((item) => {
+    return item.data.total
   })
 
   const handleClickOpen = () => {
@@ -71,7 +74,6 @@ export const CardContent = () => {
                 type={item.data.items?.[0]?.type}
                 other_type={item.data.items?.[0]?.other_type}
                 price={item.data.items?.[0]?.price}
-                cart_id={user ? user?.id : cart_id}
               />
             ))}
           </div>
@@ -89,7 +91,7 @@ export const CardContent = () => {
             <div className={styles.subtotal_block}>
               <div className={styles.subtotal_block__}>
                 <p className={styles.subtotal_block_title}>Subtotal</p>
-                <p className={styles.total_block_price}>€{totalPrice}</p>
+                <p className={styles.total_block_price}>€{subtotal}</p>
               </div>
             </div>
             <div className={styles.vat_block}>
@@ -101,7 +103,7 @@ export const CardContent = () => {
             <div className={styles.subtotal_block}>
               <div className={styles.subtotal_block__}>
                 <p className={styles.subtotal_block_title}>Total</p>
-                <p className={styles.total_block_price}>€{totalPrice}</p>
+                <p className={styles.total_block_price}>€{total}</p>
               </div>
             </div>
           </div>

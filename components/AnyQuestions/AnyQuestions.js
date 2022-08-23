@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { Controller, useForm } from 'react-hook-form'
 import { Title } from '../TItle/Title'
@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import styles from './AnyQuestions.module.css'
 import axios from 'axios'
-import { parseCookies } from 'nookies'
+import { useSelector } from 'react-redux'
 
 const AnyQuestionsSchema = yup.object().shape({
   name: yup.string().required('please Enter your Name'),
@@ -19,24 +19,7 @@ const AnyQuestionsSchema = yup.object().shape({
 })
 
 export const AnyQuestions = () => {
-  const cookie = parseCookies('token')
-  const config = {
-    headers: { Authorization: `Bearer ${cookie.token}` },
-  }
-
-  const onSubmita = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      config
-    )
-    setUser(users.data)
-  }
-
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    onSubmita()
-  }, [])
+  const user = useSelector((state) => state.user.user)
 
   useEffect(() => {
     reset(user)
