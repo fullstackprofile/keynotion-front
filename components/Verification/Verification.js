@@ -1,4 +1,5 @@
-import { Dialog } from '@mui/material'
+import { Dialog, ClickAwayListener } from '@mui/material'
+import Image from 'next/image'
 import VerificationInputProps from 'react-verification-input'
 import { ButtonComp } from '../Button/Button'
 import axios from 'axios'
@@ -37,6 +38,9 @@ export const Verification = ({
   }
   return (
     <Dialog open={openVerify} onClose={handleClickCloseVerify}>
+      <div className={styles.dialog_close} onClick={handleClickCloseVerify}>
+        <Image src="/closeIcon.png" width={36} height={36} />
+      </div>
       <div style={{ textAlign: 'center' }}>
         <p className={styles.text}>Verification Code</p>
         <div

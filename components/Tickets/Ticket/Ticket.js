@@ -2,8 +2,9 @@ import React from 'react'
 import { ButtonComp } from '../../Button/Button'
 import styles from './Ticket.module.css'
 import axios from 'axios'
-import { parseCookies, setCookie } from 'nookies'
-import { useSelector } from 'react-redux'
+import { parseCookies } from 'nookies'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCard } from '../../../store/cardsSlice'
 
 export const Ticket = ({
   price,
@@ -14,64 +15,27 @@ export const Ticket = ({
   other_type,
   attractive,
   id,
-  event,
 }) => {
   const user = useSelector((state) => state.user.user)
+  const dispatch = useDispatch()
   const cart_id = parseCookies('cart_id')
 
   const onBook = async () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-    const obj = {
-      price: price,
-      type: type,
-      other_type: other_type,
-      ticket_id: id,
-      count: 1,
-      currency: currency,
-      title: event,
-      order_number: 0,
-      cart_id: user ? user?.id : cart_id.cart_id,
-    }
     const obj1 = {
       price: price,
       ticket_id: id,
       count: 1,
       cart_id: user ? user?.id : cart_id.cart_id,
     }
-    if (sale) {
-      obj.price = sale
-    }
-    const cart = await axios.post(
+    const { data } = await axios.post(
       'http://laratest.key-notion.com/api/cart',
       obj1
     )
-
-    // if (!context.session.itemsss?.length) {
-    //   context.setSession((prev) => ({
-    //     itemsss: [...prev.itemsss, obj],
-    //     count: 1,
-    //   }))
-    // } else {
-    //   context.setSession((prev) => {
-    //     let newArr = [...context.session.itemsss]
-
-    //     const findItem = context.session.itemsss.find((el) => el.id === obj.id)
-
-    //     if (findItem) {
-    //       return { itemsss: newArr, count: newArr.length }
-    //     } else {
-    //       newArr.push({
-    //         ...obj,
-    //         count: 1,
-    //       })
-    //     }
-    //     return {
-    //       itemsss: newArr,
-    //       count: newArr.length,
-    //     }
-    //   })
-    // }
+    if (data) {
+      dispatch(addCard(data))
+    }
   }
 
   return (

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
 export default function useIsMobile() {
+  // let a
+  // if (typeof document !== 'undefined') {
+  //   a = document
+  // }
   const [isMobile, setIsMobile] = useState()
 
   useEffect(() => {

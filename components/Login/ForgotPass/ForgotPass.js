@@ -4,7 +4,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { ButtonComp } from '../../Button/Button'
 import { Input } from '../../Input/Input'
-
+import axios from 'axios'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
@@ -12,15 +12,20 @@ import styles from './ForgotPass.module.css'
 
 export const ForgotPass = ({ open, handleClose }) => {
   const ForgotPassSchema = yup.object().shape({
-    Email: yup.string().email().required('please Enter your Email'),
+    email: yup.string().email().required('please Enter your Email'),
   })
 
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(ForgotPassSchema),
   })
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = async (dataForm) => {
+    console.log(dataForm.email, 'sssssss')
+    console.log(dataForm, 'sssssss')
+    const { data } = await axios.post(
+      `http://laratest.key-notion.com/api/forgot-password`,
+      dataForm.email
+    )
   }
 
   return (
@@ -44,7 +49,7 @@ export const ForgotPass = ({ open, handleClose }) => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
-            name="Email"
+            name="email"
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>

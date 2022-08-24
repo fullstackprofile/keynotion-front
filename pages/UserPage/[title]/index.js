@@ -1,30 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Head from 'next/head'
 import { UserPageBody } from '../../../components/UserPageBody/UserPageBody'
 import { EventsHead } from '../../../components/EventsHead/EventsHead'
 import { useRouter } from 'next/router'
-import { parseCookies } from 'nookies'
-import axios from 'axios'
 
 export default function UserPage() {
-  const cookie = parseCookies('token')
-  const config = {
-    headers: { Authorization: `Bearer ${cookie.token}` },
-  }
-
-  const onSubmit = async () => {
-    const user = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      config
-    )
-    setUser(user.data)
-  }
-
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    onSubmit()
-  }, [])
+  const user = useSelector((state) => state.user.user)
 
   const {
     query: { title },

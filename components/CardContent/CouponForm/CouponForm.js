@@ -7,7 +7,8 @@ import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import { Input } from '../../Input/Input'
 import { ButtonComp } from '../../Button/Button'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCard } from '../../../store/cardsSlice'
 
 const CardContentsSchema = yup.object().shape({
   code: yup.string().required('please Enter Coupont Code'),
@@ -15,6 +16,7 @@ const CardContentsSchema = yup.object().shape({
 
 export const CouponForm = () => {
   const user = useSelector((state) => state.user.user)
+  const dispatch = useDispatch()
   const cart_id = parseCookies('card_id')
 
   const { control, handleSubmit } = useForm({
@@ -32,6 +34,9 @@ export const CouponForm = () => {
       }`,
       dataToSend
     )
+    if (data) {
+      dispatch(addCard(data))
+    }
   }
 
   return (

@@ -150,7 +150,6 @@ export const Header = ({ blog }) => {
                       </p>
                     </div>
                   </Link>
-
                   <div className={styles.dropedMenu_item} onClick={Logout}>
                     <p className={styles.dropedMenu_item_title}>Log Out</p>
                   </div>
@@ -165,7 +164,11 @@ export const Header = ({ blog }) => {
         handleClose={handleClose}
         handleClickOpenForgot={handleClickOpenForgot}
       />
-      <SignUp open={openSingup} handleClose={handleClickCloseSignup} />
+      <SignUp
+        setOpen={setOpen}
+        open={openSingup}
+        handleClose={handleClickCloseSignup}
+      />
       <ForgotPass open={openForgot} handleClose={handleCloseForgot} />
     </div>
   )

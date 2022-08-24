@@ -11,23 +11,35 @@ import { Controller, useForm } from 'react-hook-form'
 import { Country } from '../Country/Country'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { parseCookies } from 'nookies'
 
 const CheckOutBodysSchema = yup.object().shape({
-  first_name: yup.string().required('please Enter your Name'),
-  last_name: yup.string().required('please Enter your Name'),
-  company_name: yup.string().required('please Enter your Name'),
-  region: yup.string().required('please Enter Your Region Name'),
-  city: yup.string().required('please Enter Your City Name'),
+  full_name: yup.string().required('please Enter your Full Name'),
+  last_name: yup.string().required('please Enter your Last Name'),
+  first_name: yup.string().required('please Enter your First Name'),
+  job_title: yup.string().required('please Enter your Job Title'),
+  company_name: yup.string().required('please Enter your Company Name'),
+  country_region: yup.string().required('please Enter your country'),
+  town_city: yup.string().required('please Enter Your City Name'),
   street_address: yup.string().required('please Enter Street Address'),
-  postcode: yup.string().required('please Enter PostCode/ZIP'),
+  postcode_zip: yup.string().required('please Enter PostCode/ZIP'),
   email: yup.string().email().required('please Enter your Email'),
-  number: yup.number().required('please Enter your Phone Number'),
-  order_type: yup.string().required(),
+  phone: yup.string().required('please Enter your Phone Number'),
+  payment_method: yup.string().required(),
 })
 
-export const CheckOutBody = ({ title, count, type, other_type }) => {
+export const CheckOutBody = ({
+  title,
+  count,
+  type,
+  other_type,
+  price,
+  data,
+  ticket_id,
+}) => {
   const router = useRouter()
   const user = useSelector((state) => state.user.user)
+  const cart_id = parseCookies('cart_id')
   const goPrivacy = () => router.push('/DataPrivacy')
 
   let delegate = []
@@ -41,48 +53,58 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
   }, [user])
 
   const { control, handleSubmit, reset, watch } = useForm({
-    // defaultValues :{
-    //   order_type : "Invoice - Direct Bank Transfer"
-    // }
-    // resolver: yupResolver(CheckOutBodysSchema),
+    resolver: yupResolver(CheckOutBodysSchema),
+    defaultValues: {
+      payment_method: 'Invoice - Direct Bank Transfer',
+    },
   })
 
-  // const watchShowAge = watch("order_type");
+  // const watchShowAge = watch('order_type')
 
-  const onSubmit = async (data) => {
-    if (data.order_type == 'Invoice - Direct Bank Transfer') {
-      const orderStore = {
-        name: data.name,
-        surname: data.surname,
-        company_name: data.company_name,
-        job_title: data.job_title,
-        phone: data.phone_number,
-        corporate_email: data.corporate_email,
-        country: data.country,
-        summit_name: data.summit_name,
-        comment: data.comments,
-        learn: data.Learn_about_us.value,
-        other: data.your_way_get_us || 'ok',
-      }
-      const { data } = await axios.post(
-        'http://laratest.key-notion.com/api/order/store',
-        orderStore
-      )
-      // context.setSession((prev) => {
-      //   let newArr = [...context.session.itemsss]
-      //   newArr[index].order_number = 1523
-      //   return {
-      //     itemsss: newArr,
-      //     count: newArr.length,
-      //     index: index,
-      //   }
-      // })
-
+  const onSubmit = async (dataForm) => {
+    console.log(data?.data?.total, 'sssssss')
+    const orderStore = {
+      first_name: dataForm.first_name,
+      last_name: dataForm.last_name,
+      company_name: dataForm.company_name,
+      country_region: dataForm.country_region,
+      town_city: dataForm.town_city,
+      city: dataForm.city,
+      street_address: dataForm.street_address,
+      postcode_zip: dataForm.postcode_zip,
+      email: dataForm.email,
+      phone: dataForm.phone,
+      payment_method: dataForm.payment_method,
+      Subtotal: '1999',
+      VAT: data?.data?.vat,
+      Total: '2000',
+      order_items: [
+        {
+          ticket_id: ticket_id,
+          ticket_title: title,
+          quantity: count,
+          price: price,
+        },
+      ],
+      delegaters: [
+        {
+          full_name: dataForm.full_name,
+          job_title: dataForm.job_title,
+          email: dataForm.email,
+        },
+      ],
+    }
+    console.log(orderStore, 'orderStore')
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/order/store',
+      orderStore
+    )
+    if (dataForm.payment_method == 'Invoice - Direct Bank Transfer') {
       // router.push(
       //   `/DirectBankTransfer/${context.session.itemsss[index].order_number}`
       // )
     }
-    if (data.order_type == 'Visa or Mastercard') {
+    if (dataForm.payment_method == 'Visa or Mastercard') {
       router.push(`/Payment`)
     }
   }
@@ -129,7 +151,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
               )}
             />
             <Controller
-              name="country"
+              name="country_region"
               control={control}
               render={({
                 field: { onChange, value },
@@ -143,22 +165,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
               )}
             />
             <Controller
-              name="region"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Region</p>
-                  <Input
-                    type="text"
-                    {...field}
-                    placeholder="Enter Your Region Name"
-                  />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="city"
+              name="town_city"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
@@ -188,7 +195,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
               )}
             />
             <Controller
-              name="postcode"
+              name="postcode_zip"
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
@@ -228,18 +235,18 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
               <div key={elem} className={styles.delegate}>
                 <p className={styles.delegate_title}>Attendee {elem}</p>
                 <Controller
-                  name={`attendee_${elem}_first_name`}
+                  name={'full_name'}
                   control={control}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content}>
-                      <p className={styles.dialog_label}>First Name</p>
-                      <Input type="text" {...field} placeholder="First Name" />
+                      <p className={styles.dialog_label}>Full Name</p>
+                      <Input type="text" {...field} placeholder="Full Name" />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
                 />
                 <Controller
-                  name={`attendee_${elem}_job_title`}
+                  name={'job_title'}
                   control={control}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content}>
@@ -250,7 +257,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                   )}
                 />
                 <Controller
-                  name={`attendee_${elem}_email_address`}
+                  name={'email'}
                   control={control}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content}>
@@ -268,7 +275,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
             ))}
             <div className={styles.order_type_block}>
               <Controller
-                name="order_type"
+                name="payment_method"
                 control={control}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
@@ -302,7 +309,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                 )}
               />
               <Controller
-                name="order_type"
+                name="payment_method"
                 control={control}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
@@ -312,6 +319,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                         type="radio"
                         value="Invoice - Direct Bank Transfer"
                         className={styles.radio}
+                        defaultChecked
                       />
                       <div className={styles.labell}>
                         <p className={styles.labell_name}>
@@ -322,8 +330,8 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                   </div>
                 )}
               />
-              <Controller
-                name="order_type"
+              {/* <Controller
+                name="payment_method"
                 control={control}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
@@ -332,7 +340,6 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                         {...field}
                         type="radio"
                         value="American Express"
-                        defaultChecked
                         className={styles.radio}
                       />
                       <div className={styles.labell}>
@@ -348,7 +355,7 @@ export const CheckOutBody = ({ title, count, type, other_type }) => {
                     </div>
                   </div>
                 )}
-              />
+              /> */}
               <div className={styles.order_type_block_bottom}>
                 <p className={styles.privacy}>
                   I´ve read and accept the terms and conditions as well as the{' '}

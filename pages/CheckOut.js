@@ -16,6 +16,9 @@ export default function CheckOut() {
             count={item.data.items?.[0]?.count}
             type={item.data.items?.[0]?.type}
             other_type={item.data.items?.[0]?.other_type}
+            price={item.data.items?.[0]?.price}
+            ticket_id={item.data.items?.[0]?.ticket_id}
+            data={item}
           />
         ))}
       </div>

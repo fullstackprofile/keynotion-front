@@ -31,7 +31,6 @@ export const BilingAddress = ({ user }) => {
       street_address: dataSend.street_address,
       postcode: dataSend.postcode,
     }
-    console.log(mydata)
   }
 
   useEffect(() => {

@@ -10,7 +10,7 @@ export const Country = ({ onChange, value }) => {
     <div className={classNames(styles.input_block, styles.input_block_2)}>
       <Autocomplete
         onChange={(event, item) => {
-          onChange(item.label)
+          onChange(item?.label)
         }}
         value={value}
         className={styles.input}

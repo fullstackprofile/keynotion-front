@@ -2,9 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { ButtonComp } from '../Button/Button'
 import { SponsorshipModal } from '../SponsorshipModal/SponsorshipModal'
-
 import * as yup from 'yup'
-
 import styles from './EventsInnerHeading.module.css'
 import { useRouter } from 'next/router'
 

@@ -4,14 +4,15 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { SmallButton } from '../../Button/SmallButton'
 import styles from './CardItem.module.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { parseCookies } from 'nookies'
+import { addCard } from '../../../store/cardsSlice'
 
 export const CardItem = ({ id, type, other_type, price, count, title }) => {
   const router = useRouter()
-  const [countTicket, setCountTicket] = useState(count)
-  const data = useSelector((state) => state.cards.card)
+  // const [countTicket, setCountTicket] = useState(count)
   const user = useSelector((state) => state.user.user)
+  const dispatch = useDispatch()
   const cart_id = parseCookies('cart_id')
 
   const removeItem = async () => {
@@ -20,29 +21,41 @@ export const CardItem = ({ id, type, other_type, price, count, title }) => {
         user ? user?.id : cart_id.cart_id
       }`
     )
-  }
-
-  const dataTosendTicket = {
-    price: price,
-    ticket_id: id,
-    count: countTicket,
-    cart_id: user ? user?.id : cart_id.cart_id,
+    if (data) {
+      dispatch(addCard(data))
+    }
   }
 
   const plusItem = async () => {
-    setCountTicket((prev) => prev + 1)
-    const cart = await axios.post(
+    const dataTosendTicketPlus = {
+      price: price,
+      ticket_id: id,
+      count: (count += 1),
+      cart_id: user ? user?.id : cart_id.cart_id,
+    }
+    const { data } = await axios.post(
       'http://laratest.key-notion.com/api/cart',
-      dataTosendTicket
+      dataTosendTicketPlus
     )
+    if (data) {
+      dispatch(addCard(data))
+    }
   }
 
   const minusItem = async () => {
-    setCountTicket((prev) => prev - 1)
-    const cart = await axios.post(
+    const dataTosendTicketMinus = {
+      price: price,
+      ticket_id: id,
+      count: (count -= 1),
+      cart_id: user ? user?.id : cart_id.cart_id,
+    }
+    const { data } = await axios.post(
       'http://laratest.key-notion.com/api/cart',
-      dataTosendTicket
+      dataTosendTicketMinus
     )
+    if (data) {
+      dispatch(addCard(data))
+    }
   }
 
   const CheckOut = () => {
@@ -73,7 +86,7 @@ export const CardItem = ({ id, type, other_type, price, count, title }) => {
             <p className={styles.icon}>-</p>
           </button>
           <div className={styles.count}>
-            <p className={styles.countt}>{countTicket}</p>
+            <p className={styles.countt}>{count}</p>
           </div>
           <button className={styles.plus} onClick={plusItem}>
             <p className={styles.icon}>+</p>

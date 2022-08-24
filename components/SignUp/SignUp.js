@@ -28,7 +28,7 @@ const RegisterSchema = yup.object().shape({
     .oneOf([yup.ref('password')], 'Your passwords do not match.'),
 })
 
-export const SignUp = ({ open, handleClose }) => {
+export const SignUp = ({ open, handleClose, setOpen }) => {
   const [openVerify, setOpenVerify] = useState(false)
   const [dataRegistr, setDataRegistr] = useState(null)
   const router = useRouter()
@@ -166,7 +166,11 @@ export const SignUp = ({ open, handleClose }) => {
           </div>
         </form>
       </Dialog>
-      <Verification openVerify={openVerify} dataRegistr={dataRegistr} />
+      <Verification
+        setOpen={setOpen}
+        openVerify={openVerify}
+        dataRegistr={dataRegistr}
+      />
     </>
   )
 }

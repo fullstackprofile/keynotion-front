@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
@@ -9,7 +10,6 @@ import styles from './ConectUsAnyQuestions.module.css'
 import { Checkbox } from '@mui/material'
 import { TextArea } from '../TextArea/TextArea'
 import axios from 'axios'
-import { parseCookies } from 'nookies'
 
 const ConectUsAnyQuestionsSchema = yup.object().shape({
   name: yup.string().required('please Enter your First Name'),
@@ -24,24 +24,7 @@ const ConectUsAnyQuestionsSchema = yup.object().shape({
 })
 
 export const ConectUsAnyQuestions = () => {
-  const cookie = parseCookies('token')
-  const config = {
-    headers: { Authorization: `Bearer ${cookie.token}` },
-  }
-
-  const onSubmita = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      config
-    )
-    setUser(users.data)
-  }
-
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    onSubmita()
-  }, [])
+  const user = useSelector((state) => state.user.user)
 
   useEffect(() => {
     reset(user)

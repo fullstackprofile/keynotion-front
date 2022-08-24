@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import Image from 'next/image'
-import { destroyCookie, parseCookies } from 'nookies'
-import axios from 'axios'
+import { destroyCookie } from 'nookies'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styles from './UserPageBody.module.css'
@@ -11,28 +11,13 @@ import { BilingAddress } from '../BilingAddress/BilingAddress'
 import UserOrders from '../UserOrders/UserOrders'
 
 export const UserPageBody = ({ title }) => {
+  const user = useSelector((state) => state.user.user)
   const router = useRouter()
 
   function handleClick() {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
   }
-
-  const cookie = parseCookies('token')
-
-  const onSubmita = async () => {
-    const users = await axios.get(
-      'http://laratest.key-notion.com/api/profile',
-      { headers: { Authorization: `Bearer ${cookie.token}` } }
-    )
-    setUser(users.data)
-  }
-
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    onSubmita()
-  }, [])
 
   return (
     <div className={styles.userPageBody}>
