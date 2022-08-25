@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import { Controller, useForm } from 'react-hook-form'
-import { Autocomplete, Box, Dialog, TextField } from '@mui/material'
+import { Dialog } from '@mui/material'
 import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import styles from './SignUp.module.css'
 import { setCookie } from 'nookies'
-import classNames from 'classnames'
 import { Country } from '../Country/Country'
-import { parseCookies } from 'nookies'
 import Verification from '../Verification/Verification'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../../store/userSlice'
 
 const RegisterSchema = yup.object().shape({
   first_name: yup.string().required('please Enter your First Name'),
@@ -32,6 +32,7 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
   const [openVerify, setOpenVerify] = useState(false)
   const [dataRegistr, setDataRegistr] = useState(null)
   const router = useRouter()
+  const dispatch = useDispatch()
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(RegisterSchema),
   })
@@ -50,16 +51,21 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
       'http://laratest.key-notion.com/api/register',
       dataToSend
     )
-    setCookie(null, 'token', data.token, {
+    setCookie(null, 'token', data?.data?.token, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
+    dispatch(addUser(data?.data?.user))
 
     if (data) {
       handleClose()
-      setOpenVerify((prev) => !prev)
+      setOpenVerify(true)
     }
     setDataRegistr(data)
+  }
+
+  const closeVerify = () => {
+    setOpenVerify(false)
   }
 
   return (
@@ -170,6 +176,7 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
         setOpen={setOpen}
         openVerify={openVerify}
         dataRegistr={dataRegistr}
+        closeVerify={closeVerify}
       />
     </>
   )

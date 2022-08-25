@@ -1,17 +1,27 @@
-.orderContent{
-    border: solid 1px transparent !important;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
-    background-origin: border-box !important;
-    background-clip: content-box, border-box !important;
-    box-shadow: 2px 1000px 1px #fff inset !important;
-    padding: 32px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    border-radius: 6px;
+.title_product {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #121212;
+}
+.title {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 29px;
+    color: #121212;
 }
 
-.orderItemBlock{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    cursor: pointer;
+.blockHeader {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px 15px 0px;
+}
+.blockTable {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px 15px 0px;
 }

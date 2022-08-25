@@ -5,12 +5,16 @@ import * as yup from 'yup'
 import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
 import styles from './AccountDetails.module.css'
+import axios from 'axios'
+import { addUser } from '../../store/userSlice'
+import { useDispatch } from 'react-redux'
+import { parseCookies } from 'nookies'
 
 export const AccountDetails = ({ user }) => {
   const ChangeSchema = yup.object().shape({
     first_name: yup.string().required('please Enter Your First Name'),
     last_name: yup.string().required('please Enter Your Last Name'),
-    phone: yup.number().required('please Enter Your Phone Number'),
+    phone: yup.string().required('please Enter Your Phone Number'),
     email: yup.string().email().required('please Enter Your Email'),
     current_password: yup
       .string()
@@ -20,13 +24,36 @@ export const AccountDetails = ({ user }) => {
       .string()
       .oneOf([yup.ref('new_password')], 'Your passwords do not match.'),
   })
-
+  const dispatch = useDispatch()
+  const cookie = parseCookies('token')
   const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(ChangeSchema),
   })
+  const config = {
+    headers: { Authorization: `Bearer ${cookie.token}` },
+  }
 
-  const onSave = (dataSend) => {
-    console.log(dataSend)
+  const onSave = async (dataForm) => {
+    const dataToSend = {
+      first_name: dataForm.first_name,
+      last_name: dataForm.last_name,
+      current_password: dataForm.current_password,
+      new_password: dataForm.new_password,
+      new_password_confirmation: dataForm.new_password_confirmation,
+      phone: dataForm.phone,
+      email: dataForm.email !== user.email && dataForm.email,
+    }
+
+    const { data } = await axios.post(
+      'http://laratest.key-notion.com/api/update-user',
+      dataToSend,
+      config
+    )
+    console.log(dataToSend, 'dataForm')
+    console.log(dataForm.email, 'dataForm.email')
+    console.log(user.email, 'user.email')
+    console.log(data, 'user.email')
+    dispatch(addUser(data?.data))
   }
 
   useEffect(() => {

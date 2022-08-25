@@ -20,8 +20,6 @@ export const ForgotPass = ({ open, handleClose }) => {
   })
 
   const onSubmit = async (dataForm) => {
-    console.log(dataForm.email, 'sssssss')
-    console.log(dataForm, 'sssssss')
     const { data } = await axios.post(
       `http://laratest.key-notion.com/api/forgot-password`,
       dataForm.email

@@ -1,21 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { EmptyCard } from '../EmptyCard/EmptyCard'
-import { CardContent } from '../CardContent/CardContent'
-import AppContext from '../AppContext/AppContext'
 import OrderContent from '../OrderContent/OrderContent'
 import styles from './UserOrders.module.css'
+import { useSelector } from 'react-redux'
 
 const UserOrders = () => {
-  const context = useContext(AppContext)
-  const length = context.session.itemsss.length
+  const dataInStore = useSelector((state) => state.orders.orders)
   return (
     <div className={styles.userOrders}>
-      {length ? (
-        <OrderContent data={context.session.itemsss} />
+      {dataInStore.lenght ? (
+        <OrderContent />
       ) : (
         <EmptyCard
           title="No order has been made yet"
           btnTitle="Return To Shop"
+          width="100%"
         />
       )}
     </div>

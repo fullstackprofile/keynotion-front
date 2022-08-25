@@ -8,11 +8,12 @@ import styles from './EmptyCard.module.css'
 export const EmptyCard = ({
   title = 'YOUR CART IS CURRENTLY EMPTY.',
   btnTitle = 'Return To Shop',
+  width = '80%',
 }) => {
   const router = useRouter()
   const goEvents = () => router.push('/Events')
   return (
-    <div className={styles.emptyCard}>
+    <div className={styles.emptyCard} style={{ width: width }}>
       <div className={styles.emptyCard_body}>
         <div className={styles.left}>
           <div className={styles.left_block}>

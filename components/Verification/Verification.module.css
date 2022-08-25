@@ -32,3 +32,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+  .dialog_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}

@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
-import AppContext from '../AppContext/AppContext'
-
+import React from 'react'
 import styles from './DirectBankTransferInfo.module.css'
+import { useSelector } from 'react-redux'
 
 export const DirectBankTransferInfo = () => {
-  const context = useContext(AppContext)
-  const index = context.session.index
-  const items = context.session.itemsss
-  let totalPrice = items[index]?.count * items[index]?.price
+  const orders = useSelector((state) => state.orders.orders)
+  const orderNumber = orders?.map((item) => {
+    return item.data.order_number
+  })
+  const totalPrice = orders?.map((item) => {
+    return item.data.Total
+  })
 
   return (
     <div className={styles.directBankTransferInfo}>
@@ -15,7 +17,7 @@ export const DirectBankTransferInfo = () => {
         <div className={styles.top}>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Order Number:</p>
-            <p className={styles.item_name_}>{items[index]?.order_number}</p>
+            <p className={styles.item_name_}>{orderNumber.toString()}</p>
           </div>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Date:</p>
@@ -23,10 +25,7 @@ export const DirectBankTransferInfo = () => {
           </div>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Total:</p>
-            <p className={styles.item_name_}>
-              {items[index]?.currency}
-              {totalPrice}
-            </p>
+            <p className={styles.item_name_}>{totalPrice.toString()}</p>
           </div>
           <div className={styles.top_item_}>
             <p className={styles.item_name}>Payment Method:</p>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
@@ -12,6 +12,7 @@ import { Country } from '../Country/Country'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { parseCookies } from 'nookies'
+import { addOrders } from '../../store/ordersSlice'
 
 const CheckOutBodysSchema = yup.object().shape({
   full_name: yup.string().required('please Enter your Full Name'),
@@ -19,7 +20,7 @@ const CheckOutBodysSchema = yup.object().shape({
   first_name: yup.string().required('please Enter your First Name'),
   job_title: yup.string().required('please Enter your Job Title'),
   company_name: yup.string().required('please Enter your Company Name'),
-  country_region: yup.string().required('please Enter your country'),
+  country_region: yup.string().required('please Enter your Country'),
   town_city: yup.string().required('please Enter Your City Name'),
   street_address: yup.string().required('please Enter Street Address'),
   postcode_zip: yup.string().required('please Enter PostCode/ZIP'),
@@ -38,11 +39,13 @@ export const CheckOutBody = ({
   ticket_id,
 }) => {
   const router = useRouter()
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.user.user)
   const cart_id = parseCookies('cart_id')
   const goPrivacy = () => router.push('/DataPrivacy')
 
   let delegate = []
+  let newData = data
 
   for (let i = 1; i <= count; i++) {
     delegate.push(i)
@@ -52,32 +55,28 @@ export const CheckOutBody = ({
     reset(user)
   }, [user])
 
-  const { control, handleSubmit, reset, watch } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(CheckOutBodysSchema),
     defaultValues: {
       payment_method: 'Invoice - Direct Bank Transfer',
     },
   })
 
-  // const watchShowAge = watch('order_type')
-
   const onSubmit = async (dataForm) => {
-    console.log(data?.data?.total, 'sssssss')
     const orderStore = {
       first_name: dataForm.first_name,
       last_name: dataForm.last_name,
       company_name: dataForm.company_name,
       country_region: dataForm.country_region,
       town_city: dataForm.town_city,
-      city: dataForm.city,
       street_address: dataForm.street_address,
       postcode_zip: dataForm.postcode_zip,
       email: dataForm.email,
       phone: dataForm.phone,
       payment_method: dataForm.payment_method,
-      Subtotal: '1999',
-      VAT: data?.data?.vat,
-      Total: '2000',
+      Subtotal: newData.data.subtotal,
+      VAT: newData.data.vat.toString(),
+      Total: newData.data.total,
       order_items: [
         {
           ticket_id: ticket_id,
@@ -94,15 +93,15 @@ export const CheckOutBody = ({
         },
       ],
     }
-    console.log(orderStore, 'orderStore')
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/order/store',
       orderStore
     )
+    if (data) {
+      dispatch(addOrders(data))
+    }
     if (dataForm.payment_method == 'Invoice - Direct Bank Transfer') {
-      // router.push(
-      //   `/DirectBankTransfer/${context.session.itemsss[index].order_number}`
-      // )
+      router.push(`/DirectBankTransfer/${data.data}`)
     }
     if (dataForm.payment_method == 'Visa or Mastercard') {
       router.push(`/Payment`)

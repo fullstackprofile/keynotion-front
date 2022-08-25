@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { SmallButton } from '../../Button/SmallButton'
 import styles from './CardItem.module.css'
@@ -10,7 +10,6 @@ import { addCard } from '../../../store/cardsSlice'
 
 export const CardItem = ({ id, type, other_type, price, count, title }) => {
   const router = useRouter()
-  // const [countTicket, setCountTicket] = useState(count)
   const user = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
   const cart_id = parseCookies('cart_id')

@@ -26,13 +26,13 @@ const InitialComponent = () => {
         user ? user.id : cart_id.cart_id
       }`
     )
-    if (user.id || cart_id) {
+    if (user?.id || cart_id) {
       dispatch(addCard(data))
     }
   }
   useEffect(() => {
     getCard()
-  }, [user.id, cart_id])
+  }, [user?.id, cart_id])
 
   const getUser = async () => {
     const user = await axios.get(

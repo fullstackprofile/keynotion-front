@@ -1,9 +1,8 @@
 .emptyCard_body{
     display: flex;
     justify-content: space-between;
-    width: 80%;
     margin: 0 auto;
-    padding: 90px 15px;
+    padding: 30px 15px;
     background: linear-gradient(180deg, #FFFFFB 56.57%, rgba(225, 225, 225, 0) 109.92%);
 }
 
@@ -19,12 +18,12 @@
     background-origin: border-box !important;
     background-clip: content-box, border-box !important;
     box-shadow: 2px 1000px 1px #fff inset !important;
-    padding: 22px 0px 22px 48px;
+    padding: 22px 0px 22px 10px;
 }
 
 .left_title{
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 130%;
     color: #121212;
 }

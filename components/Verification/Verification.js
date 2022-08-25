@@ -6,11 +6,7 @@ import axios from 'axios'
 import styles from './Verification.module.css'
 import { useState } from 'react'
 
-export const Verification = ({
-  openVerify,
-  handleClickCloseVerify,
-  dataRegistr,
-}) => {
+export const Verification = ({ openVerify, closeVerify, dataRegistr }) => {
   const ONLY_DIGITS = /\d/
   const [verifyValue, setVerifyValue] = useState('')
 
@@ -37,8 +33,8 @@ export const Verification = ({
     )
   }
   return (
-    <Dialog open={openVerify} onClose={handleClickCloseVerify}>
-      <div className={styles.dialog_close} onClick={handleClickCloseVerify}>
+    <Dialog open={openVerify} onClose={closeVerify}>
+      <div className={styles.dialog_close} onClick={closeVerify}>
         <Image src="/closeIcon.png" width={36} height={36} />
       </div>
       <div style={{ textAlign: 'center' }}>
