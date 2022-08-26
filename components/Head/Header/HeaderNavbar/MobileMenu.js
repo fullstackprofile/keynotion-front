@@ -129,9 +129,6 @@ export const MobileMenu = ({ blog }) => {
   let drawerWidth = 240
   const isMobile = useIsMobile()
 
-  if (isMobile <= 430) {
-    drawerWidth = isMobile
-  }
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
 
@@ -220,25 +217,23 @@ export const MobileMenu = ({ blog }) => {
                     )
                   )}
             </ul>
-            {isMobile <= 768 && (
-              <div className={styles.header_login_reg}>
-                <div>
-                  <SmallButton
-                    title="Sign In"
-                    onClick={handleClickOpen}
-                    transparent
-                  />
-                </div>
-                <div>
-                  <SmallButton
-                    title="Sign Up"
-                    onClick={handleClickOpenSignup}
-                  />
-                </div>
-              </div>
-            )}
           </DrawerHeader>
+          {isMobile <= 768 && (
+            <div className={styles.headerMobileBtn}>
+              <div>
+                <SmallButton
+                  title="Sign In"
+                  onClick={handleClickOpen}
+                  transparent
+                />
+              </div>
+              <div>
+                <SmallButton title="Sign Up" onClick={handleClickOpenSignup} />
+              </div>
+            </div>
+          )}
         </Drawer>
+
         <Login
           open={openLogin}
           handleClose={handleClose}

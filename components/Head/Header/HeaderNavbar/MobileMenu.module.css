@@ -1,10 +1,19 @@
 
 .nav_items{
     cursor: pointer;
+    font-size: 16px;
+    color: #121212;
 }
 
 
 .menu_item{
     font-size: 16px;
     color: #121212;
+    cursor: pointer;
+
+}
+
+.headerMobileBtn {
+    display: flex;
+    justify-content: space-around;
 }

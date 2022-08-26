@@ -329,32 +329,6 @@ export const CheckOutBody = ({
                   </div>
                 )}
               />
-              {/* <Controller
-                name="payment_method"
-                control={control}
-                render={({ field, fieldState: { error } }) => (
-                  <div className={styles.dialog_content}>
-                    <div className={styles.inp}>
-                      <input
-                        {...field}
-                        type="radio"
-                        value="American Express"
-                        className={styles.radio}
-                      />
-                      <div className={styles.labell}>
-                        <p className={styles.labell_name}>American Express</p>
-                        <div>
-                          <Image
-                            src="/AmericanExpressLogo.png"
-                            width={38}
-                            height={38}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              /> */}
               <div className={styles.order_type_block_bottom}>
                 <p className={styles.privacy}>
                   I´ve read and accept the terms and conditions as well as the{' '}

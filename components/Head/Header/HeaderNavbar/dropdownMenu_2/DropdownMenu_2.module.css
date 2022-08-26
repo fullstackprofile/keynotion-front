@@ -97,15 +97,6 @@
 
 
 
-/* .itemaaa{
- width: 50%;
-}
-
-.itemaaa_2{
-    width: 50%;
-} */
-
-
 .left{
     display: flex;
     flex-direction: column;
@@ -143,8 +134,13 @@
 
 /* media */
 
-@media (max-width: 998px) {
+@media (max-width: 1200px) {
     .menu_item{  
         font-size: 18px;
+    }
+}
+@media (max-width: 768px) {
+    .menu_item{  
+        font-size: 16px;
     }
 }

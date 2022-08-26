@@ -49,10 +49,10 @@ export const ForgotPass = ({ open, handleClose }) => {
           <Controller
             name="email"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({ ref, field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Username or Email Address</p>
-                <Input type="text" {...field} />
+                <Input inputref={ref} type="text" {...field} />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}

@@ -38,8 +38,6 @@ export const Header = ({ blog }) => {
   let count = data?.map((item) => {
     return item.data.items?.[0]?.count
   })
-  //toString()
-
   const handleClickOpenSignup = () => {
     setOpenSingup(true)
   }
@@ -84,26 +82,28 @@ export const Header = ({ blog }) => {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <Image
-          src="/HeaderLogo.png"
-          alt="Logo"
-          width={isMobile >= 768 ? 91 : 40}
-          height={isMobile >= 768 ? 64 : 20}
-        />
+        <div>
+          <Image
+            src="/HeaderLogo.png"
+            alt="Logo"
+            width={isMobile >= 900 ? 91 : 40}
+            height={isMobile >= 900 ? 64 : 20}
+          />
+        </div>
       </Link>
       <div className={styles.header_nav_login}>
-        {isMobile <= 800 ? (
+        {isMobile <= 950 ? (
           <MobileMenu blog={blog && true} />
         ) : (
           <HeaderNavbar blog={blog && true} />
         )}
         <div className={styles.shopingCart} onClick={goCard}>
-          <StyledBadge badgeContent={count ? count : 0}>
+          <StyledBadge badgeContent={count}>
             <Image
               src="/shopingCart.svg"
               alt="shopCart"
-              width={isMobile >= 768 ? 31 : 40}
-              height={isMobile >= 768 ? 38 : 20}
+              width={isMobile >= 768 ? 31 : 30}
+              height={isMobile >= 768 ? 38 : 35}
             />
           </StyledBadge>
         </div>
@@ -125,7 +125,11 @@ export const Header = ({ blog }) => {
         ) : (
           <ClickAwayListener onClickAway={() => setOpen(false)}>
             <div className={styles.userPageIcon} onClick={handleOpen}>
-              <Image src="/UserPageIcon.svg" width={38} height={38} />
+              <Image
+                src="/UserPageIcon.svg"
+                width={isMobile >= 1200 ? 91 : 30}
+                height={38}
+              />
               {open && (
                 <div className={styles.dropedMenu}>
                   <Link href={`/UserPage/Dashboard`}>

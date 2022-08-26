@@ -27,6 +27,12 @@ margin-top: 30px;
 }
 .dialog_content{
     margin-bottom: 22px;
+    margin-top: 10px;
+}
+.extryDateBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .passwordss{
@@ -53,6 +59,53 @@ margin-top: 30px;
     display: flex;
     justify-content: flex-end;
     margin-top: 48px;
+}
+.priceWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.cardWrapper {
+    display: flex;
+}
+.priceBlock {
+    padding: 17px 12px 17px 12px;
+    border: solid 2px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    border-radius: 6px !important;
+
+}
+.cardNumber {
+    margin-top: 10px;
+    margin-bottom: 48px;
+    padding: 17px 15px 17px 15px;
+    border: solid 2px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    border-radius: 6px !important;
+}
+
+.date{
+    margin-top: 10px;
+    width: 200px;
+    height: 60px;
+    padding: 15px;
+    border: solid 2px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+    box-shadow: 2px 1000px 1px #fff inset !important;
+    border-radius: 6px !important;
+}
+.text {
+    margin-top: 10px;
+}
+.btnWrapper {
+    margin-top: 20px;
 }
 
 @media (max-width: 1024px) {

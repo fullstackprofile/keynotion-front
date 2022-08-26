@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
-import MainLayoutt from '../layouts/MainLayoutt'
-import { KeynotionPayment } from '../components/Keynotionpayment/KeynotionPayment'
+import React from 'react'
 import Head from 'next/head'
 import { EventsHead } from '../components/EventsHead/EventsHead'
+import AddCart from '../components/Keynotionpayment/AddCard'
 
 export default function Payment() {
   return (
@@ -14,7 +13,7 @@ export default function Payment() {
       </Head>
       <EventsHead />
 
-      <KeynotionPayment />
+      <AddCart />
     </div>
   )
 }

@@ -160,6 +160,12 @@
         justify-content: center;
     }
 }
+@media (max-width: 950px) {
+    .header{
+        align-items: center;
+        justify-content: space-around;
+    }
+}
 
 @media (max-width: 768px) {
     .header_nav_login{

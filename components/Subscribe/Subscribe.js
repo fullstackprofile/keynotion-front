@@ -51,9 +51,15 @@ export const Subscribe = () => {
             <Controller
               name="email"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({ ref, field, fieldState: { error } }) => (
                 <>
-                  <Input type="email" placeholder="Email" single {...field} />
+                  <Input
+                    inputref={ref}
+                    type="email"
+                    placeholder="Email"
+                    single
+                    {...field}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </>
               )}
