@@ -9,7 +9,7 @@ import { Input } from '../Input/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
 import styles from './SponsorshipModal.module.css'
 import { TextArea } from '../TextArea/TextArea'
-import { setCookie } from 'nookies'
+import { useSelector } from 'react-redux'
 
 export const SponsorshipModal = ({
   open,
@@ -29,6 +29,7 @@ export const SponsorshipModal = ({
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(SponsorshipSchema),
   })
+  const user = useSelector((state) => state.user.user)
 
   const onSubmit = async (dataSponsor) => {
     if (title === 'Brochure') {
@@ -136,6 +137,7 @@ export const SponsorshipModal = ({
                 <Controller
                   name="name"
                   control={control}
+                  defaultValue={user.first_name}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content_}>
                       <Input type="text" {...field} placeholder="Name" />
@@ -146,6 +148,7 @@ export const SponsorshipModal = ({
                 <Controller
                   name="surname"
                   control={control}
+                  defaultValue={user.last_name}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content_}>
                       <Input type="text" {...field} placeholder="Surname" />
@@ -180,6 +183,7 @@ export const SponsorshipModal = ({
                 <Controller
                   name="phone_number"
                   control={control}
+                  defaultValue={user.phone}
                   render={({ field, fieldState: { error } }) => (
                     <div className={styles.dialog_content_}>
                       <Input

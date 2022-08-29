@@ -25,9 +25,6 @@ export const Footer = () => {
               <ButtonComp title="Contact Us" onClick={goContact} />
             </div>
           </div>
-
-          {/* <div className={styles.left_block}> */}
-          {/* <div className={styles.officess}> */}
           <div className={styles.keyNation}>
             <p className={styles.prague_title}>Prague Office</p>
             <div className={styles.prague_titles}>
@@ -63,9 +60,6 @@ export const Footer = () => {
               </p>
             </div>
           </div>
-          {/* </div> */}
-
-          {/* </div> */}
         </div>
       </div>
       <div className={styles.row}>

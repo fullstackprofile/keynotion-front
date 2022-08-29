@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { ButtonComp } from '../Button/Button'
 import { SponsorshipModal } from '../SponsorshipModal/SponsorshipModal'
 import * as yup from 'yup'
@@ -75,8 +75,8 @@ export const EventsInnerHeading = ({
   the_venue_logo,
   Past,
 }) => {
-  const [openLogin, setOpenLogin] = React.useState(false)
-  const [openBrouchure, setOpenBrouchure] = React.useState(false)
+  const [openLogin, setOpenLogin] = useState(false)
+  const [openBrouchure, setOpenBrouchure] = useState(false)
   const handleClickOpen = () => {
     setOpenLogin(true)
   }
@@ -106,12 +106,12 @@ export const EventsInnerHeading = ({
             <p className={styles.title}>{title}</p>
             <p className={styles.subTitle}>{small_description}</p>
           </div>
-          {/* <div className={styles.date_block}>
+          <div className={styles.date_block}>
             <p className={styles.date}>23rd - 25th of November 2022</p>
             <p className={styles.country}>
               {country},{city}
             </p>
-          </div> */}
+          </div>
           <div className={styles.logo}>
             <Image src={the_venue_logo} width={82} height={64} />
           </div>

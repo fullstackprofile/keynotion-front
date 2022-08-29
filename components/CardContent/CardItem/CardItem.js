@@ -2,21 +2,21 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 import axios from 'axios'
-import { SmallButton } from '../../Button/SmallButton'
 import styles from './CardItem.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { parseCookies } from 'nookies'
 import { addCard } from '../../../store/cardsSlice'
 
-export const CardItem = ({ id, type, other_type, price, count, title }) => {
+export const CardItem = () => {
   const router = useRouter()
   const user = useSelector((state) => state.user.user)
+  const data = useSelector((state) => state.cards.card)
   const dispatch = useDispatch()
   const cart_id = parseCookies('cart_id')
 
-  const removeItem = async () => {
+  const removeItem = async (ticketId) => {
     const { data } = await axios.delete(
-      `http://laratest.key-notion.com/api/cart/${id}?cart_id=${
+      `http://laratest.key-notion.com/api/cart/${ticketId}?cart_id=${
         user ? user?.id : cart_id.cart_id
       }`
     )
@@ -25,11 +25,11 @@ export const CardItem = ({ id, type, other_type, price, count, title }) => {
     }
   }
 
-  const plusItem = async () => {
+  const addItem = async (price, ticketId, newCount) => {
     const dataTosendTicketPlus = {
       price: price,
-      ticket_id: id,
-      count: (count += 1),
+      ticket_id: ticketId,
+      count: (newCount += 1),
       cart_id: user ? user?.id : cart_id.cart_id,
     }
     const { data } = await axios.post(
@@ -41,11 +41,11 @@ export const CardItem = ({ id, type, other_type, price, count, title }) => {
     }
   }
 
-  const minusItem = async () => {
+  const minusItem = async (price, ticketId, newCount) => {
     const dataTosendTicketMinus = {
       price: price,
-      ticket_id: id,
-      count: (count -= 1),
+      ticket_id: ticketId,
+      count: (newCount -= 1),
       cart_id: user ? user?.id : cart_id.cart_id,
     }
     const { data } = await axios.post(
@@ -57,45 +57,45 @@ export const CardItem = ({ id, type, other_type, price, count, title }) => {
     }
   }
 
-  const CheckOut = () => {
-    router.push('/CheckOut')
-  }
-
-  return (
-    <div className={styles.card_item}>
-      <div className={styles.item_name_block}>
-        <div className={styles.remove} onClick={removeItem}>
-          <Image src="/remove.png" width={32} height={32} />
-        </div>
-        <p className={styles.item_name}>
-          Ticket: {} {title} - {type}
-          {other_type}
-        </p>
-        <div>
-          <SmallButton transparent title="Check Out" onClick={CheckOut} />
-        </div>
-      </div>
-      <div className={styles.item_right}>
-        <div className={styles.item_quantity_block}>
-          <button
-            className={styles.minus}
-            disabled={count <= 1}
-            onClick={minusItem}
+  return data[0].data.items.map((item) => {
+    return (
+      <div key={item.ticket_id} className={styles.card_item}>
+        <div className={styles.item_name_block}>
+          <div
+            className={styles.remove}
+            onClick={() => removeItem(item.ticket_id)}
           >
-            <p className={styles.icon}>-</p>
-          </button>
-          <div className={styles.count}>
-            <p className={styles.countt}>{count}</p>
+            <Image src="/remove.png" width={32} height={32} />
           </div>
-          <button className={styles.plus} onClick={plusItem}>
-            <p className={styles.icon}>+</p>
-          </button>
+          <p className={styles.item_name}>
+            Ticket: {item.title} - {item.type}
+            {item.other_type}
+          </p>
         </div>
-
-        <div className={styles.item_price_block}>
-          <p className={styles.item_price}>€{price}</p>
+        <div className={styles.item_right}>
+          <div className={styles.item_quantity_block}>
+            <button
+              className={styles.minus}
+              disabled={item.count <= 1}
+              onClick={() => minusItem(item.price, item.ticket_id, item.count)}
+            >
+              <p className={styles.icon}>-</p>
+            </button>
+            <div className={styles.count}>
+              <p className={styles.countt}>{item.count}</p>
+            </div>
+            <button
+              className={styles.plus}
+              onClick={() => addItem(item.price, item.ticket_id, item.count)}
+            >
+              <p className={styles.icon}>+</p>
+            </button>
+          </div>
+          <div className={styles.item_price_block}>
+            <p className={styles.item_price}>€{item.price}</p>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  })
 }

@@ -7,6 +7,7 @@ import { parseCookies } from 'nookies'
 import { CouponForm } from './CouponForm/CouponForm'
 import { useRouter } from 'next/router'
 import { Login } from '../../components/Login/Login'
+import { SmallButton } from '../Button/SmallButton'
 import { useSelector } from 'react-redux'
 
 export const CardContent = () => {
@@ -22,13 +23,6 @@ export const CardContent = () => {
   const onShowCoupon = () => {
     SetOpen(!open)
   }
-
-  // let prices = data?.map((item) => {
-  //   return item.data.items?.[0]?.price * item.data.items?.[0]?.count
-  // })
-  // let totalPrice = prices?.reduce(function (previousValue, currentValue) {
-  //   return previousValue + currentValue
-  // })
 
   let subtotal = data.map((item) => {
     return item.data.subtotal
@@ -53,6 +47,10 @@ export const CardContent = () => {
     cookie.token ? setLogin(true) : setLogin(false)
   }, [cookie])
 
+  const checkOut = () => {
+    router.push('/CheckOut')
+  }
+
   return (
     <div className={styles.body}>
       <div className={styles.content_card_info}>
@@ -65,16 +63,8 @@ export const CardContent = () => {
             </div>
           </div>
           <div className={styles.card_items}>
-            {data?.map((item, index) => (
-              <CardItem
-                title={item.data.items?.[0]?.title}
-                key={index + item.data.items?.[0]?.ticket_id}
-                count={item.data.items?.[0]?.count}
-                id={item.data.items?.[0]?.ticket_id}
-                type={item.data.items?.[0]?.type}
-                other_type={item.data.items?.[0]?.other_type}
-                price={item.data.items?.[0]?.price}
-              />
+            {data?.map((index) => (
+              <CardItem key={index} />
             ))}
           </div>
         </div>
@@ -105,6 +95,13 @@ export const CardContent = () => {
                 <p className={styles.subtotal_block_title}>Total</p>
                 <p className={styles.total_block_price}>€{total}</p>
               </div>
+            </div>
+            <div>
+              <SmallButton
+                transparent
+                title="Check Out"
+                onClick={() => checkOut()}
+              />
             </div>
           </div>
         </div>

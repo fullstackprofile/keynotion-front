@@ -9,7 +9,6 @@
 .item_name_block{
     display: flex;
     width: 73%;
-    justify-content: space-between;
 }
 
 .item_name{
@@ -17,6 +16,7 @@
     font-size: 21px;
     line-height: 130%;
     color: #121212;
+    margin-left: 20px;
 }
 
 .item_right{

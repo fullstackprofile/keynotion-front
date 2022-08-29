@@ -8,7 +8,7 @@ const UserOrders = () => {
   const dataInStore = useSelector((state) => state.orders.orders)
   return (
     <div className={styles.userOrders}>
-      {dataInStore.lenght ? (
+      {dataInStore.length > 0 ? (
         <OrderContent />
       ) : (
         <EmptyCard

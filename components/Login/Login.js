@@ -28,17 +28,17 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
     resolver: yupResolver(LoginSchema),
   })
 
-  const onSubmit = async (dd) => {
+  const onSubmit = async (dataForm) => {
     const dataToSend = {
-      email: dd.email,
-      password: dd.password,
+      email: dataForm.email,
+      password: dataForm.password,
     }
 
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/login',
       dataToSend
     )
-    setCookie(null, 'token', data.token, {
+    setCookie(null, 'token', data?.token, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })

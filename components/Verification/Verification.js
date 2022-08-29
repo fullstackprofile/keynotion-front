@@ -1,35 +1,41 @@
-import { Dialog, ClickAwayListener } from '@mui/material'
+import { Dialog } from '@mui/material'
 import Image from 'next/image'
 import VerificationInputProps from 'react-verification-input'
 import { ButtonComp } from '../Button/Button'
 import axios from 'axios'
 import styles from './Verification.module.css'
 import { useState } from 'react'
+import { setCookie } from 'nookies'
+import { useSelector } from 'react-redux'
 
-export const Verification = ({ openVerify, closeVerify, dataRegistr }) => {
+export const Verification = ({
+  openVerify,
+  closeVerify,
+  dataRegistr,
+  setOpenVerify,
+}) => {
   const ONLY_DIGITS = /\d/
   const [verifyValue, setVerifyValue] = useState('')
+  const token = useSelector((state) => state.user.userToken)
 
   const sendVerifyCode = async () => {
-    console.log(verifyValue)
-
-    const dataForSendVerify = {
-      email: dataRegistr.email,
-      code: verifyValue,
-    }
     const { data } = await axios.post(
-      'http://laratest.key-notion.com/api/verify',
-      dataForSendVerify
+      `http://laratest.key-notion.com/api/verify?email=${dataRegistr.data.user.email}&code=${verifyValue}`
     )
+
+    if (data) {
+      setCookie(null, 'token', token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      })
+      setOpenVerify(false)
+      closeVerify()
+    }
   }
 
   const weSendVerifyCode = async () => {
-    const dataWeForSendVerify = {
-      email: dataRegistr.email,
-    }
     const { data } = await axios.post(
-      'http://laratest.key-notion.com/api/resend-verify',
-      dataWeForSendVerify
+      `http://laratest.key-notion.com/api/resend-verify?email=${dataRegistr.data.user.email}`
     )
   }
   return (
@@ -56,10 +62,10 @@ export const Verification = ({ openVerify, closeVerify, dataRegistr }) => {
         </div>
         <div className={styles.btnDiv}>
           <div className={styles.btn}>
-            <ButtonComp title="Send Code" onClick={sendVerifyCode} />
+            <ButtonComp title="Verify" onClick={sendVerifyCode} />
           </div>
           <div className={styles.btn}>
-            <ButtonComp title="We Send" type onClick={weSendVerifyCode} />
+            <ButtonComp title="Resend" type onClick={weSendVerifyCode} />
           </div>
         </div>
       </div>

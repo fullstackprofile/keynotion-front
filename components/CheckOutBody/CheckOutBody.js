@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
@@ -11,8 +11,8 @@ import { Controller, useForm } from 'react-hook-form'
 import { Country } from '../Country/Country'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { parseCookies } from 'nookies'
 import { addOrders } from '../../store/ordersSlice'
+import { formatToReqData } from '../../Helpers/help'
 
 const CheckOutBodysSchema = yup.object().shape({
   full_name: yup.string().required('please Enter your Full Name'),
@@ -29,34 +29,32 @@ const CheckOutBodysSchema = yup.object().shape({
   payment_method: yup.string().required(),
 })
 
-export const CheckOutBody = ({
-  title,
-  count,
-  type,
-  other_type,
-  price,
-  data,
-  ticket_id,
-}) => {
+export const CheckOutBody = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const [curentData, setCurentData] = useState()
   const user = useSelector((state) => state.user.user)
-  const cart_id = parseCookies('cart_id')
+  const data = useSelector((state) => state.cards.card)
   const goPrivacy = () => router.push('/DataPrivacy')
 
-  let delegate = []
-  let newData = data
+  console.log(data, 'dddddddddd')
+  let a
 
-  for (let i = 1; i <= count; i++) {
-    delegate.push(i)
-  }
+  // data[0]?.data?.items?.map((item) => {
+  //   let a =
+  //   console.log(a)
+  // })
+
+  const delegate = []
 
   useEffect(() => {
-    reset(user)
-  }, [user])
+    setCurentData(data[0]?.data)
+  }, [data])
 
-  const { control, handleSubmit, reset } = useForm({
-    resolver: yupResolver(CheckOutBodysSchema),
+  for (let i = 1; i <= data[0]?.data; i++) {
+    delegate.push(i)
+  }
+  const { control, handleSubmit, register } = useForm({
     defaultValues: {
       payment_method: 'Invoice - Direct Bank Transfer',
     },
@@ -74,25 +72,18 @@ export const CheckOutBody = ({
       email: dataForm.email,
       phone: dataForm.phone,
       payment_method: dataForm.payment_method,
-      Subtotal: newData.data.subtotal,
-      VAT: newData.data.vat.toString(),
-      Total: newData.data.total,
+      Subtotal: curentData.subtotal,
+      VAT: curentData.vat.toString(),
+      Total: curentData.total,
       order_items: [
         {
-          ticket_id: ticket_id,
-          ticket_title: title,
-          quantity: count,
-          price: price,
+          ticket_id: newOrder.ticket_id,
+          quantity: newOrder.count,
         },
       ],
-      delegaters: [
-        {
-          full_name: dataForm.full_name,
-          job_title: dataForm.job_title,
-          email: dataForm.email,
-        },
-      ],
+      delegaters: formatToReqData(dataForm),
     }
+
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/order/store',
       orderStore
@@ -100,180 +91,230 @@ export const CheckOutBody = ({
     if (data) {
       dispatch(addOrders(data))
     }
-    if (dataForm.payment_method == 'Invoice - Direct Bank Transfer') {
-      router.push(`/DirectBankTransfer/${data.data}`)
+    if (dataForm.payment_method === 'Invoice - Direct Bank Transfer') {
+      router.push(`/DirectBankTransfer}`)
     }
-    if (dataForm.payment_method == 'Visa or Mastercard') {
+    if (dataForm.payment_method === 'Visa or Mastercard') {
       router.push(`/Payment`)
     }
   }
 
   return (
     <div className={styles.checkOutBody}>
-      <Title title={title} />
-      <p className={styles.subtitle_}>{`${type}${other_type}`}</p>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <p className={styles.form_title}>Company Details</p>
+          <Controller
+            rules="string"
+            {...register('first_name', { required: true })}
+            name="first_name"
+            control={control}
+            defaultValue={user.first_name}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>First Name</p>
+                <Input type="text" {...field} placeholder="First Name" />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            rules="string"
+            {...register('last_name', { required: true })}
+            name="last_name"
+            control={control}
+            defaultValue={user.last_name}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Last Name</p>
+                <Input type="text" {...field} error placeholder="Last Name" />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            rules="string"
+            {...register('company_name', { required: true })}
+            name="company_name"
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Company Name</p>
+                <Input type="text" {...field} placeholder="Company Name" />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            rules="string"
+            {...register('country_region', { required: true })}
+            name="country_region"
+            control={control}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Country</p>
+                <Country value={value} onChange={onChange} />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            name="town_city"
+            rules="string"
+            {...register('town_city', { required: true })}
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>City / Town</p>
+                <Input
+                  type="text"
+                  {...field}
+                  placeholder="Enter Your City / Town"
+                />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            name="street_address"
+            rules="string"
+            {...register('street_address', { required: true })}
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Street Address</p>
+                <Input
+                  type="text"
+                  {...field}
+                  placeholder="Enter Your Street Address"
+                />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            name="postcode_zip"
+            rules="string"
+            {...register('postcode_zip', { required: true })}
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>PostCode/Zip</p>
+                <Input
+                  type="text"
+                  {...field}
+                  placeholder="Enter Your PostCode/Zip"
+                />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            name="email"
+            rules="string"
+            defaultValue={user.email}
+            {...register('email', { required: true, minLength: 1 })}
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Email Address</p>
+                <Input type="text" {...field} placeholder="Email Address" />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+          <Controller
+            name="phone"
+            rules="string"
+            defaultValue={user.phone}
+            {...register('phone', { required: true })}
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div className={styles.dialog_content}>
+                <p className={styles.dialog_label}>Phone</p>
+                <Input type="text" {...field} placeholder="Phone Number" />
+                <p className={styles.error}>{error?.message}</p>
+              </div>
+            )}
+          />
+        </div>
+        {data[0]?.data?.items?.map((item) => {
+          return (
+            <div key={item.ticket_id}>
+              <div>
+                <Title title={item?.title} />
+                <p className={styles.subtitle_}>
+                  {`${item?.type}${item?.other_type}`}
+                </p>
+                {Array.from(Array(item.count).keys()).map((elem, index) => (
+                  <div key={elem} className={styles.delegate}>
+                    <p className={styles.delegate_title}>Attendee {elem + 1}</p>
+                    <Controller
+                      rules="string"
+                      {...register(`full_name-${index}`, {
+                        required: true,
+                      })}
+                      name={`full_name-${index}`}
+                      control={control}
+                      render={({ field, fieldState: { error } }) => (
+                        <div className={styles.dialog_content}>
+                          <p className={styles.dialog_label}>Full Name</p>
+                          <Input
+                            type="text"
+                            {...field}
+                            placeholder="Full Name"
+                          />
+                          <p className={styles.error}>{error?.message}</p>
+                        </div>
+                      )}
+                    />
+                    <Controller
+                      rules="string"
+                      {...register(`job_title-${index}`, { required: true })}
+                      name={`job_title-${index}`}
+                      control={control}
+                      render={({ field, fieldState: { error } }) => (
+                        <div className={styles.dialog_content}>
+                          <p className={styles.dialog_label}>Job Title</p>
+                          <Input
+                            type="text"
+                            {...field}
+                            placeholder="Job Title"
+                          />
+                          <p className={styles.error}>{error?.message}</p>
+                        </div>
+                      )}
+                    />
+                    <Controller
+                      rules="string"
+                      {...register(`email-${index}`, { required: true })}
+                      name={`email-${index}`}
+                      control={control}
+                      render={({ field, fieldState: { error } }) => (
+                        <div className={styles.dialog_content}>
+                          <p className={styles.dialog_label}>Email Address</p>
+                          <Input
+                            type="text"
+                            {...field}
+                            placeholder="Email Address"
+                          />
+                          <p className={styles.error}>{error?.message}</p>
+                        </div>
+                      )}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+
         <div className={styles.forms}>
           <div className={styles.right}>
-            <p className={styles.form_title}>Company Details</p>
-            <Controller
-              name="first_name"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>First Name</p>
-                  <Input type="text" {...field} placeholder="First Name" />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="last_name"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Last Name</p>
-                  <Input type="text" {...field} placeholder="Last Name" />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="company_name"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Company Name</p>
-                  <Input type="text" {...field} placeholder="Company Name" />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="country_region"
-              control={control}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Country</p>
-                  <Country value={value} onChange={onChange} />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="town_city"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>City / Town</p>
-                  <Input
-                    type="text"
-                    {...field}
-                    placeholder="Enter Your City / Town"
-                  />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="street_address"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Street Address</p>
-                  <Input
-                    type="text"
-                    {...field}
-                    placeholder="Enter Your Street Address"
-                  />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="postcode_zip"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>PostCode/Zip</p>
-                  <Input
-                    type="text"
-                    {...field}
-                    placeholder="Enter Your PostCode/Zip"
-                  />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="email"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Email Address</p>
-                  <Input type="text" {...field} placeholder="Email Address" />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            <Controller
-              name="phone"
-              control={control}
-              render={({ field, fieldState: { error } }) => (
-                <div className={styles.dialog_content}>
-                  <p className={styles.dialog_label}>Phone</p>
-                  <Input type="text" {...field} placeholder="Phone Number" />
-                  <p className={styles.error}>{error?.message}</p>
-                </div>
-              )}
-            />
-            {delegate.map((elem) => (
-              <div key={elem} className={styles.delegate}>
-                <p className={styles.delegate_title}>Attendee {elem}</p>
-                <Controller
-                  name={'full_name'}
-                  control={control}
-                  render={({ field, fieldState: { error } }) => (
-                    <div className={styles.dialog_content}>
-                      <p className={styles.dialog_label}>Full Name</p>
-                      <Input type="text" {...field} placeholder="Full Name" />
-                      <p className={styles.error}>{error?.message}</p>
-                    </div>
-                  )}
-                />
-                <Controller
-                  name={'job_title'}
-                  control={control}
-                  render={({ field, fieldState: { error } }) => (
-                    <div className={styles.dialog_content}>
-                      <p className={styles.dialog_label}>Job Title</p>
-                      <Input type="text" {...field} placeholder="Job Title" />
-                      <p className={styles.error}>{error?.message}</p>
-                    </div>
-                  )}
-                />
-                <Controller
-                  name={'email'}
-                  control={control}
-                  render={({ field, fieldState: { error } }) => (
-                    <div className={styles.dialog_content}>
-                      <p className={styles.dialog_label}>Email Address</p>
-                      <Input
-                        type="text"
-                        {...field}
-                        placeholder="Email Address"
-                      />
-                      <p className={styles.error}>{error?.message}</p>
-                    </div>
-                  )}
-                />
-              </div>
-            ))}
             <div className={styles.order_type_block}>
               <Controller
+                rules="string"
+                {...register('payment_method', { required: true })}
                 name="payment_method"
                 control={control}
                 render={({ field, fieldState: { error } }) => (
@@ -308,6 +349,8 @@ export const CheckOutBody = ({
                 )}
               />
               <Controller
+                rules="string"
+                {...register('payment_method', { required: true })}
                 name="payment_method"
                 control={control}
                 render={({ field, fieldState: { error } }) => (
@@ -338,9 +381,8 @@ export const CheckOutBody = ({
                 </p>
               </div>
             </div>
-
             <div className={styles.btn}>
-              <ButtonComp title="Submit" big type />
+              <ButtonComp title="submit" big type />
             </div>
           </div>
         </div>

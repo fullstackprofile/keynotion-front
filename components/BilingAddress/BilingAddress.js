@@ -6,6 +6,9 @@ import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
 import styles from './BilingAddress.module.css'
 import { Country } from '../Country/Country'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { addOrders } from '../../store/ordersSlice'
 
 export const BilingAddress = ({ user }) => {
   const ChangeSchema = yup.object().shape({
@@ -14,23 +17,27 @@ export const BilingAddress = ({ user }) => {
     street_address: yup.string().required('please Enter Street Address'),
     postcode_zip: yup.string().required('please Enter PostCode/ZIP'),
   })
-
+  const dispatch = useDispatch()
+  const orders = useSelector((state) => state?.orders?.order)
   const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(ChangeSchema),
   })
 
-  const onSave = (dataSend) => {
-    const mydata = {
-      country_region: dataSend.country_region,
-      town_city: dataSend.town_city,
-      street_address: dataSend.street_address,
-      postcode_zip: dataSend.postcode_zip,
+  const onSave = async (dataForm) => {
+    const dataToSend = {
+      country_region: dataForm.country_region,
+      town_city: dataForm.town_city,
+      street_address: dataForm.street_address,
+      postcode_zip: dataForm.postcode_zip,
     }
+    // const { data } = await axios.post(
+    //   'http://laratest.key-notion.com/api/questions',
+    //   dataToSend
+    // )
+    // if (data) {
+    //   dispatch(addOrders(data))
+    // }
   }
-
-  useEffect(() => {
-    reset(user)
-  }, [user])
 
   return (
     <div className={styles.address_body}>
@@ -46,6 +53,7 @@ export const BilingAddress = ({ user }) => {
           <Controller
             name="country_region"
             control={control}
+            defaultValue={orders?.country_region}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Country</p>

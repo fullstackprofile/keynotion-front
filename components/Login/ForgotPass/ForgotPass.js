@@ -1,6 +1,6 @@
 import { Dialog } from '@mui/material'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { ButtonComp } from '../../Button/Button'
 import { Input } from '../../Input/Input'
@@ -9,21 +9,30 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 import styles from './ForgotPass.module.css'
+import ResendPassword from '../../ResendPassword/ResendPassword'
 
 export const ForgotPass = ({ open, handleClose }) => {
   const ForgotPassSchema = yup.object().shape({
     email: yup.string().email().required('please Enter your Email'),
   })
+  const [resendPasswordState, setResendPasswordState] = useState(false)
 
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(ForgotPassSchema),
   })
 
   const onSubmit = async (dataForm) => {
+    console.log(dataForm)
+
     const { data } = await axios.post(
-      `http://laratest.key-notion.com/api/forgot-password`,
-      dataForm.email
+      `http://laratest.key-notion.com/api/forgot-password?email=${dataForm.email}`
     )
+    if (data) {
+      setResendPasswordState(true)
+    }
+  }
+  const closeResedPassword = () => {
+    setResendPasswordState(false)
   }
 
   return (
@@ -65,6 +74,10 @@ export const ForgotPass = ({ open, handleClose }) => {
           </div>
         </form>
       </Dialog>
+      <ResendPassword
+        closeResedPassword={closeResedPassword}
+        resendPasswordState={resendPasswordState}
+      />
     </>
   )
 }

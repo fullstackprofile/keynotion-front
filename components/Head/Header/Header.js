@@ -15,11 +15,8 @@ import { ClickAwayListener } from '@mui/material'
 import { StyledBadge } from '../../StyledBadge/StyledBadge'
 import useIsMobile from '../../../Helpers/helpers'
 import { useSelector } from 'react-redux'
-// import { useMediaQuery } from 'use-hooks'
-// import useMediaQuery from '../../../Helpers/helpers'
 
 export const Header = ({ blog }) => {
-  // const matches = useMediaQuery('(max-width: 768px)')
   const data = useSelector((state) => state.cards.card)
   const isMobile = useIsMobile()
   const [openLogin, setOpenLogin] = useState(false)
@@ -35,17 +32,11 @@ export const Header = ({ blog }) => {
     router.push('/')
   }
 
-  let count = data?.map((item) => {
-    return item.data.items?.[0]?.count
-  })
   const handleClickOpenSignup = () => {
     setOpenSingup(true)
   }
 
   const handleClickCloseSignup = () => {
-    setOpenSingup(false)
-  }
-  const handleClickCloseVerify = () => {
     setOpenSingup(false)
   }
 
@@ -70,7 +61,6 @@ export const Header = ({ blog }) => {
   const goCard = () => {
     router.push('/Card')
   }
-  const goUserPage = () => router.push('/UserPage')
 
   useEffect(() => {
     cookie.token ? setLogin(true) : setLogin(false)
@@ -79,6 +69,11 @@ export const Header = ({ blog }) => {
   const handleOpen = () => {
     setOpen(!open)
   }
+
+  const badgeCount = data[0]?.data?.items?.reduce((accumulator, value) => {
+    return accumulator + value.count
+  }, 0)
+
   return (
     <div className={styles.header}>
       <Link href="/">
@@ -98,7 +93,7 @@ export const Header = ({ blog }) => {
           <HeaderNavbar blog={blog && true} />
         )}
         <div className={styles.shopingCart} onClick={goCard}>
-          <StyledBadge badgeContent={count}>
+          <StyledBadge badgeContent={badgeCount ? badgeCount : 0}>
             <Image
               src="/shopingCart.svg"
               alt="shopCart"

@@ -10,8 +10,6 @@ export const AboutUs = () => {
         <AboutUsCard title="100%" subTitle="Professionalism" />
         <AboutUsCard title="100%" subTitle="Expertise" />
         <AboutUsCard title="100%" subTitle="Quality" />
-        {/* <p>{context.session.obj.price}</p>
-        <p>{context.session.obj.type}</p>  */}
       </div>
     </div>
   )

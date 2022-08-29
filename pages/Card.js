@@ -6,13 +6,17 @@ import { useSelector } from 'react-redux'
 
 export default function Card() {
   const dataInStore = useSelector((state) => state.cards.card)
-  let count = dataInStore?.map((item) => {
-    return item.data.items?.[0]?.ticket_id
-  })
+
+  const badgeCount = dataInStore[0]?.data?.items?.reduce(
+    (accumulator, value) => {
+      return accumulator + value.count
+    },
+    0
+  )
 
   return (
     <MainLayoutt>
-      <div>{count.toString() ? <CardContent /> : <EmptyCard />}</div>
+      <div>{badgeCount ? <CardContent /> : <EmptyCard />}</div>
     </MainLayoutt>
   )
 }

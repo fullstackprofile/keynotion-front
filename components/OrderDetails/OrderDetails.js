@@ -16,6 +16,7 @@ export const OrderDetails = () => {
   const vat = orders?.map((item) => {
     return item.data.Vat
   })
+  console.log(orders, 'orders')
 
   const mewCard = card.map((item) => {
     return item.data.items

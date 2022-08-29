@@ -26,9 +26,9 @@ const ConectUsAnyQuestionsSchema = yup.object().shape({
 export const ConectUsAnyQuestions = () => {
   const user = useSelector((state) => state.user.user)
 
-  useEffect(() => {
-    reset(user)
-  }, [user])
+  // useEffect(() => {
+  //   reset(user)
+  // }, [user])
 
   const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(ConectUsAnyQuestionsSchema),
@@ -87,6 +87,7 @@ export const ConectUsAnyQuestions = () => {
             <Controller
               name="name"
               control={control}
+              defaultValue={user.first_name}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
                   <Input type="text" {...field} placeholder="First Name" />
@@ -97,6 +98,7 @@ export const ConectUsAnyQuestions = () => {
             <Controller
               name="email"
               control={control}
+              defaultValue={user.email}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
                   <Input type="text" {...field} placeholder="Email address" />
@@ -107,6 +109,7 @@ export const ConectUsAnyQuestions = () => {
             <Controller
               name="phone"
               control={control}
+              defaultValue={user.phone}
               render={({ field, fieldState: { error } }) => (
                 <div className={styles.dialog_content}>
                   <Input type="text" {...field} placeholder="Phone Number" />

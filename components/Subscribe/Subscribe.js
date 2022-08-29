@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { Input } from '../Input/Input'
 import styles from './Subscribe.module.css'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 const SubscribeSchema = yup.object().shape({
   email: yup.string().required('please Enter your Email'),
@@ -16,6 +17,7 @@ export const Subscribe = () => {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(SubscribeSchema),
   })
+  const user = useSelector((state) => state.user.user)
 
   const onSubmit = async (subscriber) => {
     const dataToSend = {
@@ -50,6 +52,7 @@ export const Subscribe = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
               name="email"
+              defaultValue={user.email}
               control={control}
               render={({ ref, field, fieldState: { error } }) => (
                 <>

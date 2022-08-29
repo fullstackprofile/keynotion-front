@@ -49,3 +49,21 @@ export const attendees = [
   { logo: '/GKN.png', width: 175, height: 58 },
   { logo: '/Fischer.png', width: 199, height: 77 },
 ]
+export const formatToReqData = (form) => {
+  const DELEGATE_MAP = {
+    full_name: 'full_name',
+    job_title: 'job_title',
+    email: 'email',
+  }
+  const sections = {}
+  const delegates = Object.keys(form).forEach((item) => {
+    const key = item.split('-')
+    if (key?.[1] && key[0] === DELEGATE_MAP?.[key[0]]) {
+      sections[key[1]] = {
+        ...(sections[key[1]] || {}),
+        [key[0]]: form[item],
+      }
+    }
+  })
+  return Object.values(sections)
+}

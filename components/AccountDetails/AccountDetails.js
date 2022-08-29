@@ -41,24 +41,18 @@ export const AccountDetails = ({ user }) => {
       new_password: dataForm.new_password,
       new_password_confirmation: dataForm.new_password_confirmation,
       phone: dataForm.phone,
-      email: dataForm.email !== user.email && dataForm.email,
     }
-
+    if (dataForm.email !== user.email) {
+      dataToSend.email = dataForm.email
+    }
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/update-user',
       dataToSend,
       config
     )
-    console.log(dataToSend, 'dataForm')
-    console.log(dataForm.email, 'dataForm.email')
-    console.log(user.email, 'user.email')
-    console.log(data, 'user.email')
+
     dispatch(addUser(data?.data))
   }
-
-  useEffect(() => {
-    reset(user)
-  }, [user])
 
   return (
     <div className={styles.accountDetails_body}>
@@ -69,10 +63,12 @@ export const AccountDetails = ({ user }) => {
               <Controller
                 name="first_name"
                 control={control}
+                defaultValue={user.first_name}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <p className={styles.dialog_label}>First Name</p>
                     <Input
+                      defaultValue={user.first_name}
                       type="text"
                       {...field}
                       placeholder="Enter Your First Name"
@@ -86,6 +82,7 @@ export const AccountDetails = ({ user }) => {
               <Controller
                 name="last_name"
                 control={control}
+                defaultValue={user.last_name}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <p className={styles.dialog_label}>Last Name</p>
@@ -103,6 +100,7 @@ export const AccountDetails = ({ user }) => {
           <Controller
             name="phone"
             control={control}
+            defaultValue={user.phone}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Phone Number</p>
@@ -118,6 +116,7 @@ export const AccountDetails = ({ user }) => {
           <Controller
             name="email"
             control={control}
+            defaultValue={user.email}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Email</p>
@@ -133,6 +132,7 @@ export const AccountDetails = ({ user }) => {
               <Controller
                 name="current_password"
                 control={control}
+                defaultValue={user.current_password}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <p className={styles.dialog_label}>Current Password</p>
@@ -144,6 +144,7 @@ export const AccountDetails = ({ user }) => {
               <Controller
                 name="new_password"
                 control={control}
+                defaultValue={user.new_password}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <p className={styles.dialog_label}>New Password</p>
@@ -155,6 +156,7 @@ export const AccountDetails = ({ user }) => {
               <Controller
                 name="new_password_confirmation"
                 control={control}
+                defaultValue={user.new_password_confirmation}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <p className={styles.dialog_label}>Repet New Password</p>

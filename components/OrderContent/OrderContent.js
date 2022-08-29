@@ -18,7 +18,6 @@ const OrderContent = () => {
       </div>
       <div>
         {orders.map((item, index) => {
-          console.log(item, 'itemorder')
           return (
             <div key={index} className={styles.blockTable}>
               <p className={styles.title}>{item?.data.order_number}</p>

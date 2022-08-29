@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
@@ -22,6 +23,7 @@ export const LeaveReply = ({ id }) => {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(LeaveReplySchema),
   })
+  const user = useSelector((state) => state.user.user)
 
   const onSubmit = async (dataSponsor) => {
     const dataToSend = {
@@ -59,6 +61,7 @@ export const LeaveReply = ({ id }) => {
               <Controller
                 name="name"
                 control={control}
+                defaultValue={user.name}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <Input type="text" {...field} placeholder="Name" />
@@ -71,6 +74,7 @@ export const LeaveReply = ({ id }) => {
               <Controller
                 name="email"
                 control={control}
+                defaultValue={user.email}
                 render={({ field, fieldState: { error } }) => (
                   <div className={styles.dialog_content}>
                     <Input type="text" {...field} placeholder="Email" />

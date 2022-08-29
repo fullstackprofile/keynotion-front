@@ -8,12 +8,10 @@ import { Input } from '../Input/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import styles from './SignUp.module.css'
-import { setCookie } from 'nookies'
 import { Country } from '../Country/Country'
 import Verification from '../Verification/Verification'
-import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { addUser } from '../../store/userSlice'
+import { addUser, addUserToken } from '../../store/userSlice'
 
 const RegisterSchema = yup.object().shape({
   first_name: yup.string().required('please Enter your First Name'),
@@ -31,7 +29,6 @@ const RegisterSchema = yup.object().shape({
 export const SignUp = ({ open, handleClose, setOpen }) => {
   const [openVerify, setOpenVerify] = useState(false)
   const [dataRegistr, setDataRegistr] = useState(null)
-  const router = useRouter()
   const dispatch = useDispatch()
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(RegisterSchema),
@@ -51,13 +48,11 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
       'http://laratest.key-notion.com/api/register',
       dataToSend
     )
-    setCookie(null, 'token', data?.data?.token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/',
-    })
-    dispatch(addUser(data?.data?.user))
+    console.log(data, 'dataInSinUp')
 
     if (data) {
+      dispatch(addUserToken(data?.data.token))
+      dispatch(addUser(data?.data?.user))
       handleClose()
       setOpenVerify(true)
     }
@@ -177,6 +172,7 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
         openVerify={openVerify}
         dataRegistr={dataRegistr}
         closeVerify={closeVerify}
+        setOpenVerify={setOpenVerify}
       />
     </>
   )
