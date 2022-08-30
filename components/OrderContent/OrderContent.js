@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 const OrderContent = () => {
   const orders = useSelector((state) => state.orders.orders)
+  console.log(orders, 'orders')
   const card = useSelector((state) => state.cards.card)
   let count = card?.map((item) => {
     return item.data.items?.[0]?.count
@@ -24,7 +25,7 @@ const OrderContent = () => {
               <p className={styles.title}>
                 {item?.data.created_at.slice(0, 10)}
               </p>
-              <p className={styles.title}>Status</p>
+              <p className={styles.title}>{item?.data.status}</p>
               <p className={styles.title}>
                 € {item?.data.Total} for {count} items
               </p>

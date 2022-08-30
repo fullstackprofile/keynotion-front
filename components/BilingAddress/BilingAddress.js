@@ -9,8 +9,10 @@ import { Country } from '../Country/Country'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addOrders } from '../../store/ordersSlice'
+import { parseCookies } from 'nookies'
 
 export const BilingAddress = ({ user }) => {
+  console.log(user, 'eeeee')
   const ChangeSchema = yup.object().shape({
     country_region: yup.string().required('please Enter Your Country Name'),
     town_city: yup.string().required('please Enter Your City Name'),
@@ -18,10 +20,15 @@ export const BilingAddress = ({ user }) => {
     postcode_zip: yup.string().required('please Enter PostCode/ZIP'),
   })
   const dispatch = useDispatch()
+  const cookie = parseCookies('token')
+
   const orders = useSelector((state) => state?.orders?.order)
   const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(ChangeSchema),
   })
+  const config = {
+    headers: { Authorization: `Bearer ${cookie.token}` },
+  }
 
   const onSave = async (dataForm) => {
     const dataToSend = {
@@ -30,13 +37,15 @@ export const BilingAddress = ({ user }) => {
       street_address: dataForm.street_address,
       postcode_zip: dataForm.postcode_zip,
     }
-    // const { data } = await axios.post(
-    //   'http://laratest.key-notion.com/api/questions',
-    //   dataToSend
-    // )
-    // if (data) {
-    //   dispatch(addOrders(data))
-    // }
+    const { data } = await axios.post(
+      `http://laratest.key-notion.com/api/update/billing?user_id=${user.id}`,
+      dataToSend,
+      config
+    )
+    if (data) {
+      console.log(data, 'datan fechic heto')
+      dispatch(addOrders(data))
+    }
   }
 
   return (
@@ -65,6 +74,7 @@ export const BilingAddress = ({ user }) => {
           <Controller
             name="town_city"
             control={control}
+            defaultValue={orders?.town_city}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>City / Town</p>
@@ -80,6 +90,7 @@ export const BilingAddress = ({ user }) => {
           <Controller
             name="street_address"
             control={control}
+            defaultValue={orders?.street_address}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Street Address</p>
@@ -95,6 +106,7 @@ export const BilingAddress = ({ user }) => {
           <Controller
             name="postcode_zip"
             control={control}
+            defaultValue={orders?.postcode_zip}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>PostCode/Zip</p>

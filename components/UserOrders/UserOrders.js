@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const UserOrders = () => {
   const dataInStore = useSelector((state) => state.orders.orders)
+  console.log(dataInStore, 'orders')
   return (
     <div className={styles.userOrders}>
       {dataInStore.length > 0 ? (

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
+import { Title } from '../TItle/Title'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import axios from 'axios'
@@ -12,7 +12,7 @@ import { Country } from '../Country/Country'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { addOrders } from '../../store/ordersSlice'
-import { formatToReqData } from '../../Helpers/help'
+import { formatToReqData, formatToReqDataOrderItems } from '../../Helpers/help'
 
 const CheckOutBodysSchema = yup.object().shape({
   full_name: yup.string().required('please Enter your Full Name'),
@@ -30,58 +30,56 @@ const CheckOutBodysSchema = yup.object().shape({
 })
 
 export const CheckOutBody = () => {
+  const user = useSelector((state) => state.user.user)
+  const data = useSelector((state) => state.cards.card)
   const router = useRouter()
   const dispatch = useDispatch()
   const [curentData, setCurentData] = useState()
-  const user = useSelector((state) => state.user.user)
-  const data = useSelector((state) => state.cards.card)
+  const [curentUser, setCurentUser] = useState(user)
+  const [curentDataItems, setCurentDataItems] = useState(data)
   const goPrivacy = () => router.push('/DataPrivacy')
 
   console.log(data, 'dddddddddd')
-  let a
-
-  // data[0]?.data?.items?.map((item) => {
-  //   let a =
-  //   console.log(a)
-  // })
-
-  const delegate = []
 
   useEffect(() => {
-    setCurentData(data[0]?.data)
-  }, [data])
+    setCurentData(data[0].data.items)
+  }, [])
 
-  for (let i = 1; i <= data[0]?.data; i++) {
-    delegate.push(i)
-  }
-  const { control, handleSubmit, register } = useForm({
+  useEffect(() => {
+    setCurentDataItems(data[0].data)
+  }, [])
+
+  // console.log(curentDataItems.total, 'curentDataItems')
+  const { control, handleSubmit, register, reset } = useForm({
     defaultValues: {
       payment_method: 'Invoice - Direct Bank Transfer',
     },
   })
+  // useEffect(() => {
+  //   if (user) {
+  //     console.log(user, 'aaaa')
+  //     reset(user)
+  //   }
+  // }, [])
 
   const onSubmit = async (dataForm) => {
+    console.log('ssssss')
     const orderStore = {
-      first_name: dataForm.first_name,
-      last_name: dataForm.last_name,
+      first_name: user.first_name,
+      last_name: user.last_name,
       company_name: dataForm.company_name,
       country_region: dataForm.country_region,
       town_city: dataForm.town_city,
       street_address: dataForm.street_address,
       postcode_zip: dataForm.postcode_zip,
-      email: dataForm.email,
-      phone: dataForm.phone,
+      email: user.email,
+      phone: user.phone,
       payment_method: dataForm.payment_method,
-      Subtotal: curentData.subtotal,
-      VAT: curentData.vat.toString(),
-      Total: curentData.total,
-      order_items: [
-        {
-          ticket_id: newOrder.ticket_id,
-          quantity: newOrder.count,
-        },
-      ],
-      delegaters: formatToReqData(dataForm),
+      Subtotal: curentDataItems.subtotal,
+      VAT: curentDataItems.vat.toString(),
+      Total: curentDataItems.total,
+      order_items: formatToReqDataOrderItems(curentData),
+      delegaters: formatToReqData(dataForm, curentData),
     }
 
     const { data } = await axios.post(
@@ -92,7 +90,7 @@ export const CheckOutBody = () => {
       dispatch(addOrders(data))
     }
     if (dataForm.payment_method === 'Invoice - Direct Bank Transfer') {
-      router.push(`/DirectBankTransfer}`)
+      router.push(`/DirectBankTransfer/${data[0].data}`)
     }
     if (dataForm.payment_method === 'Visa or Mastercard') {
       router.push(`/Payment`)
@@ -109,7 +107,7 @@ export const CheckOutBody = () => {
             {...register('first_name', { required: true })}
             name="first_name"
             control={control}
-            defaultValue={user.first_name}
+            // defaultValue={curentUser.first_name}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>First Name</p>
@@ -123,7 +121,7 @@ export const CheckOutBody = () => {
             {...register('last_name', { required: true })}
             name="last_name"
             control={control}
-            defaultValue={user.last_name}
+            // defaultValue={curentUser.last_name}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Last Name</p>
@@ -212,7 +210,7 @@ export const CheckOutBody = () => {
           <Controller
             name="email"
             rules="string"
-            defaultValue={user.email}
+            // defaultValue={curentUser.email}
             {...register('email', { required: true, minLength: 1 })}
             control={control}
             render={({ field, fieldState: { error } }) => (
@@ -226,7 +224,7 @@ export const CheckOutBody = () => {
           <Controller
             name="phone"
             rules="string"
-            defaultValue={user.phone}
+            // defaultValue={curentUser.phone}
             {...register('phone', { required: true })}
             control={control}
             render={({ field, fieldState: { error } }) => (

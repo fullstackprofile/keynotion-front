@@ -49,7 +49,9 @@ export const attendees = [
   { logo: '/GKN.png', width: 175, height: 58 },
   { logo: '/Fischer.png', width: 199, height: 77 },
 ]
-export const formatToReqData = (form) => {
+export const formatToReqData = (form, data) => {
+  console.log(data, 'data')
+
   const DELEGATE_MAP = {
     full_name: 'full_name',
     job_title: 'job_title',
@@ -62,8 +64,18 @@ export const formatToReqData = (form) => {
       sections[key[1]] = {
         ...(sections[key[1]] || {}),
         [key[0]]: form[item],
+        ticket_id: 1,
       }
     }
   })
   return Object.values(sections)
+}
+
+export const formatToReqDataOrderItems = (data) => {
+  const launchOptimistic = data.map((elem) => ({
+    ticket_id: elem.ticket_id,
+    quantity: elem.count,
+  }))
+
+  return launchOptimistic
 }
