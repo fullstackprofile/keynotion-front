@@ -10,7 +10,7 @@ import { AccountDetails } from '../AccountDetails/AccountDetails'
 import { BilingAddress } from '../BilingAddress/BilingAddress'
 import UserOrders from '../UserOrders/UserOrders'
 
-export const UserPageBody = ({ title }) => {
+export const UserPageBody = ({ title, newOrders }) => {
   const user = useSelector((state) => state.user.user)
   const router = useRouter()
 
@@ -101,9 +101,13 @@ export const UserPageBody = ({ title }) => {
               last_name={user?.last_name}
             />
           )}
-          {title == 'AccountDetails' && <AccountDetails user={user} />}
-          {title == 'Address' && <BilingAddress user={user} />}
-          {title == 'Orders' && <UserOrders />}
+          {title === 'AccountDetails' && <AccountDetails user={user} />}
+          {title === 'Address' && (
+            <BilingAddress newOrders={newOrders} user={user} />
+          )}
+          {title === 'Orders' && (
+            <UserOrders newOrders={newOrders} user={user} />
+          )}
         </div>
       </div>
     </div>

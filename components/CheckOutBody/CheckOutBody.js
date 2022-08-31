@@ -35,11 +35,9 @@ export const CheckOutBody = () => {
   const router = useRouter()
   const dispatch = useDispatch()
   const [curentData, setCurentData] = useState()
-  const [curentUser, setCurentUser] = useState(user)
   const [curentDataItems, setCurentDataItems] = useState(data)
-  const goPrivacy = () => router.push('/DataPrivacy')
 
-  console.log(data, 'dddddddddd')
+  const goPrivacy = () => router.push('/DataPrivacy')
 
   useEffect(() => {
     setCurentData(data[0].data.items)
@@ -49,31 +47,24 @@ export const CheckOutBody = () => {
     setCurentDataItems(data[0].data)
   }, [])
 
-  // console.log(curentDataItems.total, 'curentDataItems')
   const { control, handleSubmit, register, reset } = useForm({
     defaultValues: {
       payment_method: 'Invoice - Direct Bank Transfer',
     },
   })
-  // useEffect(() => {
-  //   if (user) {
-  //     console.log(user, 'aaaa')
-  //     reset(user)
-  //   }
-  // }, [])
 
   const onSubmit = async (dataForm) => {
-    console.log('ssssss')
     const orderStore = {
-      first_name: user.first_name,
-      last_name: user.last_name,
+      user_id: user ? user.id : null,
+      first_name: dataForm.first_name,
+      last_name: dataForm.last_name,
       company_name: dataForm.company_name,
       country_region: dataForm.country_region,
       town_city: dataForm.town_city,
       street_address: dataForm.street_address,
       postcode_zip: dataForm.postcode_zip,
-      email: user.email,
-      phone: user.phone,
+      email: dataForm.email,
+      phone: dataForm.phone,
       payment_method: dataForm.payment_method,
       Subtotal: curentDataItems.subtotal,
       VAT: curentDataItems.vat.toString(),
@@ -90,7 +81,7 @@ export const CheckOutBody = () => {
       dispatch(addOrders(data))
     }
     if (dataForm.payment_method === 'Invoice - Direct Bank Transfer') {
-      router.push(`/DirectBankTransfer/${data[0].data}`)
+      router.push(`/DirectBankTransfer/${data[0]?.data}`)
     }
     if (dataForm.payment_method === 'Visa or Mastercard') {
       router.push(`/Payment`)
@@ -236,7 +227,7 @@ export const CheckOutBody = () => {
             )}
           />
         </div>
-        {data[0]?.data?.items?.map((item) => {
+        {data[0]?.data?.items?.map((item, ind) => {
           return (
             <div key={item.ticket_id}>
               <div>
@@ -249,10 +240,10 @@ export const CheckOutBody = () => {
                     <p className={styles.delegate_title}>Attendee {elem + 1}</p>
                     <Controller
                       rules="string"
-                      {...register(`full_name-${index}`, {
+                      {...register(`full_name-${index + ind}`, {
                         required: true,
                       })}
-                      name={`full_name-${index}`}
+                      name={`full_name-${index + ind}`}
                       control={control}
                       render={({ field, fieldState: { error } }) => (
                         <div className={styles.dialog_content}>
@@ -268,8 +259,10 @@ export const CheckOutBody = () => {
                     />
                     <Controller
                       rules="string"
-                      {...register(`job_title-${index}`, { required: true })}
-                      name={`job_title-${index}`}
+                      {...register(`job_title-${index + ind}`, {
+                        required: true,
+                      })}
+                      name={`job_title-${index + ind}`}
                       control={control}
                       render={({ field, fieldState: { error } }) => (
                         <div className={styles.dialog_content}>
@@ -285,8 +278,10 @@ export const CheckOutBody = () => {
                     />
                     <Controller
                       rules="string"
-                      {...register(`email-${index}`, { required: true })}
-                      name={`email-${index}`}
+                      {...register(`email-${index + ind}`, {
+                        required: true,
+                      })}
+                      name={`email-${index + ind}`}
                       control={control}
                       render={({ field, fieldState: { error } }) => (
                         <div className={styles.dialog_content}>

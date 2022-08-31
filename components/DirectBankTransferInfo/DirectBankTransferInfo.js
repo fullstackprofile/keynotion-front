@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './DirectBankTransferInfo.module.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
+import { parseCookies } from 'nookies'
+import { deleteCard } from '../../store/cardsSlice'
 
 export const DirectBankTransferInfo = () => {
+  const dispatch = useDispatch()
+  const cart_id = parseCookies('cart_id')
+  const user = useSelector((state) => state.user.user)
   const orders = useSelector((state) => state.orders.orders)
-  const orderNumber = orders?.map((item) => {
-    return item.data.order_number
-  })
-  const totalPrice = orders?.map((item) => {
-    return item.data.Total
-  })
+
+  const deleteBackCards = async () => {
+    const { data } = await axios.delete(
+      `http://laratest.key-notion.com/api/clear?cart_id=${
+        user ? user.id : cart_id
+      }`
+    )
+    if (data) {
+      dispatch(deleteCard())
+    }
+  }
+
+  useEffect(() => {
+    deleteBackCards()
+  }, [])
 
   return (
     <div className={styles.directBankTransferInfo}>
@@ -17,15 +32,17 @@ export const DirectBankTransferInfo = () => {
         <div className={styles.top}>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Order Number:</p>
-            <p className={styles.item_name_}>{orderNumber.toString()}</p>
+            <p className={styles.item_name_}>
+              # {orders[0]?.data.order_number}
+            </p>
           </div>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Date:</p>
-            <p className={styles.item_name_}>May 19, 2022</p>
+            <p className={styles.item_name_}>{orders[0]?.data.created_at}</p>
           </div>
           <div className={styles.top_item}>
             <p className={styles.item_name}>Total:</p>
-            <p className={styles.item_name_}>{totalPrice.toString()}</p>
+            <p className={styles.item_name_}>{orders[0].data.Total}</p>
           </div>
           <div className={styles.top_item_}>
             <p className={styles.item_name}>Payment Method:</p>

@@ -48,7 +48,6 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
       'http://laratest.key-notion.com/api/register',
       dataToSend
     )
-    console.log(data, 'dataInSinUp')
 
     if (data) {
       dispatch(addUserToken(data?.data.token))

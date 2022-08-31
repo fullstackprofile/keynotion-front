@@ -32,7 +32,6 @@ export const ResendPassword = ({
     resolver: yupResolver(ResendPasswordSchema),
   })
   const resendPassword = async (dataForm) => {
-    console.log(dataForm)
     const { data } = await axios.post(
       `http://laratest.key-notion.com/api/reset-password?code=${verifyValue}&email=${dataForm.email}&password=${dataForm.password}&password_confirmation=${dataForm.password_confirmation}`
     )

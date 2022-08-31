@@ -1,12 +1,5 @@
 import React from 'react'
 
-import { EventsHeading } from '../../components/EventsHead/EventsHeading/EventsHeading'
-import { Tickets } from '../../components/Tickets/Tickets'
-import { TicketsOnline } from '../../components/TicketsOnline/TicketsOnline'
-import { RelatedEvents } from '../../components/RelatedEvents/RelatedEvents'
-
-import axios from 'axios'
-
 import MainLayoutt from '../../layouts/MainLayoutt'
 import { useRouter } from 'next/router'
 import { DirectBankTransferHeadeing } from '../../components/DirectBankTransferHeadeing/DirectBankTransferHeadeing'
@@ -42,18 +35,3 @@ export default function DirectBankTransfer({ data }) {
     </MainLayoutt>
   )
 }
-
-// export async function getServerSideProps(context) {
-//   const {params} = context
-
-//   const {data} = await axios.get(`http://laratest.key-notion.com/api/tickets?Events=${params.id}`);
-
-//   const {data: secondRequestData} = await axios.get(`http://laratest.key-notion.com/api/events/${params.id}`);
-
-// return {
-//   props:
-//   {
-//     data: {firstRequestData: data.data, secondRequestData: secondRequestData.data},
-//   }
-// }
-// }

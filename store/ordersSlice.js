@@ -9,6 +9,10 @@ const ordersSlice = createSlice({
   initialState: defaultState,
   reducers: {
     addOrders(state, action) {
+      console.log(
+        action,
+        'action for Cardslice -------------------------------'
+      )
       state.orders = [action.payload]
       console.log(state.orders)
     },

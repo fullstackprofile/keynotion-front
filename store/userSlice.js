@@ -13,7 +13,6 @@ const userSlice = createSlice({
       state.user = action.payload
     },
     addUserToken(state, action) {
-      console.log(action.payload, 'actionPaylodInUserSlice')
       state.userToken = action.payload
     },
   },

@@ -50,8 +50,6 @@ export const attendees = [
   { logo: '/Fischer.png', width: 199, height: 77 },
 ]
 export const formatToReqData = (form, data) => {
-  console.log(data, 'data')
-
   const DELEGATE_MAP = {
     full_name: 'full_name',
     job_title: 'job_title',

@@ -38,7 +38,6 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
       'http://laratest.key-notion.com/api/login',
       dataToSend
     )
-    console.log(data.token)
     setCookie(null, 'token', data?.token, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',

@@ -14,10 +14,14 @@ import { DropdownMenu } from './HeaderNavbar/dropdownMenu/DropdownMenu'
 import { ClickAwayListener } from '@mui/material'
 import { StyledBadge } from '../../StyledBadge/StyledBadge'
 import useIsMobile from '../../../Helpers/helpers'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteCard } from '../../../store/cardsSlice'
+import axios from 'axios'
 
 export const Header = ({ blog }) => {
   const data = useSelector((state) => state.cards.card)
+  const cart_id = parseCookies('cart_id')
+  const user = useSelector((state) => state.user.user)
   const isMobile = useIsMobile()
   const [openLogin, setOpenLogin] = useState(false)
   const [openSingup, setOpenSingup] = useState(false)
@@ -26,10 +30,19 @@ export const Header = ({ blog }) => {
   const [open, setOpen] = useState(false)
   const cookie = parseCookies('token')
   const router = useRouter()
+  const dispatch = useDispatch()
 
-  function Logout() {
+  const Logout = async () => {
     destroyCookie({}, 'token', { path: '/' })
     router.push('/')
+    const { data } = await axios.delete(
+      `http://laratest.key-notion.com/api/clear?cart_id=${
+        user ? user.id : cart_id
+      }`
+    )
+    if (data) {
+      dispatch(deleteCard())
+    }
   }
 
   const handleClickOpenSignup = () => {

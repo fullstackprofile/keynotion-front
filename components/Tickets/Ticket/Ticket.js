@@ -8,8 +8,8 @@ import { addCard } from '../../../store/cardsSlice'
 
 export const Ticket = ({
   price,
-  sale,
   currency,
+  sale,
   items,
   type,
   other_type,
@@ -19,12 +19,11 @@ export const Ticket = ({
   const user = useSelector((state) => state.user.user)
   const dispatch = useDispatch()
   const cart_id = parseCookies('cart_id')
-
   const onBook = async () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     const obj1 = {
-      price: price,
+      price: sale ? sale : price,
       ticket_id: id,
       count: 1,
       cart_id: user ? user?.id : cart_id.cart_id,

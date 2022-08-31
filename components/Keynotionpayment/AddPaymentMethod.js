@@ -15,6 +15,7 @@ import styles from './KeynotionPayment.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useSelector } from 'react-redux'
 
 const AddPaymentMethod = () => {
   const [loading, setLoading] = useState(false)
@@ -22,6 +23,7 @@ const AddPaymentMethod = () => {
   const stripe = useStripe()
   const elements = useElements()
   const router = useRouter()
+  const orders = useSelector((state) => state.orders.orders)
 
   const ForgotPassSchema = yup.object().shape({
     holderName: yup.string().required('please Enter your holderName'),
@@ -87,7 +89,7 @@ const AddPaymentMethod = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.priceWrapper}>
           <div className={styles.priceBlock}>
-            <p>Price: €{94000}</p>
+            <p>Price: €{orders[0].data.Total}</p>
           </div>
           <div className={styles.cardWrapper}>
             <Controller
@@ -133,7 +135,7 @@ const AddPaymentMethod = () => {
                         fontSize: 28,
                       },
                     }}
-                    src="/VisaCardLogo.png"
+                    src="/AmericanExpressLogo.png"
                     width={60}
                     height={46}
                   />
