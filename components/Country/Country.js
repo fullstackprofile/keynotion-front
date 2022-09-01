@@ -6,6 +6,7 @@ import React from 'react'
 import styles from './Country.module.css'
 
 export const Country = ({ onChange, value }) => {
+  console.log(value, 'ccccccccccc')
   return (
     <div className={classNames(styles.input_block, styles.input_block_2)}>
       <Autocomplete
@@ -18,7 +19,7 @@ export const Country = ({ onChange, value }) => {
         sx={{ width: 300 }}
         options={countries}
         autoHighlight
-        getOptionLabel={(option) => option.label}
+        defaultValue={{ label: value ? value : '' }}
         //   onInputChange={handleInputChange}
 
         renderOption={(props, option) => (

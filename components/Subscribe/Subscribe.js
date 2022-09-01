@@ -14,7 +14,11 @@ const SubscribeSchema = yup.object().shape({
 })
 
 export const Subscribe = () => {
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(SubscribeSchema),
   })
   const user = useSelector((state) => state.user.user)
@@ -54,20 +58,20 @@ export const Subscribe = () => {
               name="email"
               defaultValue={user.email}
               control={control}
-              render={({ ref, field, fieldState: { error } }) => (
+              render={({ field: { onChange, onBlur, name }, errors }) => (
                 <>
                   <Input
-                    inputref={ref}
+                    onBlur={onBlur}
                     type="email"
                     placeholder="Email"
                     single
-                    {...field}
+                    name={name}
+                    onChange={onChange}
                   />
-                  <p className={styles.error}>{error?.message}</p>
+                  <p className={styles.error}>{errors?.message}</p>
                 </>
               )}
             />
-
             <div className={styles.btn}>
               <ButtonComp title="Subscribe" />
             </div>

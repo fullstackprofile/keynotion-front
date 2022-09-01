@@ -24,7 +24,7 @@ export default function UserPage() {
 
   const getOrders = async () => {
     const { data } = await axios.get(
-      `http://laratest.key-notion.com/api/order?user_id=5`,
+      `http://laratest.key-notion.com/api/order?user_id=${user.id}`,
       config
     )
     if (data) {
@@ -36,7 +36,6 @@ export default function UserPage() {
   useEffect(() => {
     getOrders()
   }, [])
-  console.log(newOrders, 'ssssssssss')
   return (
     <div>
       <Head>

@@ -22,7 +22,9 @@ export default function PastEvents({ data }) {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get('http://laratest.key-notion.com/api/events') //past
+  const { data } = await axios.get(
+    `http://laratest.key-notion.com/api/past/events`
+  )
 
   return {
     props: { data },

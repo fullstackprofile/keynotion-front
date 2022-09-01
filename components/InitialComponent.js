@@ -5,6 +5,7 @@ import { parseCookies, setCookie } from 'nookies'
 import { uniqueId } from '../Helpers/help'
 import { addCard } from '../store/cardsSlice'
 import { addUser } from '../store/userSlice'
+import { addAddress } from '../store/addressSlice'
 
 const InitialComponent = () => {
   const dispatch = useDispatch()
@@ -45,6 +46,22 @@ const InitialComponent = () => {
   useEffect(() => {
     getUser()
   }, [])
+  console.log(user.id)
+
+  const getAddress = async () => {
+    if (user) {
+      const { data } = await axios.get(
+        `http://laratest.key-notion.com/api/billing?user_id=${user.id}`,
+        config
+      )
+      dispatch(addAddress(data))
+    }
+  }
+
+  useEffect(() => {
+    getAddress()
+  }, [user])
+
   return <></>
 }
 export default InitialComponent

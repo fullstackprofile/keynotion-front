@@ -32,6 +32,9 @@ const CheckOutBodysSchema = yup.object().shape({
 export const CheckOutBody = () => {
   const user = useSelector((state) => state.user.user)
   const data = useSelector((state) => state.cards.card)
+  const orders = useSelector((state) => state.orders.orders)
+  const address = useSelector((state) => state.address.address)
+
   const router = useRouter()
   const dispatch = useDispatch()
   const [curentData, setCurentData] = useState()
@@ -40,11 +43,11 @@ export const CheckOutBody = () => {
   const goPrivacy = () => router.push('/DataPrivacy')
 
   useEffect(() => {
-    setCurentData(data[0].data.items)
+    setCurentData(data[0]?.data.items)
   }, [])
 
   useEffect(() => {
-    setCurentDataItems(data[0].data)
+    setCurentDataItems(data[0]?.data)
   }, [])
 
   const { control, handleSubmit, register, reset } = useForm({
@@ -95,7 +98,9 @@ export const CheckOutBody = () => {
           <p className={styles.form_title}>Company Details</p>
           <Controller
             rules="string"
-            {...register('first_name', { required: true })}
+            {...register('first_name', {
+              required: 'please Enter your First Name',
+            })}
             name="first_name"
             control={control}
             // defaultValue={curentUser.first_name}
@@ -109,7 +114,9 @@ export const CheckOutBody = () => {
           />
           <Controller
             rules="string"
-            {...register('last_name', { required: true })}
+            {...register('last_name', {
+              required: 'please Enter your Last Name',
+            })}
             name="last_name"
             control={control}
             // defaultValue={curentUser.last_name}
@@ -123,7 +130,9 @@ export const CheckOutBody = () => {
           />
           <Controller
             rules="string"
-            {...register('company_name', { required: true })}
+            {...register('company_name', {
+              required: 'please Enter your Company Name',
+            })}
             name="company_name"
             control={control}
             render={({ field, fieldState: { error } }) => (
@@ -136,7 +145,9 @@ export const CheckOutBody = () => {
           />
           <Controller
             rules="string"
-            {...register('country_region', { required: true })}
+            {...register('country_region', {
+              required: 'please Enter your Country',
+            })}
             name="country_region"
             control={control}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -150,7 +161,10 @@ export const CheckOutBody = () => {
           <Controller
             name="town_city"
             rules="string"
-            {...register('town_city', { required: true })}
+            // defaultValue={address.data?.[0]?.town_city}
+            {...register('town_city', {
+              required: 'please Enter Your City Name',
+            })}
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
@@ -167,7 +181,10 @@ export const CheckOutBody = () => {
           <Controller
             name="street_address"
             rules="string"
-            {...register('street_address', { required: true })}
+            // defaultValue={address.data?.[0]?.street_address}
+            {...register('street_address', {
+              required: 'please Enter Street Address',
+            })}
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
@@ -184,7 +201,10 @@ export const CheckOutBody = () => {
           <Controller
             name="postcode_zip"
             rules="string"
-            {...register('postcode_zip', { required: true })}
+            // defaultValue={address.data?.[0]?.postcode_zip}
+            {...register('postcode_zip', {
+              required: 'please Enter PostCode/ZIP',
+            })}
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
@@ -202,7 +222,10 @@ export const CheckOutBody = () => {
             name="email"
             rules="string"
             // defaultValue={curentUser.email}
-            {...register('email', { required: true, minLength: 1 })}
+            {...register('email', {
+              required: 'please Enter your Email',
+              minLength: 1,
+            })}
             control={control}
             render={({ field, fieldState: { error } }) => (
               <div className={styles.dialog_content}>
@@ -241,7 +264,7 @@ export const CheckOutBody = () => {
                     <Controller
                       rules="string"
                       {...register(`full_name-${index + ind}`, {
-                        required: true,
+                        required: 'please Enter your Full Name',
                       })}
                       name={`full_name-${index + ind}`}
                       control={control}
@@ -260,7 +283,7 @@ export const CheckOutBody = () => {
                     <Controller
                       rules="string"
                       {...register(`job_title-${index + ind}`, {
-                        required: true,
+                        required: 'please Enter your Job Title',
                       })}
                       name={`job_title-${index + ind}`}
                       control={control}
@@ -279,7 +302,7 @@ export const CheckOutBody = () => {
                     <Controller
                       rules="string"
                       {...register(`email-${index + ind}`, {
-                        required: true,
+                        required: 'please Enter your delegate Email',
                       })}
                       name={`email-${index + ind}`}
                       control={control}
