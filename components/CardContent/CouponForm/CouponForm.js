@@ -3,16 +3,12 @@ import { parseCookies } from 'nookies'
 import styles from './CouponForm.module.css'
 import axios from 'axios'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import { Input } from '../../Input/Input'
 import { ButtonComp } from '../../Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCard } from '../../../store/cardsSlice'
-
-const CardContentsSchema = yup.object().shape({
-  code: yup.string().required('please Enter Coupont Code'),
-})
+import { CardContentsSchema } from '../../../Helpers/allSchema'
 
 export const CouponForm = () => {
   const user = useSelector((state) => state.user.user)
@@ -51,9 +47,18 @@ export const CouponForm = () => {
               <Controller
                 name="code"
                 control={control}
-                render={({ field, fieldState: { error } }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.dialog_content}>
-                    <Input type="text" {...field} placeholder="Coupon Code" />
+                    <Input
+                      type="text"
+                      name={name}
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      placeholder="Coupon Code"
+                    />
                     {error?.message && (
                       <p className={styles.error}>{error?.message}</p>
                     )}

@@ -46,7 +46,6 @@ const InitialComponent = () => {
   useEffect(() => {
     getUser()
   }, [])
-  console.log(user.id)
 
   const getAddress = async () => {
     if (user) {

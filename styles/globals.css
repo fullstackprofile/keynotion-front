@@ -214,8 +214,6 @@ ymaps[class$="map"]:first-child:not(:last-child) {
     align-items: center;
     width: 100%;
     position: relative;
-    
-    
 }
 
 input[name="order_type"] {

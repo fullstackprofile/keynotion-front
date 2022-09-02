@@ -8,7 +8,7 @@ import { OurPastAttendees } from '../../components/OurPastAttendees/OurPastAtten
 import { TheVenue } from '../../components/TheVenue/TheVenue'
 import { DontMiss } from '../../components/DontMiss/DontMiss'
 import { Subscribe } from '../../components/Subscribe/Subscribe'
-import { attendees } from '../../Helpers/help'
+import { attendees, convertDateStartEnd } from '../../Helpers/help'
 import axios from 'axios'
 import MainLayoutt from '../../layouts/MainLayoutt'
 
@@ -25,6 +25,7 @@ export default function EventsInner({ data }) {
           cover={data.cover}
           country={data.country}
           city={data.city}
+          date={convertDateStartEnd(data.start_date, data.end_date)}
         />
         <KeySpeakers speakers={data.speakers} />
         <AboutTheEvent about={data.about} cover={data.cover_about} />

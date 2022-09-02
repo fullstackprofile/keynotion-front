@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { Title } from '../TItle/Title'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+// import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import styles from './CheckOutBody.module.css'
 import { Controller, useForm } from 'react-hook-form'
@@ -14,32 +13,15 @@ import { useRouter } from 'next/router'
 import { addOrders } from '../../store/ordersSlice'
 import { formatToReqData, formatToReqDataOrderItems } from '../../Helpers/help'
 
-const CheckOutBodysSchema = yup.object().shape({
-  full_name: yup.string().required('please Enter your Full Name'),
-  last_name: yup.string().required('please Enter your Last Name'),
-  first_name: yup.string().required('please Enter your First Name'),
-  job_title: yup.string().required('please Enter your Job Title'),
-  company_name: yup.string().required('please Enter your Company Name'),
-  country_region: yup.string().required('please Enter your Country'),
-  town_city: yup.string().required('please Enter Your City Name'),
-  street_address: yup.string().required('please Enter Street Address'),
-  postcode_zip: yup.string().required('please Enter PostCode/ZIP'),
-  email: yup.string().email().required('please Enter your Email'),
-  phone: yup.string().required('please Enter your Phone Number'),
-  payment_method: yup.string().required(),
-})
-
 export const CheckOutBody = () => {
   const user = useSelector((state) => state.user.user)
   const data = useSelector((state) => state.cards.card)
-  const orders = useSelector((state) => state.orders.orders)
-  const address = useSelector((state) => state.address.address)
-
+  // const orders = useSelector((state) => state.orders.orders)
+  // const address = useSelector((state) => state.address.address)
   const router = useRouter()
   const dispatch = useDispatch()
   const [curentData, setCurentData] = useState()
   const [curentDataItems, setCurentDataItems] = useState(data)
-
   const goPrivacy = () => router.push('/DataPrivacy')
 
   useEffect(() => {
@@ -58,7 +40,6 @@ export const CheckOutBody = () => {
 
   const onSubmit = async (dataForm) => {
     const orderStore = {
-      user_id: user ? user.id : null,
       first_name: dataForm.first_name,
       last_name: dataForm.last_name,
       company_name: dataForm.company_name,
@@ -75,6 +56,9 @@ export const CheckOutBody = () => {
       order_items: formatToReqDataOrderItems(curentData),
       delegaters: formatToReqData(dataForm, curentData),
     }
+    if (user) {
+      orderStore.user_id = user.id
+    }
 
     const { data } = await axios.post(
       'http://laratest.key-notion.com/api/order/store',
@@ -83,6 +67,7 @@ export const CheckOutBody = () => {
     if (data) {
       dispatch(addOrders(data))
     }
+
     if (dataForm.payment_method === 'Invoice - Direct Bank Transfer') {
       router.push(`/DirectBankTransfer/${data[0]?.data}`)
     }
@@ -103,11 +88,20 @@ export const CheckOutBody = () => {
             })}
             name="first_name"
             control={control}
-            // defaultValue={curentUser.first_name}
-            render={({ field, fieldState: { error } }) => (
+            // defaultValue={user.first_name}
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>First Name</p>
-                <Input type="text" {...field} placeholder="First Name" />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  placeholder="First Name"
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -120,10 +114,19 @@ export const CheckOutBody = () => {
             name="last_name"
             control={control}
             // defaultValue={curentUser.last_name}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Last Name</p>
-                <Input type="text" {...field} error placeholder="Last Name" />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  placeholder="Last Name"
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -135,10 +138,19 @@ export const CheckOutBody = () => {
             })}
             name="company_name"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Company Name</p>
-                <Input type="text" {...field} placeholder="Company Name" />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  placeholder="Company Name"
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -150,10 +162,18 @@ export const CheckOutBody = () => {
             })}
             name="country_region"
             control={control}
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name, value },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Country</p>
-                <Country value={value} onChange={onChange} />
+                <Country
+                  value={value}
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -166,12 +186,17 @@ export const CheckOutBody = () => {
               required: 'please Enter Your City Name',
             })}
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>City / Town</p>
                 <Input
                   type="text"
-                  {...field}
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
                   placeholder="Enter Your City / Town"
                 />
                 <p className={styles.error}>{error?.message}</p>
@@ -186,12 +211,17 @@ export const CheckOutBody = () => {
               required: 'please Enter Street Address',
             })}
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Street Address</p>
                 <Input
                   type="text"
-                  {...field}
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
                   placeholder="Enter Your Street Address"
                 />
                 <p className={styles.error}>{error?.message}</p>
@@ -206,12 +236,17 @@ export const CheckOutBody = () => {
               required: 'please Enter PostCode/ZIP',
             })}
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>PostCode/Zip</p>
                 <Input
                   type="text"
-                  {...field}
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
                   placeholder="Enter Your PostCode/Zip"
                 />
                 <p className={styles.error}>{error?.message}</p>
@@ -227,10 +262,19 @@ export const CheckOutBody = () => {
               minLength: 1,
             })}
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Email Address</p>
-                <Input type="text" {...field} placeholder="Email Address" />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  placeholder="Email Address"
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -268,12 +312,17 @@ export const CheckOutBody = () => {
                       })}
                       name={`full_name-${index + ind}`}
                       control={control}
-                      render={({ field, fieldState: { error } }) => (
+                      render={({
+                        field: { onChange, onBlur, name },
+                        fieldState: { error },
+                      }) => (
                         <div className={styles.dialog_content}>
                           <p className={styles.dialog_label}>Full Name</p>
                           <Input
                             type="text"
-                            {...field}
+                            name={name}
+                            onChange={onChange}
+                            onBlur={onBlur}
                             placeholder="Full Name"
                           />
                           <p className={styles.error}>{error?.message}</p>
@@ -287,12 +336,17 @@ export const CheckOutBody = () => {
                       })}
                       name={`job_title-${index + ind}`}
                       control={control}
-                      render={({ field, fieldState: { error } }) => (
+                      render={({
+                        field: { onChange, onBlur, name },
+                        fieldState: { error },
+                      }) => (
                         <div className={styles.dialog_content}>
                           <p className={styles.dialog_label}>Job Title</p>
                           <Input
                             type="text"
-                            {...field}
+                            name={name}
+                            onChange={onChange}
+                            onBlur={onBlur}
                             placeholder="Job Title"
                           />
                           <p className={styles.error}>{error?.message}</p>
@@ -306,12 +360,17 @@ export const CheckOutBody = () => {
                       })}
                       name={`email-${index + ind}`}
                       control={control}
-                      render={({ field, fieldState: { error } }) => (
+                      render={({
+                        field: { onChange, onBlur, name },
+                        fieldState: { error },
+                      }) => (
                         <div className={styles.dialog_content}>
                           <p className={styles.dialog_label}>Email Address</p>
                           <Input
                             type="text"
-                            {...field}
+                            name={name}
+                            onChange={onChange}
+                            onBlur={onBlur}
                             placeholder="Email Address"
                           />
                           <p className={styles.error}>{error?.message}</p>
@@ -333,11 +392,16 @@ export const CheckOutBody = () => {
                 {...register('payment_method', { required: true })}
                 name="payment_method"
                 control={control}
-                render={({ field, fieldState: { error } }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.dialog_content}>
                     <div className={styles.inp}>
                       <input
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         type="radio"
                         value="Visa or Mastercard"
                       />
@@ -369,11 +433,16 @@ export const CheckOutBody = () => {
                 {...register('payment_method', { required: true })}
                 name="payment_method"
                 control={control}
-                render={({ field, fieldState: { error } }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.dialog_content}>
                     <div className={styles.inp}>
                       <input
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         type="radio"
                         value="Invoice - Direct Bank Transfer"
                         className={styles.radio}

@@ -6,25 +6,12 @@ import { Dialog } from '@mui/material'
 import { ButtonComp } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { RegisterSchema } from '../../Helpers/allSchema'
 import styles from './SignUp.module.css'
 import { Country } from '../Country/Country'
 import Verification from '../Verification/Verification'
 import { useDispatch } from 'react-redux'
 import { addUser, addUserToken } from '../../store/userSlice'
-
-const RegisterSchema = yup.object().shape({
-  first_name: yup.string().required('please Enter your First Name'),
-  last_name: yup.string().required('please Enter your Last Name'),
-  phone: yup.number().required('please Enter your Phone Number'),
-  email: yup.string().email().required('please Enter your Email'),
-  country: yup.string().required('please Enter your Country'),
-  password: yup.string().required('please Enter your Password'),
-  password_confirmation: yup
-    .string()
-    .required('Please retype your password.')
-    .oneOf([yup.ref('password')], 'Your passwords do not match.'),
-})
 
 export const SignUp = ({ open, handleClose, setOpen }) => {
   const [openVerify, setOpenVerify] = useState(false)
@@ -80,10 +67,18 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="first_name"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>First Name</p>
-                  <Input type="text" {...field} />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -91,10 +86,18 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="last_name"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Last Name</p>
-                  <Input type="text" {...field} />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -102,10 +105,18 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="phone"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Phone Number</p>
-                  <Input type="text" {...field} />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -113,10 +124,18 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="email"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Email</p>
-                  <Input type="text" {...field} />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -125,12 +144,12 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
               name="country"
               control={control}
               render={({
-                field: { onChange, value },
+                field: { onChange, onBlur, name },
                 fieldState: { error },
               }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Country</p>
-                  <Country value={value} onChange={onChange} />
+                  <Country value={name} onChange={onChange} />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -138,10 +157,19 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="password"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Password</p>
-                  <Input type="text" showPass {...field} />
+                  <Input
+                    type="text"
+                    showPass
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -149,10 +177,19 @@ export const SignUp = ({ open, handleClose, setOpen }) => {
             <Controller
               name="password_confirmation"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
                   <p className={styles.dialog_label}>Repet Password</p>
-                  <Input type="text" showPass {...field} />
+                  <Input
+                    type="text"
+                    showPass
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}

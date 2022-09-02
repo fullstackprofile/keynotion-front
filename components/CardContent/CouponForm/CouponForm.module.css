@@ -10,7 +10,10 @@
     margin: 0 auto;
     margin-top: 32px;
 }
-
+.error{
+    color: red;
+    margin-top: 12px;
+}
 .coupon_body{
     display: flex;
     flex-direction: column;

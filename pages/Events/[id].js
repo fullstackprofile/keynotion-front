@@ -10,7 +10,7 @@ import { DontMiss } from '../../components/DontMiss/DontMiss'
 import { Subscribe } from '../../components/Subscribe/Subscribe'
 import axios from 'axios'
 import MainLayoutt from '../../layouts/MainLayoutt'
-import { attendees } from '../../Helpers/help'
+import { attendees, convertDateStartEnd } from '../../Helpers/help'
 
 export default function EventsInner({ data }) {
   return (
@@ -22,8 +22,9 @@ export default function EventsInner({ data }) {
           the_venue_logo={data.the_venue_logo[0].logo}
           small_description={data.small_description}
           cover={data.cover}
-          // country={data.country}
-          // city={data.city}
+          country={data.country}
+          city={data.city}
+          date={convertDateStartEnd(data.start_date, data.end_date)}
         />
         <KeySpeakers speakers={data.speakers} />
         <AboutTheEvent about={data.about} cover={data.cover_about} />

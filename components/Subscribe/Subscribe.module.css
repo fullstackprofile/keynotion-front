@@ -76,6 +76,9 @@
 .subscribe_left{
     margin-left: 165px;
 }
+.error {
+    color: #9F0B00;
+}
 
 @media (max-width: 1024px) {
     .subscribe {

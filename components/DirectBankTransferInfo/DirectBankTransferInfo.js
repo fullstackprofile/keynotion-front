@@ -14,7 +14,7 @@ export const DirectBankTransferInfo = () => {
   const deleteBackCards = async () => {
     const { data } = await axios.delete(
       `http://laratest.key-notion.com/api/clear?cart_id=${
-        user ? user.id : cart_id
+        user ? user.id : cart_id.cart_id
       }`
     )
     if (data) {

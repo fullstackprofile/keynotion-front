@@ -1,22 +1,16 @@
 import { Checkbox, Dialog } from '@mui/material'
 import axios from 'axios'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React from 'react'
 import { Input } from '../Input/Input'
-import { getCookies, setCookies } from 'cookies-next'
+import { getCookies } from 'cookies-next'
 import { ButtonComp } from '../Button/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import styles from './Login.module.css'
 import { setCookie } from 'nookies'
 import useIsMobile from '../../Helpers/helpers'
-
-const LoginSchema = yup.object().shape({
-  email: yup.string().email().required('please Enter your Email'),
-  password: yup.string().required('please Enter your Password'),
-})
-
+import { LoginSchema } from '../../Helpers/allSchema'
 export const cookie = getCookies('token')
 
 export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
@@ -69,10 +63,18 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
           <Controller
             name="email"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Username or Email Address</p>
-                <Input type="text" {...field} />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -80,10 +82,19 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
           <Controller
             name="password"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content_pass}>
                 <p className={styles.dialog_label}>Password</p>
-                <Input type="text" showPass {...field} />
+                <Input
+                  type="text"
+                  showPass
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -91,10 +102,14 @@ export const Login = ({ open, handleClose, handleClickOpenForgot }) => {
           <Controller
             name="checked"
             control={control}
-            render={({ field }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.remember}>
-                <Checkbox {...field} />
+                <Checkbox name={name} onChange={onChange} onBlur={onBlur} />
                 <p className={styles.remember_label}>Remember me</p>
+                <p className={styles.remember_label}> {error?.message}</p>
               </div>
             )}
           />

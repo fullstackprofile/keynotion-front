@@ -2,68 +2,11 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { ButtonComp } from '../Button/Button'
 import { SponsorshipModal } from '../SponsorshipModal/SponsorshipModal'
-import * as yup from 'yup'
 import styles from './EventsInnerHeading.module.css'
 import { useRouter } from 'next/router'
-
-const options = [
-  { value: 'Linkedin', label: 'Linkedin' },
-  { value: 'Social Media Sites', label: 'Social Media Sites' },
-  {
-    value: 'Keynotion Sales Representative',
-    label: 'Keynotion Sales Representative',
-  },
-  { value: 'Direct Mailing', label: 'Direct Mailing' },
-  { value: 'Colleague/Friend', label: 'Colleague/Friend' },
-  { value: '10times.com', label: '10times.com' },
-  { value: 'Clocate.com', label: 'Clocate.com' },
-  { value: 'Others', label: 'Others' },
-]
-
-const ApplySchema = yup.object().shape({
-  name: yup.string().required('please Enter your Name'),
-  surname: yup.string().required('please Enter your Surname'),
-  company_name: yup.string().required('please Enter your Company_name'),
-  job_title: yup.string().required('please Enter your Job Title'),
-  phone_number: yup.string().required('please Enter your Phone Number'),
-  corporate_email: yup
-    .string()
-    .email()
-    .required('please Enter your Corporative Email'),
-  country: yup.string().required('please Enter your Country'),
-  summit_name: yup.string().required('please Enter your Summit Name'),
-  Learn_about_us: yup.object().shape({
-    label: yup.string().required('Required'),
-    value: yup.string().required('Required'),
-  }),
-  presentation: yup.string().required('please Enter your Comment'),
-  your_way_get_us: yup.string(),
-  confirm: yup.boolean(),
-})
-
-const BrochureSchema = yup.object().shape({
-  name: yup.string().required('please Enter your Name'),
-  surname: yup.string().required('please Enter your Surname'),
-  company_name: yup.string().required('please Enter your Company_name'),
-  job_title: yup.string().required('please Enter your Job Title'),
-  phone_number: yup.string().required('please Enter your Phone Number'),
-  corporate_email: yup
-    .string()
-    .email()
-    .required('please Enter your Corporative Email'),
-  country: yup.string().required('please Enter your Country'),
-  summit_name: yup.string().required('please Enter your Summit Name'),
-  Learn_about_us: yup.object().shape({
-    label: yup.string().required('Required'),
-    value: yup.string().required('Required'),
-  }),
-  comments: yup.string().required('please Enter your Comment'),
-  your_way_get_us: yup.string().when('Learn_about_us', {
-    is: (Learn_about_us) => Learn_about_us.value === 'Others',
-    then: yup.string().required('Required'),
-  }),
-  confirm: yup.boolean(),
-})
+import { BrochureSchema } from '../../Helpers/allSchema'
+import { ApplySchema } from '../../Helpers/allSchema'
+import { eventsOptions } from '../../Helpers/help'
 
 export const EventsInnerHeading = ({
   title,
@@ -74,6 +17,7 @@ export const EventsInnerHeading = ({
   id,
   the_venue_logo,
   Past,
+  date,
 }) => {
   const [openLogin, setOpenLogin] = useState(false)
   const [openBrouchure, setOpenBrouchure] = useState(false)
@@ -107,7 +51,7 @@ export const EventsInnerHeading = ({
             <p className={styles.subTitle}>{small_description}</p>
           </div>
           <div className={styles.date_block}>
-            <p className={styles.date}>23rd - 25th of November 2022</p>
+            <p className={styles.date}>{date}</p>
             <p className={styles.country}>
               {country},{city}
             </p>
@@ -143,7 +87,7 @@ export const EventsInnerHeading = ({
         title="Apply"
         subtitle="To Speak"
         SponsorshipSchema={ApplySchema}
-        options={options}
+        options={eventsOptions}
         Learn_about_us="Learn_about_us"
         Learn_about_us_placeholder="How Did You Learn About Us?"
         your_way_get_us
@@ -155,7 +99,7 @@ export const EventsInnerHeading = ({
         title="Brochure"
         subtitle="Request"
         SponsorshipSchema={BrochureSchema}
-        options={options}
+        options={eventsOptions}
         Learn_about_us="Learn_about_us"
         Learn_about_us_placeholder="How Did You Learn About Us?"
         your_way_get_us

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { Controller, useForm } from 'react-hook-form'
 import { Title } from '../TItle/Title'
@@ -6,17 +6,10 @@ import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { TextArea } from '../TextArea/TextArea'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import styles from './AnyQuestions.module.css'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-
-const AnyQuestionsSchema = yup.object().shape({
-  name: yup.string().required('please Enter your Name'),
-  email: yup.string().email().required('please Enter your Email'),
-  number: yup.string().required('please Enter your Phone Number'),
-  message: yup.string().required('please Enter your Message'),
-})
+import { AnyQuestionsSchema } from '../../Helpers/allSchema'
 
 export const AnyQuestions = () => {
   const user = useSelector((state) => state.user.user)
@@ -48,9 +41,18 @@ export const AnyQuestions = () => {
               name="name"
               control={control}
               defaultValue={user.first_name}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Name" />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    placeholder="Name"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -59,9 +61,18 @@ export const AnyQuestions = () => {
               name="email"
               control={control}
               defaultValue={user.email}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Email" />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    placeholder="Email"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -70,9 +81,18 @@ export const AnyQuestions = () => {
               name="number"
               control={control}
               defaultValue={user.phone}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Number" />
+                  <Input
+                    type="text"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    placeholder="Number"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -80,9 +100,17 @@ export const AnyQuestions = () => {
             <Controller
               name="message"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <TextArea placeholder="Message" {...field} />
+                  <TextArea
+                    placeholder="Message"
+                    name={name}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}

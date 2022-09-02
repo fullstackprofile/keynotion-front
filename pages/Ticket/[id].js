@@ -36,6 +36,7 @@ export default function Ticket({ data }) {
 
 export async function getServerSideProps(context) {
   const { params } = context
+  console.log(params.id, 'id')
 
   const { data } = await axios.get(
     `http://laratest.key-notion.com/api/tickets?Events=${params.id}`

@@ -95,7 +95,7 @@ export const UserPageBody = ({ title, newOrders }) => {
           </div>
         </div>
         <div className={styles.usersdetails}>
-          {title == 'Dashboard' && (
+          {title === 'Dashboard' && (
             <Dashboard
               first_name={user?.first_name}
               last_name={user?.last_name}

@@ -8,16 +8,8 @@ import styles from './ResendPassword.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
-import * as yup from 'yup'
+import { ResendPasswordSchema } from '../../Helpers/allSchema'
 
-const ResendPasswordSchema = yup.object().shape({
-  email: yup.string().email().required('please Enter your Email'),
-  password: yup.string().required('please Enter your Password'),
-  password_confirmation: yup
-    .string()
-    .required('Please retype your password.')
-    .oneOf([yup.ref('password')], 'Your passwords do not match.'),
-})
 const ONLY_DIGITS = /\d/
 
 export const ResendPassword = ({
@@ -66,10 +58,18 @@ export const ResendPassword = ({
           <Controller
             name="email"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_titlePassword}>Email</p>
-                <Input type="text" {...field} />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -77,10 +77,19 @@ export const ResendPassword = ({
           <Controller
             name="password"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_titlePassword}>Password</p>
-                <Input type="text" showPass {...field} />
+                <Input
+                  type="text"
+                  showPass
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -88,10 +97,19 @@ export const ResendPassword = ({
           <Controller
             name="password_confirmation"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_titlePassword}>Repet Password</p>
-                <Input type="text" showPass {...field} />
+                <Input
+                  type="text"
+                  showPass
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}

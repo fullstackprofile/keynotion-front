@@ -9,8 +9,8 @@ export const Dashboard = ({ first_name, last_name }) => {
   return (
     <div className={styles.dashboard_body}>
       <p className={styles.dashboard_body_text}>
-        Hello <span className={styles.liner}>{first_name}</span> -{' '}
-        <span className={styles.liner}>{last_name}</span>
+        Hello {first_name && <span className={styles.liner}>{first_name}</span>}
+        {last_name && <span className={styles.liner}> - {last_name}</span>}
       </p>
 
       <p className={styles.dashboard_body_text_}>

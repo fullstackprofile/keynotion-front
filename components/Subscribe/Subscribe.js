@@ -2,23 +2,15 @@ import React from 'react'
 import { ButtonComp } from '../Button/Button'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import Image from 'next/image'
 import { Input } from '../Input/Input'
 import styles from './Subscribe.module.css'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-
-const SubscribeSchema = yup.object().shape({
-  email: yup.string().required('please Enter your Email'),
-})
+import { SubscribeSchema } from '../../Helpers/allSchema'
 
 export const Subscribe = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { control, handleSubmit } = useForm({
     resolver: yupResolver(SubscribeSchema),
   })
   const user = useSelector((state) => state.user.user)
@@ -58,7 +50,10 @@ export const Subscribe = () => {
               name="email"
               defaultValue={user.email}
               control={control}
-              render={({ field: { onChange, onBlur, name }, errors }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <>
                   <Input
                     onBlur={onBlur}
@@ -68,7 +63,7 @@ export const Subscribe = () => {
                     name={name}
                     onChange={onChange}
                   />
-                  <p className={styles.error}>{errors?.message}</p>
+                  <p className={styles.error}>{error?.message}</p>
                 </>
               )}
             />

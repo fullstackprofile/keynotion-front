@@ -4,31 +4,19 @@ import { Title } from '../TItle/Title'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { Controller, useForm } from 'react-hook-form'
 import styles from './ConectUsAnyQuestions.module.css'
 import { Checkbox } from '@mui/material'
 import { TextArea } from '../TextArea/TextArea'
 import axios from 'axios'
-
-const ConectUsAnyQuestionsSchema = yup.object().shape({
-  name: yup.string().required('please Enter your First Name'),
-  phone: yup.string().required('please Enter your Phone Number'),
-  company: yup.string().required('please Enter your Company Name'),
-  email: yup.string().email().required('please Enter your Email'),
-  attending: yup.boolean(),
-  speaking: yup.boolean(),
-  sponsoring: yup.boolean(),
-  event: yup.string(),
-  question: yup.string().required('please Enter your Question'),
-})
+import { ConectUsAnyQuestionsSchema } from '../../Helpers/allSchema'
 
 export const ConectUsAnyQuestions = () => {
   const user = useSelector((state) => state.user.user)
 
-  // useEffect(() => {
-  //   reset(user)
-  // }, [user])
+  useEffect(() => {
+    reset(user)
+  }, [user])
 
   const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(ConectUsAnyQuestionsSchema),
@@ -88,9 +76,18 @@ export const ConectUsAnyQuestions = () => {
               name="name"
               control={control}
               defaultValue={user.first_name}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="First Name" />
+                  <Input
+                    type="text"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    name={name}
+                    placeholder="First Name"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -99,9 +96,18 @@ export const ConectUsAnyQuestions = () => {
               name="email"
               control={control}
               defaultValue={user.email}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Email address" />
+                  <Input
+                    type="text"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    name={name}
+                    placeholder="Email address"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -110,9 +116,18 @@ export const ConectUsAnyQuestions = () => {
               name="phone"
               control={control}
               defaultValue={user.phone}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Phone Number" />
+                  <Input
+                    type="text"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    name={name}
+                    placeholder="Phone Number"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -120,9 +135,18 @@ export const ConectUsAnyQuestions = () => {
             <Controller
               name="company"
               control={control}
-              render={({ field, fieldState: { error } }) => (
+              render={({
+                field: { onChange, onBlur, name },
+                fieldState: { error },
+              }) => (
                 <div className={styles.dialog_content}>
-                  <Input type="text" {...field} placeholder="Company" />
+                  <Input
+                    type="text"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    name={name}
+                    placeholder="Company"
+                  />
                   <p className={styles.error}>{error?.message}</p>
                 </div>
               )}
@@ -136,9 +160,12 @@ export const ConectUsAnyQuestions = () => {
               <Controller
                 name="attending"
                 control={control}
-                render={({ field }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.remember}>
-                    <Checkbox {...field} />
+                    <Checkbox onChange={onChange} onBlur={onBlur} name={name} />
                     <p className={styles.remember_label}>Attending</p>
                   </div>
                 )}
@@ -146,9 +173,12 @@ export const ConectUsAnyQuestions = () => {
               <Controller
                 name="speaking"
                 control={control}
-                render={({ field }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.remember}>
-                    <Checkbox {...field} />
+                    <Checkbox onChange={onChange} onBlur={onBlur} name={name} />
                     <p className={styles.remember_label}>Speaking</p>
                   </div>
                 )}
@@ -156,9 +186,12 @@ export const ConectUsAnyQuestions = () => {
               <Controller
                 name="sponsoring"
                 control={control}
-                render={({ field }) => (
+                render={({
+                  field: { onChange, onBlur, name },
+                  fieldState: { error },
+                }) => (
                   <div className={styles.remember}>
-                    <Checkbox {...field} />
+                    <Checkbox onChange={onChange} onBlur={onBlur} name={name} />
                     <p className={styles.remember_label}>Sponsoring</p>
                   </div>
                 )}
@@ -168,9 +201,18 @@ export const ConectUsAnyQuestions = () => {
           <Controller
             name="event"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content_}>
-                <Input type="text" {...field} placeholder="Event Name" />
+                <Input
+                  type="text"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  name={name}
+                  placeholder="Event Name"
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}
@@ -179,9 +221,17 @@ export const ConectUsAnyQuestions = () => {
           <Controller
             name="question"
             control={control}
-            render={({ field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content_}>
-                <TextArea placeholder="Tell us your thoughts" {...field} />
+                <TextArea
+                  placeholder="Tell us your thoughts"
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  name={name}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}

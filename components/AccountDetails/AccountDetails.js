@@ -24,6 +24,7 @@ export const AccountDetails = ({ user }) => {
       .string()
       .oneOf([yup.ref('new_password')], 'Your passwords do not match.'),
   })
+
   const dispatch = useDispatch()
   const cookie = parseCookies('token')
   const { control, handleSubmit, reset } = useForm({

@@ -30,6 +30,10 @@
     margin-top: 32px;
 }
 
+.error {
+    color: #9F0B00;
+}
+
 .dialog_content_info{
     padding: 10px 14px;
     justify-content: space-between;

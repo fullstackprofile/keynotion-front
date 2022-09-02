@@ -6,24 +6,17 @@ import { ButtonComp } from '../../Button/Button'
 import { Input } from '../../Input/Input'
 import axios from 'axios'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-
+import { ForgotPassSchema } from '../../../Helpers/allSchema'
 import styles from './ForgotPass.module.css'
 import ResendPassword from '../../ResendPassword/ResendPassword'
 
 export const ForgotPass = ({ open, handleClose }) => {
-  const ForgotPassSchema = yup.object().shape({
-    email: yup.string().email().required('please Enter your Email'),
-  })
   const [resendPasswordState, setResendPasswordState] = useState(false)
-
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(ForgotPassSchema),
   })
 
   const onSubmit = async (dataForm) => {
-    console.log(dataForm)
-
     const { data } = await axios.post(
       `http://laratest.key-notion.com/api/forgot-password?email=${dataForm.email}`
     )
@@ -58,10 +51,18 @@ export const ForgotPass = ({ open, handleClose }) => {
           <Controller
             name="email"
             control={control}
-            render={({ ref, field, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, name },
+              fieldState: { error },
+            }) => (
               <div className={styles.dialog_content}>
                 <p className={styles.dialog_label}>Username or Email Address</p>
-                <Input inputref={ref} type="text" {...field} />
+                <Input
+                  type="text"
+                  name={name}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                />
                 <p className={styles.error}>{error?.message}</p>
               </div>
             )}

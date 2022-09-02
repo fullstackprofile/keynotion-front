@@ -138,9 +138,18 @@ export const SponsorshipModal = ({
                   name="name"
                   control={control}
                   defaultValue={user.first_name}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
-                      <Input type="text" {...field} placeholder="Name" />
+                      <Input
+                        type="text"
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        placeholder="Name"
+                      />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
@@ -149,9 +158,18 @@ export const SponsorshipModal = ({
                   name="surname"
                   control={control}
                   defaultValue={user.last_name}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
-                      <Input type="text" {...field} placeholder="Surname" />
+                      <Input
+                        type="text"
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        placeholder="Surname"
+                      />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
@@ -159,11 +177,16 @@ export const SponsorshipModal = ({
                 <Controller
                   name="company_name"
                   control={control}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
                       <Input
                         type="text"
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         placeholder="Company Name"
                       />
                       <p className={styles.error}>{error?.message}</p>
@@ -173,9 +196,18 @@ export const SponsorshipModal = ({
                 <Controller
                   name="job_title"
                   control={control}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
-                      <Input type="text" {...field} placeholder="Job Title" />
+                      <Input
+                        type="text"
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        placeholder="Job Title"
+                      />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
@@ -184,11 +216,16 @@ export const SponsorshipModal = ({
                   name="phone_number"
                   control={control}
                   defaultValue={user.phone}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
                       <Input
                         type="text"
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         placeholder="Phone Number"
                       />
                       <p className={styles.error}>{error?.message}</p>
@@ -198,11 +235,16 @@ export const SponsorshipModal = ({
                 <Controller
                   name="corporate_email"
                   control={control}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content_}>
                       <Input
                         type="text"
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         placeholder="Corporate Email"
                       />
                       <p className={styles.error}>{error?.message}</p>
@@ -214,9 +256,18 @@ export const SponsorshipModal = ({
                 <Controller
                   name="country"
                   control={control}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content}>
-                      <Input type="text" {...field} placeholder="Country" />
+                      <Input
+                        type="text"
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        placeholder="Country"
+                      />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
@@ -224,9 +275,18 @@ export const SponsorshipModal = ({
                 <Controller
                   name="summit_name"
                   control={control}
-                  render={({ field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content}>
-                      <Input type="text" {...field} placeholder="Summit Name" />
+                      <Input
+                        type="text"
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                        placeholder="Summit Name"
+                      />
                       <p className={styles.error}>{error?.message}</p>
                     </div>
                   )}
@@ -235,12 +295,17 @@ export const SponsorshipModal = ({
                   <Controller
                     name="presentation"
                     control={control}
-                    render={({ field, fieldState: { error } }) => (
+                    render={({
+                      field: { onChange, onBlur, name },
+                      fieldState: { error },
+                    }) => (
                       <div className={styles.dialog_content}>
                         <TextArea
                           litle={true}
                           placeholder="Proposal"
-                          {...field}
+                          name={name}
+                          onChange={onChange}
+                          onBlur={onBlur}
                         />
                         <p className={styles.error}>{error?.message}</p>
                       </div>
@@ -251,12 +316,17 @@ export const SponsorshipModal = ({
                   <Controller
                     name="comments"
                     control={control}
-                    render={({ field, fieldState: { error } }) => (
+                    render={({
+                      field: { onChange, onBlur, name },
+                      fieldState: { error },
+                    }) => (
                       <div className={styles.dialog_content}>
                         <TextArea
                           litle={true}
                           placeholder="Comments"
-                          {...field}
+                          name={name}
+                          onChange={onChange}
+                          onBlur={onBlur}
                         />
                         <p className={styles.error}>{error?.message}</p>
                       </div>
@@ -266,7 +336,10 @@ export const SponsorshipModal = ({
                 <Controller
                   name={Learn_about_us ? Learn_about_us : 'package_name'}
                   control={control}
-                  render={({ value, field, fieldState: { error } }) => (
+                  render={({
+                    field: { onChange, onBlur, name },
+                    fieldState: { error },
+                  }) => (
                     <div className={styles.dialog_content}>
                       <ReactSelect
                         placeholder={
@@ -274,7 +347,9 @@ export const SponsorshipModal = ({
                             ? Learn_about_us_placeholder
                             : 'Package Name'
                         }
-                        {...field}
+                        name={name}
+                        onChange={onChange}
+                        onBlur={onBlur}
                         options={options}
                         className={styles.selecttt}
                       />
@@ -286,9 +361,17 @@ export const SponsorshipModal = ({
                   <Controller
                     name="comments"
                     control={control}
-                    render={({ field, fieldState: { error } }) => (
+                    render={({
+                      field: { onChange, onBlur, name },
+                      fieldState: { error },
+                    }) => (
                       <div className={styles.dialog_content}>
-                        <TextArea placeholder="Comments" {...field} />
+                        <TextArea
+                          placeholder="Comments"
+                          name={name}
+                          onChange={onChange}
+                          onBlur={onBlur}
+                        />
                         <p className={styles.error}>{error?.message}</p>
                       </div>
                     )}
@@ -299,11 +382,16 @@ export const SponsorshipModal = ({
                   <Controller
                     name="your_way_get_us"
                     control={control}
-                    render={({ field, fieldState: { error } }) => (
+                    render={({
+                      field: { onChange, onBlur, name },
+                      fieldState: { error },
+                    }) => (
                       <div className={styles.dialog_content}>
                         <Input
                           type="text"
-                          {...field}
+                          name={name}
+                          onChange={onChange}
+                          onBlur={onBlur}
                           placeholder="If Others, Please Specify Below"
                         />
                         <p className={styles.error}>{error?.message}</p>
@@ -315,12 +403,22 @@ export const SponsorshipModal = ({
                   <Controller
                     name="confirm"
                     control={control}
-                    render={({ field }) => (
+                    render={({
+                      field: { onChange, onBlur, name },
+                      fieldState: { error },
+                    }) => (
                       <div className={styles.remember}>
-                        <Checkbox {...field} />
+                        <Checkbox
+                          name={name}
+                          onChange={onChange}
+                          onBlur={onBlur}
+                        />
                         <p className={styles.remember_label}>
                           I Confirm That I Have Read And Agreed To Terms &
                           Conditions And Privacy Policy
+                        </p>
+                        <p className={styles.remember_label}>
+                          {error?.message}
                         </p>
                       </div>
                     )}

@@ -8,7 +8,7 @@ import styles from './EventsHeading.module.css'
 export const EventsHeading = ({ title, subTitle, img, ticket, id }) => {
   const router = useRouter()
 
-  const goEvents = () => router.push(`/events/${id}`)
+  const goEvents = () => router.push(`/Events/${id}`)
   return (
     <div className={styles.eventsHeading}>
       <div className={styles.eventsHeading_content}>

@@ -9,7 +9,6 @@ const addressSlice = createSlice({
   initialState: defaultState,
   reducers: {
     addAddress(state, action) {
-      console.log(action.payload, 'actionPayload adress')
       state.address = action.payload
     },
   },
