@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Input } from '../Input/Input'
 import { ButtonComp } from '../Button/Button'
 import { Title } from '../TItle/Title'
+import { loadStripe } from '@stripe/stripe-js'
+
 // import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import styles from './CheckOutBody.module.css'
@@ -12,10 +14,21 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { addOrders } from '../../store/ordersSlice'
 import { formatToReqData, formatToReqDataOrderItems } from '../../Helpers/help'
+import { PaymnetModal } from '../PaymentModal/PaymentModal'
+import {
+  CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+  Elements,
+  useElements,
+  useStripe,
+} from '@stripe/react-stripe-js'
 
 export const CheckOutBody = () => {
   const user = useSelector((state) => state.user.user)
   const data = useSelector((state) => state.cards.card)
+  const [openLogin, setOpenLogin] = useState(false)
+  const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
   // const orders = useSelector((state) => state.orders.orders)
   // const address = useSelector((state) => state.address.address)
   const router = useRouter()
@@ -38,7 +51,14 @@ export const CheckOutBody = () => {
     },
   })
 
+  const handleClose = () => {
+    setOpenLogin(false)
+  }
+
   const onSubmit = async (dataForm) => {
+    if (dataForm.payment_method === 'Visa or Mastercard') {
+      setOpenLogin(true)
+    }
     const orderStore = {
       first_name: dataForm.first_name,
       last_name: dataForm.last_name,
@@ -50,9 +70,9 @@ export const CheckOutBody = () => {
       email: dataForm.email,
       phone: dataForm.phone,
       payment_method: dataForm.payment_method,
-      Subtotal: curentDataItems.subtotal,
-      VAT: curentDataItems.vat.toString(),
-      Total: curentDataItems.total,
+      Subtotal: curentDataItems?.subtotal,
+      VAT: curentDataItems?.vat.toString(),
+      Total: curentDataItems?.total,
       order_items: formatToReqDataOrderItems(curentData),
       delegaters: formatToReqData(dataForm, curentData),
     }
@@ -70,9 +90,6 @@ export const CheckOutBody = () => {
 
     if (dataForm.payment_method === 'Invoice - Direct Bank Transfer') {
       router.push(`/DirectBankTransfer/${data[0]?.data}`)
-    }
-    if (dataForm.payment_method === 'Visa or Mastercard') {
-      router.push(`/Payment`)
     }
   }
 
@@ -472,6 +489,9 @@ export const CheckOutBody = () => {
           </div>
         </div>
       </form>
+      <Elements stripe={stripePromise}>
+        <PaymnetModal open={openLogin} handleClose={handleClose} />
+      </Elements>
     </div>
   )
 }

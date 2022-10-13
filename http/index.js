@@ -5,6 +5,7 @@ export const instance = axios.create({
   baseURL: 'http://laratest.key-notion.com/api',
   headers: {
     Accept: 'application/json',
+    'Content-Type': 'application/json',
   },
 })
 

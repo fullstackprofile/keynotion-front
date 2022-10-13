@@ -23,7 +23,7 @@ export const TestiMonials = ({ data }) => {
           modules={[Navigation]}
           className={styles.my_swiper}
         >
-          {data?.map(
+          {data?.[0].map(
             (
               {
                 full_name,
@@ -31,7 +31,7 @@ export const TestiMonials = ({ data }) => {
                 star,
                 company,
                 id,
-                logo,
+                cover,
                 position,
                 profession,
               },
@@ -44,7 +44,7 @@ export const TestiMonials = ({ data }) => {
                   subTitle={testimonial}
                   rating={star}
                   companyName={company}
-                  logo={logo}
+                  logo={cover}
                   profession={profession}
                   position={position}
                 ></TestiMonialsCart>

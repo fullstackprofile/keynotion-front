@@ -1,0 +1,131 @@
+.accountDetails_body{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    }
+    
+    .half{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .half_item{
+        width: 48%;
+    }
+    
+    .dialog_label{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 130%;
+        color: #121212;
+        margin-bottom: 12px;
+    }
+    
+    .dialog_contentPaymentPrice{
+        margin-bottom: 22px;
+        width: 25%;
+    }
+    .dialog_content{
+        margin-bottom: 22px;
+        margin-top: 10px;
+    }
+    .extryDateBlock {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .passwordss{
+        margin-top: 48px;
+    }
+    
+    .passwordss_label{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 130%;
+        color: #121212;
+    }
+    
+    .row{
+        margin-top: 12px;
+        border: 1px solid #B8B8B8;
+    }
+    
+    .passwordss_block{
+        margin-top: 48px;
+    }
+    
+    .dialog_content_btn{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 48px;
+    }
+    .priceWrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    .cardWrapper {
+        display: flex;
+    }
+    .priceBlock {
+        padding: 17px 12px 17px 12px;
+        border: solid 2px transparent !important;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+        background-origin: border-box !important;
+        background-clip: content-box, border-box !important;
+        box-shadow: 2px 1000px 1px #fff inset !important;
+        border-radius: 6px !important;
+    
+    }
+    .cardNumber {
+        margin-top: 10px;
+        margin-bottom: 48px;
+        padding: 17px 15px 17px 15px;
+        border: solid 2px transparent !important;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+        background-origin: border-box !important;
+        background-clip: content-box, border-box !important;
+        box-shadow: 2px 1000px 1px #fff inset !important;
+        border-radius: 6px !important;
+    }
+    
+    .date{
+        margin-top: 10px;
+        width: 200px;
+        height: 60px;
+        padding: 15px;
+        border: solid 2px transparent !important;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, #623D90 2.3%, #9F0B00 64.97%) !important;
+        background-origin: border-box !important;
+        background-clip: content-box, border-box !important;
+        box-shadow: 2px 1000px 1px #fff inset !important;
+        border-radius: 6px !important;
+    }
+    .text {
+        margin-top: 10px;
+    }
+    .btnWrapper {
+        margin-top: 20px;
+    }
+    
+    @media (max-width: 1024px) {
+        .accountDetails_body{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .passwordss{
+            width: 70%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .accountDetails_body{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .passwordss{
+            width: 60%;
+        }
+    }
